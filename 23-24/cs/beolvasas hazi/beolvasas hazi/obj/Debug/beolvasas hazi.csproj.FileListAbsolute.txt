@@ -1,0 +1,7 @@
+C:\Users\user\source\repos\beolvasas hazi\beolvasas hazi\bin\Debug\beolvasas hazi.exe.config
+C:\Users\user\source\repos\beolvasas hazi\beolvasas hazi\bin\Debug\beolvasas hazi.exe
+C:\Users\user\source\repos\beolvasas hazi\beolvasas hazi\bin\Debug\beolvasas hazi.pdb
+C:\Users\user\source\repos\beolvasas hazi\beolvasas hazi\obj\Debug\beolvasas hazi.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\beolvasas hazi\beolvasas hazi\obj\Debug\beolvasas hazi.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\beolvasas hazi\beolvasas hazi\obj\Debug\beolvasas hazi.exe
+C:\Users\user\source\repos\beolvasas hazi\beolvasas hazi\obj\Debug\beolvasas hazi.pdb

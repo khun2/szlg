@@ -1,0 +1,7 @@
+C:\Users\user\source\repos\beolvasás\beolvasás\bin\Debug\beolvasás.exe.config
+C:\Users\user\source\repos\beolvasás\beolvasás\bin\Debug\beolvasás.exe
+C:\Users\user\source\repos\beolvasás\beolvasás\bin\Debug\beolvasás.pdb
+C:\Users\user\source\repos\beolvasás\beolvasás\obj\Debug\beolvasás.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\beolvasás\beolvasás\obj\Debug\beolvasás.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\beolvasás\beolvasás\obj\Debug\beolvasás.exe
+C:\Users\user\source\repos\beolvasás\beolvasás\obj\Debug\beolvasás.pdb
