@@ -1,0 +1,10 @@
+C:\Users\user\Source\Repos\khun2\LK_labnyomok\obj\Debug\LogoKaresz.csproj.AssemblyReference.cache
+C:\Users\user\Source\Repos\khun2\LK_labnyomok\obj\Debug\LogoKaresz.Form1.resources
+C:\Users\user\Source\Repos\khun2\LK_labnyomok\obj\Debug\LogoKaresz.Properties.Resources.resources
+C:\Users\user\Source\Repos\khun2\LK_labnyomok\obj\Debug\LogoKaresz.csproj.GenerateResource.cache
+C:\Users\user\Source\Repos\khun2\LK_labnyomok\obj\Debug\LogoKaresz.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\khun2\LK_labnyomok\bin\Debug\LogoKaresz.exe.config
+C:\Users\user\source\repos\khun2\LK_labnyomok\bin\Debug\LogoKaresz.exe
+C:\Users\user\source\repos\khun2\LK_labnyomok\bin\Debug\LogoKaresz.pdb
+C:\Users\user\source\repos\khun2\LK_labnyomok\obj\Debug\LogoKaresz.exe
+C:\Users\user\source\repos\khun2\LK_labnyomok\obj\Debug\LogoKaresz.pdb
