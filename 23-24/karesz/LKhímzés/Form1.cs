@@ -79,6 +79,8 @@ namespace LogoKaresz
 			/* Ezt indítja a START gomb! */
 			 Teleport(közép.X-200, közép.Y, észak);
 			Tollvastagság(2);
+			//alapminta(50);
+			//sormintaA(3, 50);
 			sormintaB(3, 40);
 
 		
