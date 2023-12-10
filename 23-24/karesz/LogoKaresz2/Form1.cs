@@ -67,7 +67,7 @@ namespace LogoKaresz
 			/* Ezt indítja a START gomb! */
 			// Teleport(közép.X, közép.Y+150, észak);
 
-			pókháló(50, 5);
+			pókháló(5, 25);
             //vonalak(10, 15);
             //elvileg minden számmal működik ami nem megy ki a pályáról
 

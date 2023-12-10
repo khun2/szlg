@@ -23,29 +23,63 @@ namespace LogoKaresz
 				Jobbra(-90);
 			}
 		}
+		void _3Négyzet(double a){
+			Jobbra(-45);
+			Négyzet(a);
+			Előre(a);
+			Négyzetbal(a);
+			Előre(-a);
+			Jobbra(90);
+			Előre(a);
+			Négyzet(a);
+            Előre(-a);
+			Jobbra(-45);
+
+		}
 		void alapminta(double a)
 		{
-			Tollvastagság(3);
-			//Tollszín(Color.Red);
+			Tollszín(Color.Red);
 			Jobbra(135);
 			Előre(a);
 			Jobbra(-90);
 			Előre(a);
+			Jobbra(-45);
+			_3Négyzet(a / 2);
+			Jobbra(135);
+			Előre(a);
 			Jobbra(-90);
-			Négyzet(a / 2);
-			Előre(a / 2);
-			//Négyzetbal(a / 2);
+            Előre(a);
+            Jobbra(-45);
+        }
+		void sormintaA(int b, double a) {
+		for(int i = 0;i < b;i++) {
+				alapminta(a);
+			}
 		}
-		
+		void sormintaB(int b, double a){
+			sormintaA(b, a);
+			Jobbra(-135);
+			Előre(a);
+			Jobbra(-90);
+			Előre(a) ;
+			Jobbra(45);
+			sormintaA(b,a);
+            Jobbra(-135);
+            Előre(a);
+            Jobbra(-90);
+            Előre(a);
+            Jobbra(45);
+        }
 
-		
 
-		/* Függvények vége */
-		void FELADAT()
+
+            /* Függvények vége */
+            void FELADAT()
 		{
 			/* Ezt indítja a START gomb! */
-			 Teleport(közép.X, közép.Y, észak);
-			alapminta(50);
+			 Teleport(közép.X-200, közép.Y, észak);
+			Tollvastagság(2);
+			sormintaB(3, 40);
 
 		
 		}
