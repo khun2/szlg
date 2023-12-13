@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -25,32 +26,46 @@ namespace LogoKaresz
             Jobbra(-45);
             Tollat(le);
         }
-        void sorWhite(double a, int b) {
-			for (int i = 0; i < b; i++) {
-				Négyzet(a);
-				Jobbra(90);
-				Előre(a);
-				Jobbra(-90);
-				Négyzet(a, Color.Black);
-                Jobbra(90);
-                Előre(a);
-                Jobbra(-90);
+        void sor(double a, int b, Color color1, Color color2) {
+            for (int i = 0; i < b; i++) {
+                if (i % 2 == 0) {
+                    Négyzet(a, color1);
+                    Jobbra(90);
+                    Előre(a);
+                    Jobbra(-90);
+                }
+                else {
+                    Négyzet(a, color2);
+                    Jobbra(90);
+                    Előre(a);
+                    Jobbra(-90);
+                //tudom hogy nem jó a nested code de nincs jobb ötletem most
+                }
             }
+                Jobbra(-90);
+                Előre(b * a);
+                Jobbra(90);
 		}
-		void sorBlack(double a, int b)
-        {
-            for (int i = 0; i < b/2; i++)
-            {
-                Négyzet(a, Color.Black);
-                Jobbra(90);
-                Előre(a);
-                Jobbra(-90);
-                Négyzet(a);
-                Jobbra(90);
-                Előre(a);
-                Jobbra(-90);
+        void sakktabla(double a, int sorszam, int oszlop, Color color1, Color color2) {
+            Tollat(fel);
+            Előre(-a);
+            Tollat(le);
+        for(int i = 0; i<oszlop; i++) {
+            if (i % 2 == 0) {
+                    Tollat(fel);
+                    Előre(a);
+                    Tollat(le);
+                    sor(a, sorszam, color1, color2);
+                }
+            else {
+                    Előre(a);
+                    sor(a, sorszam, color2, color1);
+                }
             }
+            Előre(-a * (oszlop - 1));
+            //ismét nestelt kód
         }
+		
         void sakktábla(double a, int b, int c) {
 
         }
@@ -59,7 +74,7 @@ namespace LogoKaresz
 		{
             /* Ezt indítja a START gomb! */
             // Teleport(közép.X, közép.Y+150, észak);
-            
+            sakktabla(20, 7,6, Color.Red, Color.Blue);
 		}
 	}
 }
