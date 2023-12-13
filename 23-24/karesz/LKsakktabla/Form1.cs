@@ -64,17 +64,18 @@ namespace LogoKaresz
             }
             Előre(-a * (oszlop - 1));
             //ismét nestelt kód
-        }
-		
-        void sakktábla(double a, int b, int c) {
-
+            /*
+            Google en passant
+            Holy Hell
+            New response just dropped
+            */
         }
         /* Függvények vége */
         void FELADAT()
 		{
             /* Ezt indítja a START gomb! */
             // Teleport(közép.X, közép.Y+150, észak);
-            sakktabla(20, 7,6, Color.Red, Color.Blue);
+            sakktabla(30, 8,8, Color.White, Color.Black);
 		}
 	}
 }
