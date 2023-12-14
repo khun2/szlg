@@ -17,27 +17,27 @@ namespace Karesz
 
         void TANÁR_ROBOTJAI()
         {
-            new Robot("Karesz", 10, 10, 10, 10, 0, 5, 28, 0);
+            new Robot("Karesz", 999, 10, 10, 10, 0, 5, 28, 0);
 
 
             Robot janesz = new Robot("Janesz", Robot.képkészlet_lilesz, 0, 0, 0, 0, 0, 14, 1, 2);
 
             janesz.Feladat = delegate ()
             {
-                while (true)
+                /*while (true)
                 {
                     janesz.Lépj();
-                }
+                }*/
             };
 
             Robot fanesz = new Robot("Fanesz", Robot.képkészlet_lilesz, 0, 0, 0, 0, 0, 16, 1, 2);
 
             fanesz.Feladat = delegate ()
             {
-                while (true)
+                /*while (true)
                 {
                     fanesz.Lépj();
-                }
+                }*/
             };
 
 

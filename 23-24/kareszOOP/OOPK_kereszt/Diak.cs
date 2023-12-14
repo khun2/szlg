@@ -12,16 +12,93 @@ namespace Karesz
 {
     public partial class Form1 : Form
     {
+        void karesz_hell(double a)
+
+        {
+            for (int i = 0; i < i + 1; i++)
+            {
+                for (int j= 0; j < a; j++)
+                {
+                    Lépj();
+                }
+                Fordulj(jobbra);
+            }
+        }
+        void lepcso(double a)
+        {
+            for (int i = 0; i < a; i++)
+            {
+                Tegyél_le_egy_kavicsot();
+                Fordulj(jobbra);
+                Lépj();
+                Fordulj(balra);
+                Lépj();
+            }
+        }
+        void U(int a)
+        {
+            Tegyél_le_egy_kavicsot();
+            line(a-1);
+            Fordulj(jobbra);
+            line(a-1);
+            Fordulj(jobbra);
+            line(a - 2);
+            Lépj();
+            Fordulj(balra);
+        }
+        void plus(int a)
+        {
+            for (int i=0; i < 4; i++)
+            {
+                U(5);
+            }
+        }
+        void line(int a)
+        {
+            for (int i = 0; i < a; i++)
+            {
+                Lépj();
+                Tegyél_le_egy_kavicsot();
+            }
+        }
+        void L()
+        {
+            for (int i = 0; i<5; i++)
+            {
+                Tegyél_le_egy_kavicsot();
+                Lépj();
+            }
+            Fordulj(jobbra);
+            Fordulj(jobbra);
+            for (int i = 0; i < 5; i++)
+            {
+                Lépj();
+            }
+            Fordulj(balra);
+            for (int i = 0; i < 5; i++)
+            {
+                Lépj();
+                Tegyél_le_egy_kavicsot();
+            }
+            Fordulj(jobbra);
+            Fordulj(jobbra);
+            for (int i = 0; i < 5; i++)
+            {
+                Lépj();
+            }
+            Fordulj(jobbra);
+        }
         void DIÁK_ROBOTJAI()
         {
             Robot karesz = Robot.Get("Karesz");
 
             karesz.Feladat = delegate ()
             {
-                while (true)
-                {
-                    karesz.Lépj();
-                }
+                plus(5);
+
+
+               
+                
 
             };
         }
