@@ -40,7 +40,7 @@ namespace Karesz
             lepcso(3, szin);
             Fordulj(jobbra);
             lepcso(balra);
-            Vegyél_fel_egy_kavicsot()
+            Vegyél_fel_egy_kavicsot();
             lepcso(3, szin);
 
         }
