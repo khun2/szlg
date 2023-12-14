@@ -61,6 +61,14 @@ namespace Karesz
                 Tegyél_le_egy_kavicsot();
             }
         }
+        void elhelyezkedes() {
+        for(int i = 0;i < 10; i++) {
+                Lépj();
+                Fordulj(jobbra);
+                Lépj();
+                Fordulj(balra);
+            }
+        }
         void L()
         {
             for (int i = 0; i<5; i++)
@@ -88,12 +96,14 @@ namespace Karesz
             }
             Fordulj(jobbra);
         }
+       
         void DIÁK_ROBOTJAI()
         {
             Robot karesz = Robot.Get("Karesz");
 
             karesz.Feladat = delegate ()
             {
+                elhelyezkedes();
                 plus(5);
 
 
