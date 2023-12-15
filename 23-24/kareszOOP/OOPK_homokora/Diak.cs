@@ -33,15 +33,14 @@ namespace Karesz
         }
         void homokora(int szin=2) {
             Fordulj(jobbra);
-            line(5, szin);
+            line(4, szin);
             for (int i = 0; i < 2; i++) {
                 Fordulj(jobbra);
             }
-            lepcso(3, szin);
-            Fordulj(jobbra);
-            lepcso(balra);
-            Vegyél_fel_egy_kavicsot();
-            lepcso(3, szin);
+            lepcso(2, szin);
+            Fordulj(balra);
+            //Vegyél_fel_egy_kavicsot();
+            lepcso(2, szin);
 
         }
         
@@ -51,6 +50,8 @@ namespace Karesz
 
             karesz.Feladat = delegate ()
             {
+                Fordulj(jobbra);
+                Fordulj(jobbra);
                 homokora();
 
 
