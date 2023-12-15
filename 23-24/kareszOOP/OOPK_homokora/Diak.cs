@@ -31,7 +31,7 @@ namespace Karesz
                 Lépj();
             }
         }
-        void homokora(int szin=2) {
+        void haromszog(int szin=2) {
             Fordulj(jobbra);
             line(4, szin);
             for (int i = 0; i < 2; i++) {
@@ -43,15 +43,40 @@ namespace Karesz
             lepcso(2, szin);
 
         }
-        
+        void homokora(int szin=2) {
+            haromszog(szin);
+            Fordulj(-1);
+            for (int i = 0;i < 4;i++) {
+                Lépj();
+            }
+            Fordulj(-1);
+            for (int i = 0; i < 5; i++) {
+                Lépj();
+            }
+            Fordulj(1);
+            Fordulj(1);
+            haromszog(szin);
+            Fordulj(1);
+            Fordulj(1);
+            for (int i = 0; i < 5; i++)
+            {
+                Lépj();
+            }
+            Fordulj(1);
+            for (int i = 0; i < 4; i++)
+            {
+                Lépj();
+            }
+            Fordulj(1);
+        }
+
         void DIÁK_ROBOTJAI()
         {
             Robot karesz = Robot.Get("Karesz");
 
             karesz.Feladat = delegate ()
             {
-                Fordulj(jobbra);
-                Fordulj(jobbra);
+                
                 homokora();
 
 
