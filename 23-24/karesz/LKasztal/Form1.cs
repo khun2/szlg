@@ -73,15 +73,18 @@ namespace LogoKaresz
 			Tollszín(color1);
 			double téglalap1 = a * 3 * oszlop + (oszlop + 1) * a / 3;
 			double téglalap2 = a * 3 * sorszam + (sorszam + 1) * a / 3;
-            Téglalap(téglalap1, téglalap2, color2);
+			Téglalap(téglalap1, téglalap2, color2);
 			//ez nagyon ronda matek de én szeretem a nagyon ronda matekot mivel így lesz a legpontosabb
 			Tollat(fel);
 			Jobbra(90);
 			Előre(a + a / 3);
 			Jobbra(-90);
-			Előre(a/3);
+			Előre(a / 3);
 			Tollat(le);
+			for (int i = 0; i < oszlop; i++) { 
 			sor(a, sorszam, color1);
+			
+			}
 		}
         /* Függvények vége */
         void FELADAT()
