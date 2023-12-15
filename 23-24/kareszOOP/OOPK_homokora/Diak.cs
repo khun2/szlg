@@ -14,37 +14,36 @@ namespace Karesz
     public partial class Form1 : Form
     {
         
-        void line(int a, int szin=2)
+        void Line(int a, int color=2)
         {
             for (int i = 0; i < a; i++)
             {
-                Tegyél_le_egy_kavicsot(szin);
+                Tegyél_le_egy_kavicsot(color);
                 Lépj();
             }
         }
-        void lepcso(int a, int szin = 2) {
+        void Stair(int a, int color = 2) {
             for (int i = 0; i < a; i++) {
-                Tegyél_le_egy_kavicsot(szin);
+                Tegyél_le_egy_kavicsot(color);
                 Fordulj(jobbra);
                 Lépj();
                 Fordulj(balra);
                 Lépj();
             }
         }
-        void haromszog(int szin=2) {
+        void Triangle(int color=2) {
             Fordulj(jobbra);
-            line(4, szin);
+            Line(4, color);
             for (int i = 0; i < 2; i++) {
                 Fordulj(jobbra);
             }
-            lepcso(2, szin);
+            Stair(2, color);
             Fordulj(balra);
-            //Vegyél_fel_egy_kavicsot();
-            lepcso(2, szin);
+            Stair(2, color);
 
         }
-        void homokora(int szin=2) {
-            haromszog(szin);
+        void Homokora(int color=2) {
+            Triangle(color);
             Fordulj(-1);
             for (int i = 0;i < 4;i++) {
                 Lépj();
@@ -55,7 +54,7 @@ namespace Karesz
             }
             Fordulj(1);
             Fordulj(1);
-            haromszog(szin);
+            Triangle(color);
             Fordulj(1);
             Fordulj(1);
             for (int i = 0; i < 5; i++)
@@ -77,7 +76,7 @@ namespace Karesz
             karesz.Feladat = delegate ()
             {
                 
-                homokora();
+                Homokora();
 
 
                
