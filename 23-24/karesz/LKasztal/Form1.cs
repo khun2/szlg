@@ -83,16 +83,24 @@ namespace LogoKaresz
 			Tollat(le);
 			for (int i = 0; i < oszlop; i++) { 
 			sor(a, sorszam, color1);
-			
+				Tollat(fel);
+			Előre(3*a+a/3);
+				Tollat(le);
 			}
-		}
+			Tollat(fel);
+			Előre(-téglalap1);
+			Jobbra(-90);
+			Előre(a + a / 3);
+			Jobbra(90);
+			Tollat(le);
+        }
         /* Függvények vége */
         void FELADAT()
 		{
 			/* Ezt indítja a START gomb! */
-			// Teleport(közép.X, közép.Y+150, észak);
+			Teleport(közép.X/5, közép.Y*1.8, észak);
 
-			asztal(10, 4, 6,Color.Black, Color.White);
+			asztal(15, 4, 6,Color.Black, Color.White);
 		}
 	}
 }
