@@ -16,6 +16,7 @@ namespace LogoKaresz
 			}
 		}
         void Négyzet(double a, Color color){
+            Tollszín(color);
 			Négyzet(a);
             double root =Math.Sqrt(2 * a);
             Jobbra(45);
@@ -52,10 +53,10 @@ namespace LogoKaresz
             Tollat(le);
         for(int i = 0; i<oszlop; i++) {
             if (i % 2 == 0) {
-                    Tollat(fel);
-                    Előre(a);
-                    Tollat(le);
-                    sor(a, sorszam, color1, color2);
+                Tollat(fel);
+                Előre(a);
+                Tollat(le);
+                sor(a, sorszam, color1, color2);
                 }
             else {
                     Előre(a);
@@ -75,7 +76,7 @@ namespace LogoKaresz
 		{
             /* Ezt indítja a START gomb! */
             // Teleport(közép.X, közép.Y+150, észak);
-            sakktabla(30, 8,8, Color.White, Color.Black);
+            sakktabla(30, 8,8, Color.Red, Color.Black);
 		}
 	}
 }
