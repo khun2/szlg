@@ -23,8 +23,8 @@ namespace Karesz
             int sárgadb = 100;
             int hódb = 100;
 
-            int pos_x = 5;
-            int pos_y = 28;
+            int pos_x = 20;
+            int pos_y = 15;
 
             new Robot("Karesz", feketedb, pirosdb, zölddb, sárgadb, hódb, pos_x, pos_y, 0);
 
