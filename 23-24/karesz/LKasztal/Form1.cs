@@ -9,15 +9,14 @@ namespace LogoKaresz
 	{
 		/* Függvények */
 		void Ívonal(double a) {
-		
-				Jobbra(90);
-				Előre(a);
-				Jobbra(- 90);
-				Ív(90, a);
-				Jobbra(180);
+			Jobbra(90);
+			Előre(a);
+			Jobbra(- 90);
+			Ív(90, a);
+			Jobbra(180);
 		}
 		void Alap(double a, Color color) {
-		for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < 4; i++) {
 				Ívonal(a);
 			}
 			using (new Rajzol(false)) {
@@ -35,7 +34,7 @@ namespace LogoKaresz
 			}
 		}
 		void Sor(double a, int sorszam, Color color) {
-		for(int i = 0;i < sorszam;i++) {
+			for (int i = 0;i < sorszam;i++) {
 				Alap(a, color);
 				Athelyezkedes(a);
 			}
