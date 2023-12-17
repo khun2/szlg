@@ -67,7 +67,7 @@ namespace LogoKaresz
 			Tollszín(color1);
 			double téglalap1 = a * 3 * oszlop + (oszlop + 1) * a / 3;
 			double téglalap2 = a * 3 * sorszam + (sorszam + 1) * a / 3;
-			Téglalap(téglalap1, téglalap2, color2);
+			Téglalap(téglalap1, téglalap2);
 			//ez nagyon ronda matek de én szeretem a nagyon ronda matekot mivel így lesz a legpontosabb
 			using (new Rajzol(false)) { 
 				Jobbra(90);
@@ -86,6 +86,11 @@ namespace LogoKaresz
 				Jobbra(-90);
 				Előre(a + a / 3);
 				Jobbra(90);
+				Jobbra(45);
+				Előre(a);
+				Tölt(color2);
+				Előre(-a);
+				Jobbra(-45);
 			}
         }
         /* Függvények vége */
@@ -93,7 +98,7 @@ namespace LogoKaresz
 		{
 			/* Ezt indítja a START gomb! */
 			Teleport(közép.X/5, közép.Y*1.8, észak);
-			Asztal(15, 4, 6,Color.Black, Color.White);
+			Asztal(10, 5, 1,Color.Blue, Color.Blue);
 		}
 	}
 }
