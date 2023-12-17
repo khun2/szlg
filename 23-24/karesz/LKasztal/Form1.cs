@@ -95,10 +95,12 @@ namespace LogoKaresz
         }
         /* Függvények vége */
         void FELADAT()
-		{
-			/* Ezt indítja a START gomb! */
-			Teleport(közép.X/5, közép.Y*1.8, észak);
-			Asztal(60, 1, 1,Color.White, Color.Black);
+		{ using (new Frissítés(false))
+			{
+				/* Ezt indítja a START gomb! */
+				Teleport(közép.X / 5, közép.Y * 1.8, észak);
+				Asztal(10, 7, 8, Color.White, Color.Black);
+			}
 		}
 	}
 }
