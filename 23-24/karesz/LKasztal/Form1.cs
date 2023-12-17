@@ -98,7 +98,7 @@ namespace LogoKaresz
 		{
 			/* Ezt indítja a START gomb! */
 			Teleport(közép.X/5, közép.Y*1.8, észak);
-			Asztal(10, 5, 1,Color.Blue, Color.Blue);
+			Asztal(60, 1, 1,Color.White, Color.Black);
 		}
 	}
 }
