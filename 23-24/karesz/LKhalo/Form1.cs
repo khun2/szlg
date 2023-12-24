@@ -8,7 +8,7 @@ namespace LogoKaresz
 	public partial class Form1 : Form
 	{
 		/* Függvények */
-		void alap(double size) {
+		void Alap(double size) {
 			Ív(90, size);
 			Jobbra(-90);
 			Ív(-180, size);
@@ -16,56 +16,54 @@ namespace LogoKaresz
 			Ív(90,size);
 			Jobbra(180);
 		}
-		void athelyezkedes(double size) {
-            Ív(90, size);
-            Jobbra(-90);
-            Ív(-90, size);
-            Jobbra(180);
+		void Athelyezkedes(double size) {
+			using (new Rajzol(false)) {
+				Ív(90, size);
+				Jobbra(-90);
+				Ív(-90, size);
+				Jobbra(180);
+			}
         }
-		void szem(double size) {
+		void Szem(double size) {
 			for(int i = 0; i < 4; i++) {
-                alap(20);
-                athelyezkedes(20);
+                Alap(size);
+                Athelyezkedes(size);
             }
-
         }
-		void athelyezkedes2(double size) {
-		using(new Rajzol(false)) { 
+		void Athelyezkedes2(double size) {
+			using(new Rajzol(false)) { 
 				Ív(90, size);
                 Ív(-90, size);  
             }
 		}
-		void sor(int length, double size) {
+		void Sor(int length, double size) {
 			for (int i = 0; i < length; i++) {
-				szem(size);
-				athelyezkedes2(size);
+				Szem(size);
+				Athelyezkedes2(size);
 			}
             for (int i = 0; i < length; i++){
-                athelyezkedes2(-size);
+                Athelyezkedes2(-size);
             }
         }
-		void halo(int length, int width, double size) {
+		void Halo(int length, int width, double size) {
 			for (int i = 0; i < width; i++){
-				sor(length, size);
+				Sor(length, size);
 				Jobbra(90);
-				athelyezkedes(-size);
+				Athelyezkedes2(-size);
 				Jobbra(-90);
 			}
-			for (int i = 0; i < width; i++)
-			{
-				using(new Rajzol(false)) {
-					Jobbra(90);
-					athelyezkedes2(-size);
-					Jobbra(-90);
-				}
+			for(int i=0; i<width; i++) {
+				Jobbra(90);
+				Athelyezkedes2(size);
+				Jobbra(-90);
 			}
 		}
 		/* Függvények vége */
 		void FELADAT()
 		{
 			/* Ezt indítja a START gomb! */
-			Teleport(közép.X, közép.Y*1.8, észak);
-			halo(4, 3, 20);
+			//Teleport(közép.X, közép.Y*1.8, észak);
+			Halo(4, 3, 30);
 		}
 	}
 }
