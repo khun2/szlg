@@ -93,69 +93,96 @@ namespace LogoKaresz
                 SwapRow(-size);
             }
         }
-        void SwapLine(double size) {
+        void SwapLine(double size, bool teszt) {
             using (new Rajzol(false)) {
-                Előre(size);
-                Jobbra(60);
-                Előre(size);
-                Jobbra(-30);
-                Előre(2 * size);
-                Jobbra(-30);
+                if (teszt == false) {
+                    Előre(size);
+                    Jobbra(-30);
+                    Előre(size*2);
+                    Jobbra(-30);
+                    Előre(size);
+                    Jobbra(60);
+                }
+                else {
+                    Előre(size);
+                    Jobbra(60);
+                    Előre(size);
+                    Jobbra(-30);
+                    Előre(2 * size);
+                    Jobbra(-30);
+                }
             }
         }
-
+        bool Switch(bool valt) {
+            if(valt==true) {
+                return false;
+            }
+            return true;
+        }
         void Halo(double size, int row, int pillar) {
+            bool line = false;
             for(int i = 0;i < pillar;i++) {
                 Row(size, row);
-                SwapLine(size);
+                line=Switch(line);
+                SwapLine(size,line);
             }
+            SwapLine(-size,line);
+            Switch(line);
+            SwapLine(size, line);
+            Switch(line);
+            MessageBox.Show("a");
             for(int i = 0;i<pillar ; i++) {
-                SwapLine(-size);
+                Switch(line);
+                SwapLine(-size,line);
             }
             // a színezést azért írom külön mert ugyanazt nem lehet kétszer ugyanúgy beszinezni
         }
         Color Szinvaltas(Color color, Color color1, Color color2) {
             return (color = color == color1 ? color2 : color1);
         }
-        void Colouring1(double size,int row,Color color1, Color color2) {
-            double root = Math.Sqrt(2 * size);
-            Jobbra(-45);
-            Tölt(root, color2);
-            Jobbra(45);
-            for(int i = 0; i<row ; i++) {
-                Color color = color2;
-                color = Szinvaltas(color, color1, color2);
-                Jobbra(60);
-                Tölt(size, color);
-                Jobbra(-60);
-                SwapRow(size);
+        void Colouring(double size,int row,Color color1, Color color2, bool teszt) {
+            if (teszt == true) {
+                double root = Math.Sqrt(2 * size);
                 Jobbra(-45);
-                color = Szinvaltas(color, color1, color2);
-                Tölt(root, color);
+                Tölt(root, color2);
                 Jobbra(45);
-                
+                for (int i = 0; i < row; i++)
+                {
+                    Jobbra(60);
+                    Tölt(size, color1);
+                    Jobbra(-60);
+                    SwapRow(size);
+                    Jobbra(-45);
+                    Tölt(root, color2);
+                    Jobbra(45);
+                }
+                for (int i = 0; i < row; i++)
+                {
+                    SwapRow(-size);
+                }
             }
-            for (int i = 0; i < row; i++) {
-                SwapRow(-size);
+            else {
+                
             }
             //ez beszínezi elvileg a középső két sort és nagyon csúnya, emellet sajog a fejem ennek a megírásától
         }
-        void Mozaik(double size, int row, int pillar, Color color1, Color color2) {
+        void Colouring2() { }
+        /*void Mozaik(double size, int row, int pillar, Color color1, Color color2) {
             Halo(size, row, pillar);
             for (int i = 0;i < pillar ; i++) {
-                Colouring1(size, row,color1,color2);
-                SwapLine(size);
+                Colouring(size, row,color1,color2,true);
+                SwapLine(size,true);
             }
             for(int i = 0;i<pillar ; i++) {
                 SwapLine(-size);
             }
-        }
+        }*/
         /* Függvények vége */
         void FELADAT()
 		{
             /* Ezt indítja a START gomb! */
             Teleport(közép.X/2, közép.Y*1.8, észak);
-            Mozaik(10, 1, 5, Color.Blue, Color.Red);
+            Halo(10, 2, 4);
 		}
 	}
 }
