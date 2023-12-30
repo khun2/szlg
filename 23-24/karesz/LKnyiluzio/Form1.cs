@@ -8,6 +8,15 @@ namespace LogoKaresz
 	public partial class Form1 : Form
 	{
         /* Függvények */
+        void Tölt(double size, Color color)
+        {
+            using (new Rajzol(false))
+            {
+                Előre(size);
+                Tölt(color);
+                Előre(-size);
+            }
+        }
         void Rectangle(double a, double b) {
             for (int i = 0; i < 2; i++) {
                 Előre(a);
@@ -21,10 +30,8 @@ namespace LogoKaresz
             Rectangle(a, b);
             double root = Math.Min(Math.Sqrt(2 * a), Math.Sqrt(2 * b));
             Jobbra(45);
-            using(new Rajzol(false)) {            
-                Előre(root);
-                Tölt(color);
-                Előre(-root);
+            using(new Rajzol(false)) {
+                Tölt(root,color);
                 Jobbra(-45);
             }
             Tollszín(Color.Black);
@@ -36,13 +43,30 @@ namespace LogoKaresz
                 Jobbra(-90);
             }
         }
-        void Alap(double a, Color color) {
+        void Triangle(double size, Color color) {
+            Tollszín(color);
+            double a = Math.Sqrt(6 * size);
+            Oldalaz(-size);
+            Jobbra(45);
+            Előre(a);
             Jobbra(90);
-            Rectangle(a*2.5,a,color);
-            Oldalaz(2.5 * a);
-            Jobbra(-90);
-            Rectangle(a * 2.5, a, color);
-            Előre(2.5 * a);
+            Előre(a);
+            Jobbra(90);
+            Előre(3*size);
+            Jobbra(90);
+            Oldalaz(size);
+            Jobbra(45);
+            Tölt(a / 2, color);
+            Jobbra(-45);
+            Tollszín(Color.Black);
+        }
+        void Alap(double size,Color color) {
+            Jobbra(90);
+            Oldalaz(-size / 2);
+            Előre(-size / 2);
+            Rectangle(size,size,color);
+            Előre(size);
+            Rectangle(size * 2, size,color);
         }
         /* Függvények vége */
         void FELADAT()
@@ -50,6 +74,7 @@ namespace LogoKaresz
             /* Ezt indítja a START gomb! */
             // Teleport(közép.X, közép.Y+150, észak);
             Alap(10, Color.Black);
+            Triangle(10,Color.Black);
 			
 		}
 	}

@@ -65,6 +65,7 @@ namespace LogoKaresz
         Color Szinvaltas(Color color, Color color1, Color color2) {
             return (color = color == color1 ? color2 : color1);
         }
+        
         void SwapRow(double size)
         {
             using (new Rajzol(false))
@@ -177,6 +178,7 @@ namespace LogoKaresz
             //ez megadja a háttér színét amit később használok
             Row2(size, row, color1, color2, color3, true);
             bool state = true;
+            MessageBox.Show($"{state}");
             for (int i = 0; i < pillar; i++) {
                 PillarSwap(size, state);
                 if (i==0) {
@@ -222,17 +224,20 @@ namespace LogoKaresz
                 Row2(size,row,color1,color2, color3, false);
                 state=StateChange(state);
             }
-            
-            //MessageBox.Show($"{state}");
-            
+            Back(size, pillar,row, state);
+            MessageBox.Show($"{state}");
         }
-
+        void Back(double size, int pillar,int row, bool state) {
+            using(new Rajzol(false)) {
+                
+            }
+        }
         /* Függvények vége */
         void FELADAT()
 		{
             /* Ezt indítja a START gomb! */
             Teleport(közép.X/2, közép.Y*1.5, észak);
-            Mozaik(15, 1, 5, Color.Blue, Color.Red, Color.Yellow, Color.LightGreen);
+            Mozaik(15, 2, 5, Color.Blue, Color.Red, Color.Yellow, Color.LightGreen);
             
         }
 	}
