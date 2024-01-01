@@ -177,8 +177,7 @@ namespace LogoKaresz
             Color teszt = Milyen_szín_van_itt();
             //ez megadja a háttér színét amit később használok
             Row2(size, row, color1, color2, color3, true);
-            bool state = true;
-            MessageBox.Show($"{state}");
+            bool state = true;            
             for (int i = 0; i < pillar; i++) {
                 PillarSwap(size, state);
                 if (i==0) {
@@ -219,17 +218,27 @@ namespace LogoKaresz
                     for (int i2 = 0; i2 < row; i2++) {
                         SwapRow(-size);
                     }
+                    //this is probably the worst code i have ever written
+                    //ez az egész azthiszen azt ellenőrzi hogy van e már ott egy háromszög és egy négyzet de már utólag én sem vagyok biztos
                 }
                 Row1(size, row, color4, color3);
                 Row2(size,row,color1,color2, color3, false);
                 state=StateChange(state);
             }
-            Back(size, pillar,row, state);
-            MessageBox.Show($"{state}");
+            Back(size, pillar,row, state);            
         }
         void Back(double size, int pillar,int row, bool state) {
             using(new Rajzol(false)) {
-                
+                state =StateChange(state);
+                Jobbra(180);
+                for (int i = 0;i < pillar-1;i++) {
+                    state =StateChange(state);
+                    PillarSwap(size,state);
+                }
+                Jobbra(180);
+                if (pillar % 2 == 0) {
+                    SwapRow(-size);
+                }
             }
         }
         /* Függvények vége */
@@ -237,8 +246,8 @@ namespace LogoKaresz
 		{
             /* Ezt indítja a START gomb! */
             Teleport(közép.X/2, közép.Y*1.5, észak);
-            Mozaik(15, 2, 5, Color.Blue, Color.Red, Color.Yellow, Color.LightGreen);
-            
+            Mozaik(20, 6, 4, Color.Blue, Color.Red, Color.Yellow, Color.LightGreen);
+            //elvileg minden edge case ami eszembe jutott működik!
         }
 	}
 }
