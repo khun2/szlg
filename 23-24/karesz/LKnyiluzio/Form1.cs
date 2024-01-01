@@ -8,10 +8,8 @@ namespace LogoKaresz
 	public partial class Form1 : Form
 	{
         /* Függvények */
-        void Tölt(double size, Color color)
-        {
-            using (new Rajzol(false))
-            {
+        void Tölt(double size, Color color) {
+            using (new Rajzol(false)) {
                 Előre(size);
                 Tölt(color);
                 Előre(-size);
@@ -24,17 +22,12 @@ namespace LogoKaresz
                 Előre(b);
                 Jobbra(90);
             }
-        }
-        void Rectangle(double a, double b, Color color){
-            Tollszín(color);
-            Rectangle(a, b);
             double root = Math.Min(Math.Sqrt(2 * a), Math.Sqrt(2 * b));
-            Jobbra(45);
-            using(new Rajzol(false)) {
-                Tölt(root,color);
+            using (new Rajzol(false)) {
+                Jobbra(45);
+                Tölt(root, Color.Black);
                 Jobbra(-45);
             }
-            Tollszín(Color.Black);
         }
         void Oldalaz(double a) {
             using(new Rajzol(false)) {
@@ -43,39 +36,38 @@ namespace LogoKaresz
                 Jobbra(-90);
             }
         }
-        void Triangle(double size, Color color) {
-            Tollszín(color);
-            double a = Math.Sqrt(6 * size);
-            Oldalaz(-size);
-            Jobbra(45);
-            Előre(a);
-            Jobbra(90);
-            Előre(a);
-            Jobbra(90);
-            Előre(3*size);
-            Jobbra(90);
-            Oldalaz(size);
-            Jobbra(45);
-            Tölt(a / 2, color);
-            Jobbra(-45);
-            Tollszín(Color.Black);
+        void Triangle(double size) {
+            double root = 2*(Math.Sqrt(2 * size));
+            //Wolfram Alpha nem hazudik (ha helyesen írtam be az egyenletet)
         }
-        void Alap(double size,Color color) {
+        void ArrowHead(double size) {
+            double root = 2*(Math.Sqrt(2 * size));
             Jobbra(90);
-            Oldalaz(-size / 2);
-            Előre(-size / 2);
-            Rectangle(size,size,color);
+            Oldalaz(-size * 2);
+            Rectangle(size * 2, size);
+            Oldalaz(size * 2);
+            Jobbra(-90);
+            Előre(-size);
+            Oldalaz(-size);
+            Rectangle(size * 3, size);
+            Oldalaz(size);
             Előre(size);
-            Rectangle(size * 2, size,color);
+        }
+        void Alap(double size) {
+            double root = Math.Sqrt(2*size);
+            Jobbra(-45);
+            Rectangle(size * 3,root);
+            Előre(size * 3);
+            Jobbra(45);
+            ArrowHead(size);
         }
         /* Függvények vége */
-        void FELADAT()
-		{
+        void FELADAT() {
             /* Ezt indítja a START gomb! */
             // Teleport(közép.X, közép.Y+150, észak);
-            Alap(10, Color.Black);
-            Triangle(10,Color.Black);
-			
+            //Alap(20);
+            Triangle(10);
+            
 		}
 	}
 }
