@@ -87,15 +87,62 @@ namespace LogoKaresz
             }
 			Mirror(size,120);
         }
-        void DoubleRow(double size,int row, Color color1, Color color2) {
-				Row(size, row, color1, color2);
-				Mirror(size,60);
-				Jobbra(180);
-				Row2(size,row,color1, color2);
-				Jobbra(180);
-				Mirror(size,60);
+		void DoubleRow(double size, int row, Color color1, Color color2) {
+			Row(size, row, color1, color2);
+			Mirror(size, 60);
+			Jobbra(180);
+			Row2(size, row, color1, color2);
+			Jobbra(180);
+			Mirror(size, 60);
+		}
+        void Fill(double size, int row, Color color) {
+
+			Mirror(size,60);
+			Tölt(size / 2,-90,color);
+			Mirror(size,60);
+			Swap1(size);
+			for (int i = 0; i < row-1; i++) {
+				Mirror(size,120);
+				Tölt(size / 2,-90,color);
+				Mirror(size,120);
+				Swap2(size);
+                Mirror(size, 60);
+                Tölt(size / 2, -90, color);
+                Mirror(size, 60);
+                Swap1(size);
+            }
+            Mirror(size, 120);
+            for (int i = 0; i < row; i++) {
+                Swap1(size);
+                Swap2(size);
+            }
+			Mirror(size, 120);
+			Swap2(size);
         }
-		void Mozaik(double size, int row,int length, Color color1, Color color2) {
+        void Fill1(double size, int row, Color color) {
+            Mirror(size, 120);
+            Tölt(size / 2, -90, color);
+            Mirror(size, 120);
+            Swap2(size);
+            for (int i = 0; i < row - 1; i++) {
+                Mirror(size, 60);
+                Tölt(size / 2, -90, color);
+                Mirror(size, 60);
+                Swap1(size);
+                Mirror(size, 120);
+                Tölt(size / 2, -90, color);
+                Mirror(size, 120);
+                Swap2(size);
+            }
+            Mirror(size, 60);
+            for (int i = 0; i < row; i++) {
+                Swap2(size);
+                Swap1(size);
+            }
+            Mirror(size, 60);
+            Swap1(size);
+        }
+        void Mozaik(double size, int row,int length, Color color1, Color color2) {
 			for (int i = 0; i < length; i++) {
 				DoubleRow(size, row, color1, color2);
                 Mirror(size, 60);
@@ -110,12 +157,28 @@ namespace LogoKaresz
                 Mirror(size, 60);
 			}
 		}
+        void FullMozaik(double size, int row, int length, Color color, Color color1, Color color2) {
+            Mozaik(20, 3, 5, Color.Red, Color.Blue);
+            Fill(size,row, color);
+            for (int i = 0; i < length-1; i++) {
+			    Mirror(size,60);Jobbra(180);
+                Fill1(size,row, color);
+			    Mirror(size,120);Jobbra(180);
+			    Fill(size,row, color);
+            }
+            for (int i = 0; i < length-1; i++) {
+                Jobbra(180);
+                Mirror(size, 120);
+                Jobbra(180);
+                Mirror(size, 60);
+            }
+        }
         /* Függvények vége */
         void FELADAT()
 		{
 			/* Ezt indítja a START gomb! */
 			Teleport(közép.X/3, közép.Y*1.8, észak);
-			Mozaik(40, 5,3, Color.Red, Color.Blue);
+			FullMozaik(20, 3,5,Color.Aqua, Color.Red, Color.Blue);
 			//Rombusz(40, 120, Color.Red);
 			//Mirror2(40);
 		}
