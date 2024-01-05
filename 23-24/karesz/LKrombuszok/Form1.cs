@@ -158,7 +158,7 @@ namespace LogoKaresz
 			}
 		}
         void FullMozaik(double size, int row, int length, Color color, Color color1, Color color2) {
-            Mozaik(20, 3, 5, Color.Red, Color.Blue);
+            Mozaik(size, row, length, color1, color2);
             Fill(size,row, color);
             for (int i = 0; i < length-1; i++) {
 			    Mirror(size,60);Jobbra(180);
