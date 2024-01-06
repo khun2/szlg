@@ -178,7 +178,7 @@ namespace LogoKaresz
 		{
 			/* Ezt indítja a START gomb! */
 			Teleport(közép.X/3, közép.Y*1.8, észak);
-			FullMozaik(20, 3,5,Color.Aqua, Color.Red, Color.Blue);
+			FullMozaik(10, 8,10,Color.Aqua, Color.Red, Color.Blue);
 			//Rombusz(40, 120, Color.Red);
 			//Mirror2(40);
 		}
