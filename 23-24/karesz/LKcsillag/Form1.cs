@@ -27,7 +27,7 @@ namespace LogoKaresz
                 Jobbra(-(180-angle));
             }
             Jobbra(-angle/2);
-            Tölt(size/2, color);
+            Tölt(size/3*4, color);
             Jobbra(-angle/2);
         }
         void Change(double size, double angle) {
@@ -55,10 +55,13 @@ namespace LogoKaresz
             Előre(-size * length);
         }
         void Fmozaik(double size, double angle, int length, Color[] colors) {
-            if (360 / angle != 0) { MessageBox.Show("Az angle nem oztható 360-nal, Kérlek adj meg egy másik számot"); }
-            for (int i = 0; i < 360 / angle; i++) {
-                Mozaik(size,angle,length,colors);
-                Jobbra(angle);
+            if ((360 % angle != 0)) { MessageBox.Show("Az angle nem oztható 360-nal, Kérlek adj meg egy másik számot");}
+            else {
+                for (int i = 0; i < 360 / angle; i++)
+                {
+                    Mozaik(size, angle, length, colors);
+                    Jobbra(angle);
+                }
             }
         }
         /* Függvények vége */
@@ -67,8 +70,8 @@ namespace LogoKaresz
             /* Ezt indítja a START gomb! */
             Teleport(közép.X, közép.Y, észak);
 
-            Color[] colors = { Color.Aquamarine, Color.Green, Color.Blue, Color.Black, Color.White,Color.Yellow, Color.Pink, };
-            Fmozaik(30, 60, 4, colors);
+            Color[] colors = { Color.Aquamarine, Color.Green, Color.Blue, Color.Black, Color.White,Color.Yellow, Color.Pink, Color.DarkOrchid, Color.Indigo,Color.Lavender};
+            Fmozaik(20, 30, 5, colors);
 			
 		}
 	}
