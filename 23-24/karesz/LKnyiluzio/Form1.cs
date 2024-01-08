@@ -8,13 +8,11 @@ namespace LogoKaresz
 	public partial class Form1 : Form
 	{
         /* Függvények */
-        void Tölt(double size, Color color) {
-            using (new Rajzol(false)) {
-                Előre(size);
-                Tölt(color);
-                Előre(-size);
-            }
-        }
+        void Tölt(double s, Color c) {
+  		using (new Rajzol(false))
+ 		using (new Előre(s))
+    		Tölt(c);
+	}
         void Rectangle(double a, double b) {
             for (int i = 0; i < 2; i++) {
                 Előre(a);
