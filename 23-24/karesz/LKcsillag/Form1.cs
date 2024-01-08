@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -46,19 +47,24 @@ namespace LogoKaresz
             Change(-length*size,angle);
         }
         void Mozaik(double size, double angle, int length, Color[] colors) {
-            Color[] colors2 = colors;
             for (int i = 0; i < length; i++) {
-                Row(size,angle,length,colors);
-                
+                Color[] colors1 = colors.Skip(i).Take(length).ToArray();
+                Row(size,angle,length,colors1);
                 Előre(size);
             }
+            Előre(-size * length);
+        }
+        void Fmozaik(double size, double angle, int length, Color[] colors) {
+            
         }
         /* Függvények vége */
         void FELADAT()
 		{
             /* Ezt indítja a START gomb! */
             // Teleport(közép.X, közép.Y+150, észak);
-            Mozaik(40, 45, 5, [Color.Aquamarine,Color.Green,Color.Blue,Color.Black,Color.White,Color.Pink]);
+
+            Color[] colors = { Color.Aquamarine, Color.Green, Color.Blue, Color.Black, Color.White,Color.Yellow, Color.Pink, };
+            Fmozaik(40, 45, 4, colors);
 			
 		}
 	}
