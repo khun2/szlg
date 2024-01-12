@@ -8,19 +8,20 @@ namespace LogoKaresz
 	public partial class Form1 : Form
 	{
 		/* Függvények */
-		void Fa(int yrs, double size) {
-			if (yrs == 0) {return;}
-			using (new Vastagság(yrs + 1)) {
-				using (new Átmenetileg(Előre, size)) {
-					using (new Átmenetileg(Jobbra, -60))
-					{
-						Fa(yrs - 1, size / 3 * 2);
-					}
-					using (new Átmenetileg(Jobbra, 60))
-					{
-						Fa(yrs - 1, size / 3 * 2);
-					}
+		void Fa(int yrs, double size)
+		{
+			if (yrs == 0) { return; }
+			using (new Átmenetileg(Előre, size)) { 
+				Jobbra(-60);
+				for (int i = 0; i < yrs - 1; i++) {
+					Fa(yrs - 1, size / 2);
+					Jobbra(120 / (yrs - 1));
+					Fa(yrs - 1, size / 2);
 				}
+				if (yrs == 1) {
+					Jobbra(120);
+				}
+				Jobbra(-60);
 			}
 		}
 
@@ -29,9 +30,9 @@ namespace LogoKaresz
 		{
 			/* Ezt indítja a START gomb! */
 			// Teleport(közép.X, közép.Y+150, észak);
-
+			
 			using(new Frissítés(false)) {
-                Fa(10, 100);
+                Fa(7, 100);
             }
 		}
 	}
