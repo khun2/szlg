@@ -8,15 +8,15 @@ namespace LogoKaresz
 	public partial class Form1 : Form
 	{
 		/* Függvények */
-		void Fa(int yrs, double size)
+		void Pitypang(int yrs, double size)
 		{
 			if (yrs == 0) { return; }
 			using (new Átmenetileg(Előre, size)) { 
 				Jobbra(-60);
 				for (int i = 0; i < yrs - 1; i++) {
-					Fa(yrs - 1, size / 2);
+					Pitypang(yrs - 1, size / 2);
 					Jobbra(120 / (yrs - 1));
-					Fa(yrs - 1, size / 2);
+					Pitypang(yrs - 1, size / 2);
 				}
 				if (yrs == 1) {
 					Jobbra(120);
@@ -32,7 +32,7 @@ namespace LogoKaresz
 			// Teleport(közép.X, közép.Y+150, észak);
 			
 			using(new Frissítés(false)) {
-                Fa(7, 100);
+                Pitypang(7, 100);
             }
 		}
 	}
