@@ -26,7 +26,7 @@ namespace LogoKaresz
 		{
 			/* Ezt indítja a START gomb! */
 			// Teleport(közép.X, közép.Y+150, észak);
-
+			Tollvastagság(2);
 			using(new Frissítés(false)) {
                 Fa(6, 100);
             }
