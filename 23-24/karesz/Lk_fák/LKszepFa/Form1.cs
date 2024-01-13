@@ -13,14 +13,14 @@ namespace LogoKaresz
 			else if (yrs == 2) {  return Color.Green; }
 			else { return Color.Brown; }
 		}
-		int getVastagsag(int yrs) {
+		int getWidth(int yrs) {
 			if (yrs%2==1) {yrs++; }
 			return yrs/2;
 		}
 		void Fa(int yrs, double size) {
 			if (yrs == 0) {return;}
 			Color color = getColor(yrs);
-			int vastagsag = getVastagsag(yrs);
+			int vastagsag = getWidth(yrs);
 			using(new Szín(color)) {
                 using(new Vastagság(vastagsag)) {
                     using (new Átmenetileg(Előre, size)) {
