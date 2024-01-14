@@ -14,7 +14,7 @@ namespace LogoKaresz
 			using (new Átmenetileg(Előre, size)) { 
 				Fa(yrs-1, size/2);
 				using(new Átmenetileg(Jobbra,30)) {
-				Fa(yrs-1, size/2);
+					Fa(yrs-1, size/2);
 				}
 			}
 			using (new Átmenetileg(Előre, size/2)) {
