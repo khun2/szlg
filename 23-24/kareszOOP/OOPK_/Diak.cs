@@ -19,6 +19,15 @@ namespace Karesz
             karesz.Feladat = delegate ()
             {
                 //code goes here brrrrr
+                while (!Van_e_előttem_fal())
+                {
+                    Előre(1);
+                }
+                Balra();
+                while (!Kilépek_e_a_pályáról())
+                {
+                    Előre(1);
+                }
             };
         }
     }
