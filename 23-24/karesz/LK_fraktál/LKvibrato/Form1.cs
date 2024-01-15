@@ -9,8 +9,7 @@ namespace LogoKaresz
 	{
 		/* Függvények */
 		void Fraktál(int yrs, double size) {
-			if (yrs == 0) { return; }
-			if (yrs == 1) { Előre(size); return; }
+			if (yrs <= 1) { Előre(size); return; }
 			Fraktál(yrs-1, size/3);
 			using (new Átmenetileg(Jobbra, -60))
 			{
