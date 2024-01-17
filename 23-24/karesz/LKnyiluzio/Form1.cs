@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -9,10 +9,11 @@ namespace LogoKaresz
 	{
         /* Függvények */
         void Tölt(double s, Color c) {
-  		using (new Rajzol(false))
- 		using (new Előre(s))
-    		Tölt(c);
-	}
+            using (new Rajzol(false))
+            using (new Átmenetileg(Előre, s)){
+                Tölt(c);
+            }
+        }
         void Rectangle(double a, double b) {
             for (int i = 0; i < 2; i++) {
                 Előre(a);
