@@ -24,6 +24,13 @@ namespace LogoKaresz {
             }
         }
         //Shapes
+        void Sokszög(double size, int sides) {
+    	if(size <= 2) {return; }
+	    for (int i = 0; i < sides; i++) {
+		    Előre(size);
+    		Jobbra(360 / sides);
+	    }
+        }
         void Rectangle(double a, double b) {
             for (int i = 0; i < 2; i++) {
                 Előre(a);
