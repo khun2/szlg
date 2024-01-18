@@ -8,26 +8,30 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace Karesz
-{
-    public partial class Form1 : Form
-    {
-        void DIÁK_ROBOTJAI()
-        {
+namespace Karesz {
+    public partial class Form1 : Form {
+        void Pálya_6(bool n = true) {
+            while (!Van_e_előttem_fal()) {
+                Előre();
+            }
+            Balra();
+            Előre();
+            Balra();
+            while (!Van_e_előttem_fal()) {
+                Előre();
+            }
+            Jobbra();
+            Előre();
+            Jobbra();
+            Pálya_6();
+        }
+        void DIÁK_ROBOTJAI() {
             Robot karesz = Robot.Get("Karesz");
 
-            karesz.Feladat = delegate ()
-            {
+            karesz.Feladat = delegate () {
                 //code goes here brrrrr
-                while (!Van_e_előttem_fal())
-                {
-                    Előre(1);
-                }
-                Balra();
-                while (!Kilépek_e_a_pályáról())
-                {
-                    Előre(1);
-                }
+                Jobbra();
+                Pálya_6();
             };
         }
     }
