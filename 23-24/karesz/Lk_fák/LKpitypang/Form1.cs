@@ -8,8 +8,7 @@ namespace LogoKaresz
 	public partial class Form1 : Form
 	{
 		/* Függvények */
-		void Pitypang(int yrs, double size)
-		{
+		void Pitypang(int yrs, double size) {
 			if (yrs == 0) { return; }
 			using (new Átmenetileg(Előre, size)) { 
 				Jobbra(-60);
