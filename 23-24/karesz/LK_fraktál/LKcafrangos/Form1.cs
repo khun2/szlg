@@ -29,18 +29,21 @@ namespace LogoKaresz
 			}
 		}
         void Szigete(int szögszám, int yrs, double size) {
+
             for (int i = 0; i < szögszám; i++) {
-				Fraktál(yrs, size,-1);
-                Jobbra(360 / szögszám);
+                Fraktál(yrs, size);
+				Jobbra(-360 / szögszám);
             }
+
         }
         /* Függvények vége */
         void FELADAT() {
 			/* Ezt indítja a START gomb! */
 			using (new Frissítés(false)) {
-				Teleport(közép.X / 2, közép.Y, észak);
-				using (new Átmenetileg(Jobbra, 30)) {
-					Szigete(5,2,100);
+				Teleport(közép.X , közép.Y, észak);
+				using (new Átmenetileg(Jobbra, 0)) {
+					//Fraktál(2, 100,1);
+					Szigete(6,6,100);
 				}
 
 			}
