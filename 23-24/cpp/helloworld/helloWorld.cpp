@@ -3,9 +3,10 @@
 using namespace std;
 
 int main() {
-  cout << "Hello World!\n";
-  string a;
-  cin >> a;
-  cout << a;  
+  string food = "pizza";
+  string &meal = food;
+  cout << meal << "\n";
+  food = "spag";
+  cout << meal + "\n";
   return 0;
 }
