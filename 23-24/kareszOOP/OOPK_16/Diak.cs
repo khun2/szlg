@@ -12,8 +12,8 @@ namespace Karesz {
     public partial class Form1 : Form {
         void DIÁK_ROBOTJAI() {
             Robot karesz = Robot.Get("Karesz");
-            void Keres(bool i = true) {
-                if (i) {
+            void Keres(bool jobbra = true) {
+                if (jobbra) {
                     Jobbra();
                 }
                 else {
@@ -25,18 +25,18 @@ namespace Karesz {
                         Jobbra(2);
                         Előre();
                         Balra(1);
-                        Keres(!i);
+                        Keres(!jobbra);
                     }
                     else { return; }
                 }
                 else {
-                    if (i) {
+                    if (jobbra) {
                         Balra();
                     }
                     else {
                         Jobbra();
                     }
-                    Keres(!i);
+                    Keres(!jobbra);
                 }
             }
             void _16() {
@@ -44,9 +44,7 @@ namespace Karesz {
                     while (!Van_e_előttem_fal()) {   
                         Előre();
                         if (!Van_e_itt_Kavics()) {
-                            Jobbra(2);
-                            Előre();
-                            Jobbra(2);
+                            Előre(-1);
                             break;
                         }
                     }
