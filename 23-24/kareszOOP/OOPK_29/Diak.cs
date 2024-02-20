@@ -190,12 +190,6 @@ namespace Karesz {
                 }
             }
 
-            void Végigrak_28(List<int[]> kove) {
-                for (int i = 0; i < kove.Count; i++) {
-                    Korberak(kove[i][0], kove[i][1], kove[i][2]);
-                }
-            }
-
             void Solve(int map) {
                 for (int i = 0; i < 2; i++) {
                     Balra(1);

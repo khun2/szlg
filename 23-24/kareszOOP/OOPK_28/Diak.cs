@@ -57,7 +57,7 @@ namespace Karesz {
                 }
             }
             void Végigmegy() {
-                int sign = -1;
+                int sign = 1;
                 while (true) {
                     if (Kilépek_e_a_pályáról()) {
                         KFordulj(sign);
@@ -65,8 +65,8 @@ namespace Karesz {
                             break;
                         }
                         else {
-                            if (Van_e_itt_Kavics()) {
-                                Körberak(zöld);
+                            if (Mi_van_alattam()==5) {
+                                Körberak(4);
                             }
                             Előre();
                             KFordulj(sign);
@@ -74,17 +74,18 @@ namespace Karesz {
                         }
                     }
                     else {
-                        if (Van_e_itt_Kavics()) {
-                           Körberak(zöld);
+                        if (Mi_van_alattam() == 5) {
+                                Körberak(4);
                         }
                         Előre();
                     }
-                    KFordulj(-1);
                 }
+                KFordulj(-1);
             }
             void _28() {
                 BalLe();
                 Végigmegy();
+                BalLe();
             }
 
 
