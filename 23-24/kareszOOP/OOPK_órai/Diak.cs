@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.ComponentModel;
+//using System.Data;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
 using System.Windows.Forms;
-using System.Threading;
+//using System.Threading;
 
 namespace Karesz {
     public partial class Form1 : Form {
@@ -114,9 +114,12 @@ namespace Karesz {
                         KFordulj(sign);
                         if (Kilépek_e_a_pályáról()) {
                             Tegyél_le_egy_kavicsot();
+                            kavicsok--;
                             break;
                         }
                         else {
+                            Tegyél_le_egy_kavicsot();
+                            kavicsok--;
                             Előre();
                             KFordulj(sign);
                             sign *= -1;
@@ -124,10 +127,11 @@ namespace Karesz {
                     }
                     else {
                         Tegyél_le_egy_kavicsot();
+                        kavicsok--;
                         Előre();
                     }
                 }
-                KFordulj(-1);
+                KFordulj(1);
             }
             void Porszívó() {
                 BalLe();
@@ -137,9 +141,14 @@ namespace Karesz {
                 while (!Kilépek_e_a_pályáról()) { Előre(); }
                 Jobbra(2);
                 Végirak();
+                BalLe();
+            }
+
+            void Rajz() {
+
             }
             karesz.Feladat = delegate () {
-                Porszívó();
+                Rajz();
             };
         }
     }
