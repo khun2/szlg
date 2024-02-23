@@ -51,7 +51,7 @@ namespace LogoKaresz {
             /* Ezt indítja a START gomb! */
             using (new Frissítés(false)) {
                 Teleport(közép.X / 2, közép.Y + 150, észak);
-                MagasságtétalFraktál(6, 200);
+                MagasságtétalFraktál(8, 250);
             }
         }
     }

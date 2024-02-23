@@ -14,7 +14,7 @@ namespace LogoKaresz {
 						Fa(yrs - 1, size / 3*2, (byte)(0.7 * (double)transparency)); 
 					}
 					using (new Átmenetileg(Jobbra, 60)) {
-						Fa(yrs - 1, size / 3*2, (byte)(0.7 * (double)transparency));
+						Fa(yrs - 1, size / 3*2, (byte)(0.7 * transparency));
 					}
 				}
 			}
