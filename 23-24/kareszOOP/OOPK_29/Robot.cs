@@ -63,7 +63,7 @@ namespace Karesz
 			public Vektor H { get => h; }
 			Vektor helyigény;
 			Vektor v;
-			public int[] kődb;
+			int[] kődb;
 			Action feladat;
 			public Action Feladat
 			{

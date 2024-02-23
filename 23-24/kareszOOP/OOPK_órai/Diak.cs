@@ -109,7 +109,7 @@ namespace Karesz {
             }
             void Végirak() {
                 int sign = -1;
-                while (kavicsok > 0) {
+                while (true) {
                     if (Kilépek_e_a_pályáról()) {
                         KFordulj(sign);
                         if (Kilépek_e_a_pályáról()) {
@@ -143,12 +143,17 @@ namespace Karesz {
                 Végirak();
                 BalLe();
             }
-
+            void L(int x,int y,int sign) {
+                ElőreRakj(x);
+                Fordulj(sign);
+                ElőreRakj(y);
+            }
             void Rajz() {
-
+                
             }
             karesz.Feladat = delegate () {
                 Rajz();
+                Porszívó();
             };
         }
     }
