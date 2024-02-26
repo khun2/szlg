@@ -20,6 +20,6 @@ int main()
     {
         cout << " " << vec[i];
     }
-
+    cout<<"\n";
     return 0;
 }
