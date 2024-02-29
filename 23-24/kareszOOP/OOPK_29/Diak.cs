@@ -18,26 +18,6 @@ namespace Karesz {
                     Tegyél_le_egy_kavicsot(c);
                 }
             }
-            void Körberak(int c) {
-                for (int i = 0; i < 4; i++) {
-                    if (!Kilépek_e_a_pályáról() && !Van_e_előttem_fal()) {
-                        Előre();
-                        Kavics(c);
-                        Jobbra();
-                        for (int j = 0; j < 2; j++) {
-                            if (!Kilépek_e_a_pályáról() && !Van_e_előttem_fal()) {
-                                Előre();
-                                Kavics(c);
-                                Előre(-1);
-                            }
-                            Jobbra(2);
-                        }
-                        Balra();
-                        Előre(-1);
-                    }
-                    Jobbra();
-                }
-            }
             void BalLe() {
                 for (int i = 0; i < 2; i++) {
                     Balra(1);
@@ -56,6 +36,7 @@ namespace Karesz {
                     Balra();
                 }
             }
+            int pkő = 0, skő = 0;
             void Végigmegy() {
                 int sign = 1;
                 while (true) {
@@ -65,8 +46,15 @@ namespace Karesz {
                             break;
                         }
                         else {
-                            if (Mi_van_alattam()==5) {
-                                Körberak(4);
+                            if (Mi_van_alattam()==3) {
+                                Vegyél_fel_egy_kavicsot();
+                                Tegyél_le_egy_kavicsot();
+                                pkő++;
+                            }
+                            else if(Mi_van_alattam() == 5) {
+                                Vegyél_fel_egy_kavicsot();
+                                Tegyél_le_egy_kavicsot();
+                                skő++;
                             }
                             Előre();
                             KFordulj(sign);
@@ -74,8 +62,15 @@ namespace Karesz {
                         }
                     }
                     else {
-                        if (Mi_van_alattam() == 5) {
-                                Körberak(4);
+                        if (Mi_van_alattam() == 3) {
+                            Vegyél_fel_egy_kavicsot();
+                            Tegyél_le_egy_kavicsot();
+                            pkő++;
+                        }
+                        else if (Mi_van_alattam() == 5) {
+                            Vegyél_fel_egy_kavicsot();
+                            Tegyél_le_egy_kavicsot();
+                            skő++;
                         }
                         Előre();
                     }
@@ -85,6 +80,7 @@ namespace Karesz {
             void _28() {
                 BalLe();
                 Végigmegy();
+                MessageBox.Show($"{pkő}\n{skő}");
                 BalLe();
             }
 
