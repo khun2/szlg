@@ -37,6 +37,7 @@ void feladat5(const vector<int> vec) {
             cout<<i<<" ";
         }
     }
+    cout<<"\n";
     return;
 }
 string feladat6(const vector<int> vec) {
