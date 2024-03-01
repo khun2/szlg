@@ -58,7 +58,11 @@ string feladat7(const vector<int> vec) {
     return "YES";
 }
 int feladat8(const vector<int> vec) {
-    return vec.size();
+    int num=0;
+    for(int i:vec){
+        num+=i;
+    }
+    return num/vec.size();
 }
 int feladat9(const vector<int> vec) {
     return vec.size();
