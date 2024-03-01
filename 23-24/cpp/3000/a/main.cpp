@@ -31,9 +31,10 @@ int feladat4(const vector<int> vec) {
     return num;
 }
 void feladat5(const vector<int> vec) {
+    cout<<"A számok: ";
     for(int i:vec){
         if(i%10==0){
-            cout<<i<<"\n";
+            cout<<i<<" ";
         }
     }
     return;
@@ -75,14 +76,14 @@ int main() {
     }
 
     cout << "feladat 1: " << feladat1(input) << '\n';
-    cout << "feladat 1: " << feladat1(input) << '\n';
-    cout << "feladat 1: " << feladat1(input) << '\n';
-    cout << "feladat 1: " << feladat1(input) << '\n';
-    cout << "feladat 1: " << feladat1(input) << '\n';
-    cout << "feladat 1: " << feladat1(input) << '\n';
-    cout << "feladat 1: " << feladat1(input) << '\n';
-    cout << "feladat 1: " << feladat1(input) << '\n';
-    cout << "feladat 1: " << feladat1(input) << '\n';
-    cout << "feladat 1: " << feladat1(input) << '\n';
+    cout << "feladat 2: " << feladat2(input) << '\n';
+    cout << "feladat 3: " << feladat3(input) << '\n';
+    cout << "feladat 4: " << feladat4(input) << '\n';
+    feladat5(input);
+    cout << "feladat 6: " << feladat6(input) << '\n';
+    cout << "feladat 7: " << feladat7(input) << '\n';
+    cout << "feladat 8: " << feladat8(input) << '\n';
+    cout << "feladat 9: " << feladat9(input) << '\n';
+    cout << "feladat 10: " << feladat10(input) << '\n';
 
 }
