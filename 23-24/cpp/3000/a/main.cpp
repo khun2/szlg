@@ -45,7 +45,7 @@ string feladat6(const vector<int> vec) {
     {
         if(vec[i]%29==0){
             string string=to_string(i);
-            return string;
+            return "az első ilyen szám: "+string;
         }
     }
     
