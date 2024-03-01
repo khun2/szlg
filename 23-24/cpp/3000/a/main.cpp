@@ -103,7 +103,7 @@ void feladat11(const vector<int> vec) {
     }
     cout<<"a végső sorrend: ";
     for(int i:result){
-        cout<<i<<" "
+        cout<<i<<" ";
     }
     return;
 }
