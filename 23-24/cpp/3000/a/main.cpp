@@ -31,7 +31,7 @@ int feladat4(const vector<int> vec) {
     return num;
 }
 void feladat5(const vector<int> vec) {
-    cout<<"A számok: ";
+    cout<<"feladat 5: A számok: ";
     for(int i:vec){
         if(i%10==0){
             cout<<i<<" ";
