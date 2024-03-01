@@ -51,8 +51,11 @@ string feladat6(const vector<int> vec) {
     
     return "nincsen ilyen szám";
 }
-int feladat7(const vector<int> vec) {
-    return vec.size();
+string feladat7(const vector<int> vec) {
+    for(int i:vec){
+        if(i%2==1){return "NO"}
+    }
+    return "YES";
 }
 int feladat8(const vector<int> vec) {
     return vec.size();
