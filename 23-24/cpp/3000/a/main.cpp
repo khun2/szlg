@@ -64,8 +64,13 @@ int feladat8(const vector<int> vec) {
     }
     return num/vec.size();
 }
-int feladat9(const vector<int> vec) {
-    return vec.size();
+string feladat9(const vector<int> vec) {
+    for (size_t i = 0; i < vec.size()-1; i++)
+    {
+        if(vec[i]<0&&vec[i+1]==0){return "YES";}
+    }
+    
+    return "NO";
 }
 int feladat10(const vector<int> vec) {
     return vec.size();
