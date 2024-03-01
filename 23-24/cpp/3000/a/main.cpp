@@ -53,7 +53,7 @@ string feladat6(const vector<int> vec) {
 }
 string feladat7(const vector<int> vec) {
     for(int i:vec){
-        if(i%2==1){return "NO"}
+        if(i%2==1){return "NO";}
     }
     return "YES";
 }
