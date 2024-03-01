@@ -87,16 +87,17 @@ void feladat11(const vector<int> vec) {
     cout << "feladat 11:\n";
     int m;
     cin>>m;
-    vector<int>result(vec.size());
+    vector<int>result;
     for (size_t i = 0; i < m; i++)
     {
         vector<int> temp;
         for(int j:vec){
-            if(vec[i]%m==i){
-                temp.push_back(vec[i]);
+            if(j%m==i){
+                temp.push_back(j);
+                cout<<"a";
             }
         }
-        cout<<"az"<<i<<"maradékú csoport mérete:"<<temp.size()<<"\n";
+        cout<<"az "<<i<<" maradékú csoport mérete: "<<temp.size()<<"\n";
         for(int j:temp){
             result.push_back(j);
         }
