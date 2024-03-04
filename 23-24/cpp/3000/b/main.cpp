@@ -4,12 +4,36 @@
 #include <string>
 using namespace std;
 
-bool feladat1(const vector<int>& vec) {
+string feladat1(const vector<int>& vec) {
+    for(int i:vec){
+        if(i>0){
+            return "YES";
+        }
+    }
+    return "NO";
+}
+int feladat2(const vector<int>vec){
+    return vec.size();
+}
+int feladat3(const vector<int>vec){
+    int smallest=vec[0];
+    for(int i:vec){
+        if(i<smallest){
+            smallest=i;
+        }
+    }
+    return smallest;
+}
+int feladat4(const vector<int>vec){
     int i=0;
-    while(!(vec[i]<=0)){
+    while(vec[i]%33!=0&&i<vec.size()){
         i++;
-    }    
-    return vec.size()<i;
+    }
+    if(vec[i]%33!=0){return -1;}
+    return i;
+}
+int feladat5(const vector<int>vec){
+
 }
 
 int main() {
