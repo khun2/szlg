@@ -87,25 +87,18 @@ void feladat11(const vector<int> vec) {
     cout << "feladat 11:\n";
     int m;
     cin>>m;
-    vector<int>result;
+    vector<vector<int>>result(m);
     for (size_t i = 0; i < m; i++)
     {
-        vector<int> temp;
-        for(int j:vec){
-            if(j%m==i){
-                temp.push_back(j);
-                cout<<"a";
+        for (size_t j = 0; j < vec.size(); j++)
+        {
+            if(vec[j]%m==1){
+                result[i][j]=vec[j];
             }
         }
-        cout<<"az "<<i<<" maradékú csoport mérete: "<<temp.size()<<"\n";
-        for(int j:temp){
-            result.push_back(j);
-        }
+        cout<<"összesen "<<result[i].size()<<" "<<i<<" maradéku van";
     }
-    cout<<"a végső sorrend: ";
-    for(int i:result){
-        cout<<i<<" ";
-    }
+        
     return;
 }
 
