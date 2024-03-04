@@ -62,7 +62,7 @@ int feladat8(const vector<int> vec) {
     for(int i:vec){
         num+=i;
     }
-    return num/vec.size();
+    return vec.size()/num;
 }
 string feladat9(const vector<int> vec) {
     for (size_t i = 0; i < vec.size()-1; i++)
@@ -86,19 +86,30 @@ int feladat10(const vector<int> vec) {
 void feladat11(const vector<int> vec) {
     cout << "feladat 11:\n";
     int m;
-    cin>>m;
-    vector<vector<int>>result(m);
+    cin >> m;
+    vector<vector<int>> result(m);
     for (size_t i = 0; i < m; i++)
     {
-        for (size_t j = 0; j < vec.size(); j++)
+        for (size_t j :vec)
         {
-            if(vec[j]%m==1){
-                result[i][j]=vec[j];
+            if(j%m==i){
+                
+                result[i].push_back(j);
+                //cout<<j<<" ";
             }
         }
-        cout<<"összesen "<<result[i].size()<<" "<<i<<" maradéku van";
+        cout<<"összesen "<<result[i].size()<<" "<<i<<" maradéku van\n";
     }
+    cout<<"a számok:\n";
+    /*for (size_t i = 0; i < m; i++)
+    {
+        for (size_t j = 0; j < result[i].size(); j++)
+        {
+            cout<<result[i][j]<<" ";
+        }
         
+    }*/
+    
     return;
 }
 
@@ -118,7 +129,7 @@ int main() {
     feladat5(input);
     cout << "feladat 6: " << feladat6(input) << '\n';
     cout << "feladat 7: " << feladat7(input) << '\n';
-    cout << "feladat 8: " << feladat8(input) << '\n';
+    //cout << "feladat 8: " << feladat8(input) << '\n';
     cout << "feladat 9: " << feladat9(input) << '\n';
     cout << "feladat 10: " << feladat10(input) << '\n';
     feladat11(input);
