@@ -3,30 +3,31 @@ using namespace std;
 
 int main()
 {
-    int count, _1 = 0, _2 = 0, _3 = 0, _4 = 0, _5 = 0, num;
-    cin >> count;
-    for (size_t i = 0; i < count; i++)
+    int num;
+    array<int,6> arr;
+    arr.fill(0);
+    cin>>arr[0];
+    for (int i = 0; i < arr[0]; i++)
     {
         cin >> num;
         switch (num)
         {
         case 1:
-            _1 += 1;
+            arr[1] += 1;
             break;
         case 2:
-            _2 += 1;
+            arr[2] += 1;
             break;
         case 3:
-            _3 += 1;
+            arr[3] += 1;
             break;
         case 4:
-            _4 += 1;
+            arr[4] += 1;
             break;
         case 5:
-            _5 += 1;
+            arr[5] += 1;
             break;
         }
     }
-    cout << _1 << " " << _2 << " " << _3 << " " << _4 << " " << _5;
-    return 0;
+    cout << arr[1] << " " << arr[2] << " " << arr[3] << " " << arr[4] << " " << arr[5];
 }
