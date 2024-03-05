@@ -66,6 +66,15 @@ string feladat8(const vector <int> vec){
     return "NO";
     
 }
+int feladat9(const vector<int>vec){
+    for (int i = vec.size() - 1; i >= 0; i--)
+    {
+        if( vec[i]%19==0){
+            return i+1;
+        }
+    }
+    return -1;
+}
 int main() {
     vector<int> vec;
 
