@@ -11,6 +11,42 @@ int feladat1(const vector<int>& v) {
     }
     return num;
 }
+int feladat2(const vector<int>& v) {
+    for (int i = v.size() - 1; i >= 0; i--)
+    {
+        if(v[i]%5==0||v[i]%7==0){
+            return i;
+        }
+    }
+    return -1;
+}
+int feladat3(const vector<int>& v) {
+
+}
+int feladat4(const vector<int>& v) {
+
+}
+int feladat5(const vector<int>& v) {
+
+}
+int feladat6(const vector<int>& v) {
+
+}
+int feladat7(const vector<int>& v) {
+
+}
+int feladat8(const vector<int>& v) {
+
+}
+int feladat9(const vector<int>& v) {
+
+}
+int feladat10(const vector<int>& v) {
+
+}
+int feladat11(const vector<int>& v) {
+    
+}
 
 int main() {
     vector<int> input;
@@ -21,4 +57,14 @@ int main() {
     }
 
     cout << "feladat 1: " << feladat1(input) << '\n';
+    cout << "feladat 2: " << feladat1(input) << '\n';
+    cout << "feladat 3: " << feladat1(input) << '\n';
+    cout << "feladat 4: " << feladat1(input) << '\n';
+    cout << "feladat 5: " << feladat1(input) << '\n';
+    cout << "feladat 6: " << feladat1(input) << '\n';
+    cout << "feladat 7: " << feladat1(input) << '\n';
+    cout << "feladat 8: " << feladat1(input) << '\n';
+    cout << "feladat 9: " << feladat1(input) << '\n';
+    cout << "feladat 10: " << feladat1(input) << '\n';
+    cout << "feladat 11: " << feladat1(input) << '\n';    
 }
