@@ -4,10 +4,70 @@
 #include <string>
 using namespace std;
 
-int feladat1(const vector<int>& v) {
+string feladat1(const vector<int>& v) {
+    for(int i: v){
+        if(i%100==0){return "YES";}
+    }
+    return "NO";
+}
+int feladat2(const vector<int>& v) {
+    for (int i = v.size() - 1; i >= 0; i--)
+    {
+        if(i%7==0){
+            return i;
+        }    
+    }
     return -1;
 }
-
+int feladat3(const vector<int>& v){
+    for(int i=0;i<v.size(); i++){
+        if(v[i]%19==0){
+            return i;
+        }
+    }
+    return -1;
+}
+int feladat4(const vector<int>& v){
+    int num=0;
+    for(int i:v){
+        num+=i;
+    }
+    return (num/v.size())*(num/v.size());
+}
+string feladat5(const vector<int>& v){
+    for(int i:v){
+        if(i%10!=0){
+            return "NO";
+        }
+    }
+    return "YES";
+}
+int feladat6(const vector<int>& v){
+    int num=0;
+    for(int i:v){
+        if(i%9==0){
+            num++;
+        }
+    }
+    return num;
+}
+void feladat7(const vector<int>& v){
+    cout<<"feladat 7:\n";
+    for(int i=0;i<v.size();i++){
+        if(v[i]%15==0){
+            cout<<v[i]/2 <<" ";
+        }
+    }
+    cout<<"\n";
+}
+int feladat8(const vector<int>& v){
+    return v.size();
+}
+string feladat9(const vector<int>& v){
+    for(int i=1;i<v.size();i++){
+        
+    }
+}
 int main() {
     vector<int> input;
 
