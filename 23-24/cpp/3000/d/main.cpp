@@ -5,12 +5,15 @@
 using namespace std;
 
 int feladat1(const vector<int>& v) {
-    return -1;
+    int num=v[0];
+    for(int i=1;i<v.size();i++){
+        num*=v[i];
+    }
+    return num;
 }
 
 int main() {
     vector<int> input;
-
     ifstream f("input.txt");
     string s;
     while (f >> s) {
