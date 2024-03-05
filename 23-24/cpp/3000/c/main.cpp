@@ -90,4 +90,15 @@ int main() {
     }
 
     cout << "feladat 1: " << feladat1(input) << '\n';
+    cout << "feladat 2: " << feladat1(input) << '\n';
+    cout << "feladat 3: " << feladat1(input) << '\n';
+    cout << "feladat 4: " << feladat1(input) << '\n';
+    cout << "feladat 5: " << feladat1(input) << '\n';
+    cout << "feladat 6: " << feladat1(input) << '\n';
+    cout << "feladat 7: " << feladat1(input) << '\n';
+    cout << "feladat 8: " << feladat1(input) << '\n';
+    cout << "feladat 9: " << feladat1(input) << '\n';
+    cout << "feladat 10: " << feladat1(input) << '\n';
+//  cout << "feladat 11: " << feladat11(input) << '\n';
+
 }

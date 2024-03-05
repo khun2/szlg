@@ -95,4 +95,13 @@ int main() {
     }
 
     cout << "feladat 1: " << feladat1(vec) << '\n';
+    cout << "feladat 2: " << feladat2(vec) << '\n';
+    cout << "feladat 3: " << feladat3(vec) << '\n';
+    cout << "feladat 4: " << feladat4(vec) << '\n';
+    cout << "feladat 5: " << feladat5(vec) << '\n';
+    cout << "feladat 6: " << feladat6(vec) << '\n';
+    cout << "feladat 7: " << feladat7(vec) << '\n';
+    cout << "feladat 8: " << feladat8(vec) << '\n';
+    cout << "feladat 9: " << feladat9(vec) << '\n';
+    feladat10(vec);
 }
