@@ -21,13 +21,29 @@ int feladat2(const vector<int>& v) {
     return -1;
 }
 int feladat3(const vector<int>& v) {
-
+    for (int i = 0; i < v.size(); i++)
+    {
+        if(v[i]%21==0){
+            return i;
+        }
+    }
+    return -1;
 }
-int feladat4(const vector<int>& v) {
-
+string feladat4(const vector<int>& v) {
+    for(int i:v){
+        if(i>=0){
+            return "NO";
+        }
+    }
+    return "YES";
 }
-int feladat5(const vector<int>& v) {
-
+string feladat5(const vector<int>& v) {
+    for(int i:v){
+        if(i>0&&i<10){
+            return "YES";
+        }
+    }
+    return "NO";
 }
 int feladat6(const vector<int>& v) {
 
