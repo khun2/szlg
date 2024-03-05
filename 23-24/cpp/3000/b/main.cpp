@@ -75,6 +75,16 @@ int feladat9(const vector<int>vec){
     }
     return -1;
 }
+void feladat10(const vector<int>vec){
+    cout<<"feladat 10:\n";
+    for(int i: vec){
+        if(i%5==0){
+            cout<<i<<" ";
+        }
+    }
+    cout<<"\n";
+}
+
 int main() {
     vector<int> vec;
 
