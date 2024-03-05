@@ -65,8 +65,11 @@ int feladat8(const vector<int>& v){
 }
 string feladat9(const vector<int>& v){
     for(int i=1;i<v.size();i++){
-        
+        if(v[i-1]<0&&v[i]>0){
+            return "YES";
+        }
     }
+    return "NO";
 }
 int main() {
     vector<int> input;
