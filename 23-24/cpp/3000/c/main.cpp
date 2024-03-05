@@ -71,6 +71,15 @@ string feladat9(const vector<int>& v){
     }
     return "NO";
 }
+int feladat10(const vector<int>& v){
+    int smallest=v[0];
+    for(int i:v){
+        if(i<smallest){
+            smallest=i;
+        }
+    }
+    return smallest/2;
+}
 int main() {
     vector<int> input;
 
