@@ -46,13 +46,25 @@ string feladat5(const vector<int>& v) {
     return "NO";
 }
 int feladat6(const vector<int>& v) {
-
+    int num=0;
+    for(int i:v){
+        if(i%18==0){
+            num++;
+        }
+    }
+    return num;
 }
 int feladat7(const vector<int>& v) {
-
+    int smal=v[0], out=0;
+    for(int i=1;i<v.size();i++){
+        if(v[i]<smal){
+            smal=v[i];
+            out=v[i];
+        }
+    }
 }
 int feladat8(const vector<int>& v) {
-
+    
 }
 int feladat9(const vector<int>& v) {
 
