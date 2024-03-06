@@ -5,12 +5,11 @@ int feladat1(const vector<int> vec) {
     return vec.size();
 }
 string feladat2(const vector<int> vec) {
-    for(int i:vec){
-        if(i<0){
-            return "YES";
-        }
+    int i=0;
+    while(vec[i] <= 0 && i <= vec.size()){
+        i++;
     }
-    return "NO";
+    return i == vec.size() ? "NO": "YES";
 }
 int feladat3(const vector<int> vec){
     int out=0;
@@ -19,7 +18,7 @@ int feladat3(const vector<int> vec){
             out++;
         }
     }
-    return 0;
+    return out;
 }
 int feladat4(const vector<int> vec) {
     int num=vec[0];
@@ -41,21 +40,19 @@ void feladat5(const vector<int> vec) {
     return;
 }
 string feladat6(const vector<int> vec) {
-    for (int i = 0; i < vec.size(); i++)
-    {
-        if(vec[i]%29==0){
-            string string=to_string(i);
-            return "az első ilyen szám: "+string;
-        }
+    int i = 0;
+    while(vec[i] != 0 && i<=vec.size()){
+        i++;
     }
-    
-    return "nincsen ilyen szám";
+    return i == vec.size() ? "nincsen ilyen": to_string(i);
 }
 string feladat7(const vector<int> vec) {
-    for(int i:vec){
-        if(i%2==1){return "NO";}
+    int i = 0;
+    while (vec[i]%2!=0 && i<=vec.size())
+    {
+        i++;
     }
-    return "YES";
+    return i == vec.size() ? "NO": "YES";
 }
 int feladat8(const vector<int> vec) {
     int num=0;
@@ -132,5 +129,5 @@ int main() {
     //cout << "feladat 8: " << feladat8(input) << '\n';
     cout << "feladat 9: " << feladat9(input) << '\n';
     cout << "feladat 10: " << feladat10(input) << '\n';
-    feladat11(input);
+    //feladat11(input);
 }
