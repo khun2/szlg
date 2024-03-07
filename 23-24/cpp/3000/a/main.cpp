@@ -62,12 +62,13 @@ int feladat8(const vector<int> vec) {
     return vec.size()/num;
 }
 string feladat9(const vector<int> vec) {
-    for (size_t i = 0; i < vec.size()-1; i++)
+    int i= vec.size()-1;
+    while (vec[i] < 0 && vec[i+1] == 0 && i >= -1)
     {
-        if(vec[i]<0&&vec[i+1]==0){return "YES";}
+        i--;
     }
     
-    return "NO";
+    return i == -1 ? "NO": "YES";
 }
 int feladat10(const vector<int> vec) {
     int num=-1;
@@ -77,7 +78,7 @@ int feladat10(const vector<int> vec) {
             num=i;
         }
     }
-    if(num==-1){cout<<"Nincsen 17-tel osztható szám(ezért -1-et ad vissza)";}
+    if(num==-1){cout<<"Nincsen 17-tel osztható szám(ezért -1-et ad vissza) ";}
     return num;
 }
 void feladat11(const vector<int> vec) {
@@ -126,7 +127,7 @@ int main() {
     feladat5(input);
     cout << "feladat 6: " << feladat6(input) << '\n';
     cout << "feladat 7: " << feladat7(input) << '\n';
-    //cout << "feladat 8: " << feladat8(input) << '\n';
+    cout << "feladat 8: " << feladat8(input) << '\n';
     cout << "feladat 9: " << feladat9(input) << '\n';
     cout << "feladat 10: " << feladat10(input) << '\n';
     //feladat11(input);
