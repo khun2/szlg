@@ -82,31 +82,6 @@ int feladat10(const vector<int> vec) {
     return num;
 }
 void feladat11(const vector<int> vec) {
-    cout << "feladat 11:\n";
-    int m;
-    cin >> m;
-    vector<vector<int>> result(m);
-    for (size_t i = 0; i < m; i++)
-    {
-        for (size_t j :vec)
-        {
-            if(j%m==i){
-                
-                result[i].push_back(j);
-                //cout<<j<<" ";
-            }
-        }
-        cout<<"összesen "<<result[i].size()<<" "<<i<<" maradéku van\n";
-    }
-    cout<<"a számok:\n";
-    /*for (size_t i = 0; i < m; i++)
-    {
-        for (size_t j = 0; j < result[i].size(); j++)
-        {
-            cout<<result[i][j]<<" ";
-        }
-        
-    }*/
     
     return;
 }
