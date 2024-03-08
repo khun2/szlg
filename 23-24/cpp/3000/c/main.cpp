@@ -15,10 +15,10 @@ bool feladat1(const vector<int>& v) {
 }
 int feladat2(const vector<int>& v) {
     int i = v.size()-1;
-    while (v[i] % 7 != 0 && i >= 0) {
+    while (v[i] % 7 != 0 && i >= -1) {
         i--;
     }
-    return i==0 ? -1 : i;
+    return i;
 }
 int feladat3(const vector<int>& v) {
     int i = 0;

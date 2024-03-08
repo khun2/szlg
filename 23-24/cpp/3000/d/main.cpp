@@ -1,7 +1,4 @@
-#include <iostream> // konzolra írás
-#include <fstream> // fájlból olvasáshoz
-#include <vector> // lista c++-ban
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 int feladat1(const vector<int>& v) {
@@ -82,18 +79,18 @@ int feladat9(const vector<int>& v) {
     return v.size();
 }
 bool feladat10(const vector<int>& v) {
-    int i = 0;
+    int i = 1;
     while((v[i] <= 0 && v[i-1] <= 0 && v[i+1] >= 0) && i <= v.size()) {i++; }
     return i != v.size();
 }
-vector <int> feladat11(const vector<int>& v) {
-    cout << "feladat 11:\n";
+vector <pair<int, bool>> feladat11(const vector<int>& v) {
     int m;
     cin >> m;
-    vector <int> out(m, v[feladat7(v)] - 1);
+    vector <pair<int, bool>> out(m, {INT_MIN,false});
     for(int i = 0; i < v.size(); i++) {
-        if(abs(v[i] % m) > out[i]) {
-            out[abs(v[i] % m)] = v[i];
+        out[abs(v[i] % m)].second = true;
+        if(out[abs(v[i] % m)].first < v[i]) {
+            out[abs(v[i] % m)].first = v[i];
         }
     }
     return out;
@@ -120,14 +117,14 @@ int main() {
     }
     cout << "feladat 9: " << feladat9(input) << '\n';
     cout << "feladat 10: " << feladat10(input) << '\n';
-    vector<int> f11 = feladat11(input);
-    for(int x : f11) {
-        if(x == input[feladat7(input)] - 1){
-            //ezt jelezni kell im very sorry de lusta vagyok egy jobb megoldást írni
-            cout << "nincs ilyen\n";
+    cout << "feladat 11:\n";
+    vector<pair<int, bool>> f11 = feladat11(input);
+    for(size_t i = 0; i < f11.size(); i++){
+        if(!f11[i].second){
+            cout << i << ": nincs ilyen\n";
         }
         else {
-            cout<<x<<'\n';
+            cout<<i<<": "<<f11[i].first<<'\n';
         }
     }
 }

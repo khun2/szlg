@@ -64,11 +64,11 @@ bool feladat8(const vector <int> vec){
 }
 int feladat9(const vector<int>vec){
     int i = vec.size() - 1;
-    while (vec[i] % 19!=0)
+    while (vec[i] % 19 != 0 && i >= -1)
     {
         i--;
     }
-    return i = 0 ? -1 : i;
+    return i;
 }
 vector <int> feladat10(const vector<int>vec){
     cout<<"feladat 10:\n";

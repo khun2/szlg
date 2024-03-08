@@ -70,7 +70,7 @@ bool feladat9(const vector<int>& vec) {
 }
 bool feladat10(const vector<int>& vec) {
     int i = vec.size() - 1;
-    while (vec[i] % 17 != 0 && i <= vec.size()) {
+    while (vec[i] % 17 != 0 && i >= -1) {
         i--;
     }
     return i;

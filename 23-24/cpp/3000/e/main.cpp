@@ -1,7 +1,5 @@
-#include <iostream> // konzolra írás
-#include <fstream> // fájlból olvasáshoz
-#include <vector> // lista c++-ban
-#include <string>
+
+#include <bits/stdc++.h>
 using namespace std;
 
 int feladat1(const vector<int>& v) {
@@ -9,38 +7,89 @@ int feladat1(const vector<int>& v) {
 }
 int feladat2(const vector<int>& v) {
     int i=v.size()-1;
-    while (v[i]%3==0)
-    {
+    while (v[i]%3==0 && i >= -1) {
         i--;
     }
     return i;
 }
 int feladat3(const vector<int>& v) {
-
+    int i = 0;
+    while (v[i] % 15 == 0 && i <= v.size()) {i++;}
+    return i == v.size() ? -1 : i;
 }
-int feladat4(const vector<int>& v) {
-
+bool feladat4(const vector<int>& v) {
+    int i = 0;
+    while ((v[i] < -10 || v[i] > 10) && i <= v.size()) {i++;}
+    return i == v.size();
 }
-int feladat5(const vector<int>& v) {
-
+long long feladat5(const vector<int>& v) {
+    long long num=v[0];
+    const long long mod = 1e9+7;
+    for(int x : v){
+        num *= x;
+        num %= mod;
+    }
+    return num*2;
 }
 int feladat6(const vector<int>& v) {
-
+    int num = 0;
+    for(int x : v) {
+        if(x % 108 == 0) {num++;}
+    }
+    return num;
 }
-int feladat7(const vector<int>& v) {
-
+vector <int> feladat7(const vector<int>& v) {
+    cout<<"feladat 7:\n";
+    vector <int> out;
+    for(int x : v) {
+        if(x % 17 == 0 || x % 18 == 0) {
+            out.push_back(x*x*x);
+        }
+    }
+    return out;
 }
 int feladat8(const vector<int>& v) {
-
+    if(v.size() ==1){ return v[0];}
+    int smol = 2e9-1, smoller = 2e9;
+    for(int x : v) {
+        if(x < smol) {
+            if(x < smoller) {
+                smoller = x;
+            }
+            else {
+                smol = x;
+            }
+        }
+    }
+    return smol;
 }
-int feladat9(const vector<int>& v) {
-
+bool feladat9(const vector<int>& v) {
+    int i = 0;
+    while (sqrt(v[i]) - floor(sqrt(v[i])) != 0 && i < v.size()) {
+        i++;
+    }
+    return i!=v.size();
 }
-int feladat10(const vector<int>& v) {
-
+bool feladat10(const vector<int>& v) {
+    for (size_t i = 1; i < v.size()-1; i++)
+    {
+        if(v[i] < 0 && v[i-1] == 0 && v[i+1] == 0) {
+            return true;
+        }
+    }
+    return false;
 }
-int feladat11(const vector<int>& v) {
-    
+vector <pair<int, bool>> feladat11(const vector<int>& v) {
+    int m;
+    cin >> m;
+    vector <pair<int, bool>> out(m, {INT_MAX, false});
+    for(int i = 0; i < v.size(); i++) {
+        out[abs(v[i] % m)].second = true;
+        if(out[abs(v[i] % m)].first > v[i]) {
+            out[abs(v[i] % m)].first = v[i];
+        }
+    }
+    return out;
 }
 
 int main() {
@@ -57,9 +106,22 @@ int main() {
     cout << "feladat 4: " << feladat4(input) << '\n';
     cout << "feladat 5: " << feladat5(input) << '\n';
     cout << "feladat 6: " << feladat6(input) << '\n';
-    cout << "feladat 7: " << feladat7(input) << '\n';
+    vector <int> f7 =feladat7(input);
+    for(int x : f7) {
+        cout<<x<<" ";
+    }
+    cout<<'\n';
     cout << "feladat 8: " << feladat8(input) << '\n';
     cout << "feladat 9: " << feladat9(input) << '\n';
     cout << "feladat 10: " << feladat10(input) << '\n';
-    cout << "feladat 11: " << feladat11(input) << '\n';    
+    cout << "feladat 11:\n";
+    vector<pair<int, bool>> f11 = feladat11(input);
+    for(size_t i = 0; i < f11.size(); i++){
+        if(!f11[i].second){
+            cout << i << ": nincs ilyen\n";
+        }
+        else {
+            cout<<i<<": "<<f11[i].first<<'\n';
+        }
+    }
 }
