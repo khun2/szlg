@@ -29,21 +29,25 @@ int feladat3(const vector<int>& v) {
     }
     return -1;
 }
-string feladat4(const vector<int>& v) {
-    for(int i:v){
-        if(i>=0){
-            return "NO";
-        }
+bool feladat4(const vector<int>& v) {
+    int i = 0;
+    while(v[i] >= 0 && i <= v.size()) {
+        i++;
     }
-    return "YES";
+    return i != v.size();
 }
-string feladat5(const vector<int>& v) {
-    for(int i:v){
+bool feladat5(const vector<int>& v) {
+    /*for(int i:v){
         if(i>0&&i<10){
             return "YES";
         }
+    }*/
+    int i = 0;
+    while ((v[i] < 1 || v[i] > 10) && i <= v.size()) {
+        i++;
     }
-    return "NO";
+    
+    return i != v.size();
 }
 int feladat6(const vector<int>& v) {
     int num=0;
@@ -64,25 +68,22 @@ int feladat7(const vector<int>& v) {
     }
     return out;
 }
-void feladat8(const vector<int>& v) {
-    cout<<"feladat 8:\n}";
+vector<int> feladat8(const vector<int>& v) {
+    cout<<"feladat 8:\n";
+    vector<int> out;
     for(int i:v){
         if(i % 17==0 || i % 18 == 0){
-            cout<<i*i<<" ";
+            out.push_back(i*i);
         }
     }
 }
 int feladat9(const vector<int>& v) {
     return v.size();
 }
-string feladat10(const vector<int>& v) {
-    for (int i = 1; i < v.size()-1; i++)
-    {
-        if(v[i] >0 && v[i-1] < 0 && v[i+1] < 0){
-            return "YES";
-        }
-    }
-    return "NO";
+bool feladat10(const vector<int>& v) {
+    int i = 0;
+    while(v[i] <= 0 && v[i-1] <= 0 && v[i+1] >= 0 && i <= v.size()) {i++; }
+    return i != v.size();
 }
 int feladat11(const vector<int>& v) {
     return -1;
@@ -103,7 +104,10 @@ int main() {
     cout << "feladat 5: " << feladat5(input) << '\n';
     cout << "feladat 6: " << feladat6(input) << '\n';
     cout << "feladat 7: " << feladat7(input) << '\n';
-    feladat8(input);
+    vector<int> f8 = feladat8(input);
+    for(int x : f8){
+        cout<<x<<' ';
+    }
     cout << "feladat 9: " << feladat9(input) << '\n';
     cout << "feladat 10: " << feladat10(input) << '\n';
     cout << "feladat 11: " << feladat11(input) << '\n';    
