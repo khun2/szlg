@@ -76,17 +76,22 @@ vector<int> feladat8(const vector<int>& v) {
             out.push_back(i*i);
         }
     }
+    return out;
 }
 int feladat9(const vector<int>& v) {
     return v.size();
 }
 bool feladat10(const vector<int>& v) {
     int i = 0;
-    while(v[i] <= 0 && v[i-1] <= 0 && v[i+1] >= 0 && i <= v.size()) {i++; }
+    while((v[i] <= 0 && v[i-1] <= 0 && v[i+1] >= 0) && i <= v.size()) {i++; }
     return i != v.size();
 }
-int feladat11(const vector<int>& v) {
-    return -1;
+vector <int> feladat11(const vector<int>& v) {
+    int m;
+    cin >> m;
+    vector <int> out(m, 0);
+    
+    return out;
 }
 
 int main() {
