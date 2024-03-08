@@ -87,10 +87,15 @@ bool feladat10(const vector<int>& v) {
     return i != v.size();
 }
 vector <int> feladat11(const vector<int>& v) {
+    cout << "feladat 11:\n";
     int m;
     cin >> m;
-    vector <int> out(m, 0);
-    
+    vector <int> out(m, v[feladat7(v)] - 1);
+    for(int i = 0; i < v.size(); i++) {
+        if(abs(v[i] % m) > out[i]) {
+            out[abs(v[i] % m)] = v[i];
+        }
+    }
     return out;
 }
 
@@ -115,5 +120,14 @@ int main() {
     }
     cout << "feladat 9: " << feladat9(input) << '\n';
     cout << "feladat 10: " << feladat10(input) << '\n';
-    cout << "feladat 11: " << feladat11(input) << '\n';    
+    vector<int> f11 = feladat11(input);
+    for(int x : f11) {
+        if(x == input[feladat7(input)] - 1){
+            //ezt jelezni kell im very sorry de lusta vagyok egy jobb megoldást írni
+            cout << "nincs ilyen\n";
+        }
+        else {
+            cout<<x<<'\n';
+        }
+    }
 }
