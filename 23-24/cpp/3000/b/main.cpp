@@ -5,12 +5,16 @@
 using namespace std;
 
 string feladat1(const vector<int>& vec) {
-    for(int i:vec){
+    int i=0;
+    while(vec[i]<=0 && i<=vec.size()){
+        i++;
+    }
+    /*for(int i:vec){
         if(i>0){
             return "YES";
         }
-    }
-    return "NO";
+    }*/
+    return i == vec.size() ? "NO" : "YES";
 }
 int feladat2(const vector<int>vec){
     return vec.size();
