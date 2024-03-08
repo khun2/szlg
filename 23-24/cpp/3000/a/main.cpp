@@ -54,8 +54,8 @@ string feladat7(const vector<int> vec) {
     }
     return i == vec.size() ? "NO": "YES";
 }
-int feladat8(const vector<int> vec) {
-    int num=0;
+double feladat8(const vector<int> vec) {
+    double num=0;
     for(int i:vec){
         num+=i;
     }
@@ -67,7 +67,6 @@ string feladat9(const vector<int> vec) {
     {
         i--;
     }
-    
     return i == -1 ? "NO": "YES";
 }
 int feladat10(const vector<int> vec) {
