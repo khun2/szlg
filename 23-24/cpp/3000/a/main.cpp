@@ -41,15 +41,14 @@ void feladat5(const vector<int> vec) {
 }
 string feladat6(const vector<int> vec) {
     int i = 0;
-    while(vec[i] != 0 && i<=vec.size()){
+    while(vec[i] != 0 && i<=vec.size()) {
         i++;
     }
     return i == vec.size() ? "nincsen ilyen": to_string(i);
 }
 string feladat7(const vector<int> vec) {
     int i = 0;
-    while (vec[i]%2!=0 && i<=vec.size())
-    {
+    while (vec[i]%2!=0 && i<=vec.size()) {
         i++;
     }
     return i == vec.size() ? "NO": "YES";
