@@ -5,12 +5,12 @@
 #include <map>
 using namespace std;
 
-string feladat1(const vector<int>& vec) {
+bool feladat1(const vector<int>& vec) {
     int i=0;
     while(vec[i]<=0 && i<=vec.size()){
         i++;
     }     
-    return i == vec.size() ? "NO" : "YES";
+    return i != vec.size();
 }
 int feladat2(const vector<int>vec){
     return vec.size();
@@ -39,12 +39,12 @@ double feladat5(const vector<int>vec){
     }
     return (num/vec.size())/2;
 }
-string feladat6(const vector <int> vec){
+bool feladat6(const vector <int> vec){
     int i=0;
     while(vec[i]>=0 && i<=vec.size()){
         i++;
     }
-    return i == vec.size() ? "NO" : "YES";
+    return i != vec.size();
 }
 int feladat7(const vector <int> vec){
     int num=0;
@@ -55,12 +55,12 @@ int feladat7(const vector <int> vec){
     }
     return num;
 }
-string feladat8(const vector <int> vec){
+bool feladat8(const vector <int> vec){
     int i=0;
     while(vec[i-1] >= 0 && vec[i] >= 0){
         i++;
     }
-    return i == vec.size() ? "NO" : "YES";
+    return i != vec.size();
 }
 int feladat9(const vector<int>vec){
     int i = vec.size() - 1;
@@ -68,7 +68,7 @@ int feladat9(const vector<int>vec){
     {
         i--;
     }
-    return i=0 ? -1 : i;
+    return i = 0 ? -1 : i;
 }
 vector <int> feladat10(const vector<int>vec){
     cout<<"feladat 10:\n";
