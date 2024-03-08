@@ -1,17 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int feladat1(const vector<int> vec) {
+int feladat1(const vector<int>& vec) {
     return vec.size();
 }
-string feladat2(const vector<int> vec) {
+bool feladat2(const vector<int>& vec) {
     int i=0;
     while(vec[i] <= 0 && i <= vec.size()){
         i++;
     }
-    return i == vec.size() ? "NO": "YES";
+    return i != vec.size();
 }
-int feladat3(const vector<int> vec){
+int feladat3(const vector<int>& vec){
     int out=0;
     for(int i:vec){
         if(i%2==0){
@@ -20,7 +20,7 @@ int feladat3(const vector<int> vec){
     }
     return out;
 }
-int feladat4(const vector<int> vec) {
+int feladat4(const vector<int>& vec) {
     int num=vec[0];
     for(int i:vec){
         if(i>num){
@@ -29,59 +29,61 @@ int feladat4(const vector<int> vec) {
     }
     return num;
 }
-void feladat5(const vector<int> vec) {
-    cout<<"feladat 5: A számok: ";
+vector <int> feladat5(const vector<int>& vec) {
+    cout<<"feladat 5:\n";
+    vector <int> v;
     for(int i:vec){
         if(i%10==0){
-            cout<<i<<" ";
+            v.push_back(i);
         }
     }
-    cout<<"\n";
-    return;
+    return v;
 }
-string feladat6(const vector<int> vec) {
+string feladat6(const vector<int>& vec) {
     int i = 0;
     while(vec[i] != 0 && i<=vec.size()) {
         i++;
     }
-    return i == vec.size() ? "nincsen ilyen": to_string(i);
+    return i == vec.size() ? "nincsen ilyen" : to_string(i);
 }
-string feladat7(const vector<int> vec) {
+bool feladat7(const vector<int>& vec) {
     int i = 0;
     while (vec[i]%2!=0 && i<=vec.size()) {
         i++;
     }
-    return i == vec.size() ? "NO": "YES";
+    return i != vec.size();
 }
-double feladat8(const vector<int> vec) {
+double feladat8(const vector<int>& vec) {
     double num=0;
     for(int i:vec){
         num+=i;
     }
     return vec.size()/num;
 }
-string feladat9(const vector<int> vec) {
+bool feladat9(const vector<int>& vec) {
     int i= vec.size()-1;
     while (vec[i] < 0 && vec[i+1] == 0 && i >= -1)
     {
         i--;
     }
-    return i == -1 ? "NO": "YES";
+    return i != -1;
 }
-int feladat10(const vector<int> vec) {
-    int num=-1;
-    for (size_t i = 0; i < vec.size(); i++)
-    {
-        if(vec[i]%17==0){
-            num=i;
-        }
+bool feladat10(const vector<int>& vec) {
+    int i = vec.size() - 1;
+    while (vec[i] % 17 != 0 && i <= vec.size()) {
+        i--;
     }
-    if(num==-1){cout<<"Nincsen 17-tel osztható szám(ezért -1-et ad vissza) ";}
-    return num;
+    return i;
 }
-void feladat11(const vector<int> vec) {
-    
-    return;
+map <int, int> feladat11(const vector<int>& vec) {
+    cout<<"feladat 11:\n";
+    int m;
+    cin >> m;
+    map<int, int> ma;
+    for(int i : vec) {
+        ma[abs(i % m)]++;
+    }
+    return ma;
 }
 
 int main() {
@@ -97,11 +99,20 @@ int main() {
     cout << "feladat 2: " << feladat2(input) << '\n';
     cout << "feladat 3: " << feladat3(input) << '\n';
     cout << "feladat 4: " << feladat4(input) << '\n';
-    feladat5(input);
+    vector <int> f5 = feladat5(input);
+    for (int i = 0; i < f5.size(); i++)
+    {
+        cout << i << ": " << f5[i] << '\n';
+    }
     cout << "feladat 6: " << feladat6(input) << '\n';
     cout << "feladat 7: " << feladat7(input) << '\n';
     cout << "feladat 8: " << feladat8(input) << '\n';
     cout << "feladat 9: " << feladat9(input) << '\n';
     cout << "feladat 10: " << feladat10(input) << '\n';
-    //feladat11(input);
+    map <int, int> f11 = feladat11(input);
+    for (auto[key, value] : f11)
+    {
+        cout << key << ": " << value << '\n';
+    }
+    
 }

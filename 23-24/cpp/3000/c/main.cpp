@@ -2,6 +2,7 @@
 #include <fstream> // fájlból olvasáshoz
 #include <vector> // lista c++-ban
 #include <string>
+#include <map>
 using namespace std;
 
 string feladat1(const vector<int>& v) {
@@ -14,8 +15,7 @@ string feladat1(const vector<int>& v) {
 }
 int feladat2(const vector<int>& v) {
     int i = v.size()-1;
-    while (v[i] % 7 != 0 && i >= 0)
-    {
+    while (v[i] % 7 != 0 && i >= 0) {
         i--;
     }
     return i==0 ? -1 : i;
@@ -48,14 +48,15 @@ int feladat6(const vector<int>& v){
     }
     return num;
 }
-void feladat7(const vector<int>& v){
+vector <double> feladat7(const vector<int>& v){
     cout<<"feladat 7: \t";
-    for(int i=0;i<v.size();i++){
+    vector <double> out;
+    for(double i = 0; i < v.size(); i++){
         if(v[i]%15==0){
-            cout<<v[i]/2 <<" ";
+            out.push_back(v[i]/2);
         }
     }
-    cout<<"\n";
+    return out;
 }
 int feladat8(const vector<int>& v){
     return v.size();
@@ -74,6 +75,18 @@ double feladat10(const vector<int>& v){
     }
     return smallest/2;
 }
+
+map <int, vector <int>> feladat11(const vector <int>& v){
+    cout<<"feladat 11:\n";
+    int m;
+    cin >> m;
+    map<int, vector <int>> ma;
+    for(int i : v) {
+        ma[abs(i % m)].push_back(i);
+    }
+    return ma;
+}
+
 int main() {
     vector<int> input;
 
@@ -93,6 +106,14 @@ int main() {
     cout << "feladat 8: " << feladat8(input) << '\n';
     cout << "feladat 9: " << feladat9(input) << '\n';
     cout << "feladat 10: " << feladat10(input) << '\n';
-//  cout << "feladat 11: " << feladat11(input) << '\n';
+    map <int, vector <int>> f11 = feladat11(input);
+    for (auto[key, value] : f11)
+    {
+        cout << key << ": ";
+        for(int x : f11[key]){
+            cout<<x<<" ";
+        }
+        cout<<'\n';
+    }
 
 }

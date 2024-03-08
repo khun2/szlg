@@ -67,7 +67,7 @@ int feladat7(const vector<int>& v) {
 void feladat8(const vector<int>& v) {
     cout<<"feladat 8:\n}";
     for(int i:v){
-        if(i%17==0||i%18==0){
+        if(i % 17==0 || i % 18 == 0){
             cout<<i*i<<" ";
         }
     }
@@ -85,7 +85,7 @@ string feladat10(const vector<int>& v) {
     return "NO";
 }
 int feladat11(const vector<int>& v) {
-    
+    return -1;
 }
 
 int main() {
