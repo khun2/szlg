@@ -5,27 +5,27 @@
 using namespace std;
 
 string feladat1(const vector<int>& v) {
-    for(int i: v){
-        if(i%100==0){return "YES";}
+    int i=0;
+    while (v[i]%100 != 0 && i <= v.size())
+    {
+        i++;
     }
-    return "NO";
+    return i==v.size() ? "NO" : "YES";
 }
 int feladat2(const vector<int>& v) {
-    for (int i = v.size() - 1; i >= 0; i--)
+    int i = v.size()-1;
+    while (v[i] % 7 != 0 && i >= 0)
     {
-        if(i%7==0){
-            return i;
-        }    
+        i--;
     }
-    return -1;
+    return i==0 ? -1 : i;
 }
-int feladat3(const vector<int>& v){
-    for(int i=0;i<v.size(); i++){
-        if(v[i]%19==0){
-            return i;
-        }
+int feladat3(const vector<int>& v) {
+    int i = 0;
+    while(v[i] % 19 == 0 && i <= v.size()) {
+        i++;
     }
-    return -1;
+    return i == v.size() ? -1 : i;
 }
 int feladat4(const vector<int>& v){
     int num=0;
@@ -90,15 +90,15 @@ int main() {
     }
 
     cout << "feladat 1: " << feladat1(input) << '\n';
-    cout << "feladat 2: " << feladat1(input) << '\n';
-    cout << "feladat 3: " << feladat1(input) << '\n';
-    cout << "feladat 4: " << feladat1(input) << '\n';
-    cout << "feladat 5: " << feladat1(input) << '\n';
-    cout << "feladat 6: " << feladat1(input) << '\n';
-    cout << "feladat 7: " << feladat1(input) << '\n';
-    cout << "feladat 8: " << feladat1(input) << '\n';
-    cout << "feladat 9: " << feladat1(input) << '\n';
-    cout << "feladat 10: " << feladat1(input) << '\n';
+    cout << "feladat 2: " << feladat2(input) << '\n';
+    cout << "feladat 3: " << feladat3(input) << '\n';
+    cout << "feladat 4: " << feladat4(input) << '\n';
+    cout << "feladat 5: " << feladat5(input) << '\n';
+    cout << "feladat 6: " << feladat6(input) << '\n';
+    feladat7(input);
+    cout << "feladat 8: " << feladat8(input) << '\n';
+    cout << "feladat 9: " << feladat9(input) << '\n';
+    cout << "feladat 10: " << feladat10(input) << '\n';
 //  cout << "feladat 11: " << feladat11(input) << '\n';
 
 }
