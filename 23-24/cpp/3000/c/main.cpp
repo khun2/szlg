@@ -5,13 +5,13 @@
 #include <map>
 using namespace std;
 
-string feladat1(const vector<int>& v) {
+bool feladat1(const vector<int>& v) {
     int i=0;
     while (v[i]%100 != 0 && i <= v.size())
     {
         i++;
     }
-    return i==v.size() ? "NO" : "YES";
+    return i != v.size();
 }
 int feladat2(const vector<int>& v) {
     int i = v.size()-1;
@@ -34,10 +34,10 @@ double feladat4(const vector<int>& v){
     }
     return (v.size()/num)*(v.size()/num);
 }
-string feladat5(const vector<int>& v){
+bool feladat5(const vector<int>& v){
     int i = 0;
     while(v[i]>=10 && i <= v.size()) {i++; }
-    return i==v.size() ? "NO" : "YES";
+    return i != v.size();
 }
 int feladat6(const vector<int>& v){
     int num=0;
@@ -49,11 +49,11 @@ int feladat6(const vector<int>& v){
     return num;
 }
 vector <double> feladat7(const vector<int>& v){
-    cout<<"feladat 7: \t";
+    cout<<"feladat 7: ";
     vector <double> out;
     for(double i = 0; i < v.size(); i++){
         if(v[i]%15==0){
-            out.push_back(v[i]/2);
+            out.push_back(v[i]/2.0);
         }
     }
     return out;
@@ -61,10 +61,10 @@ vector <double> feladat7(const vector<int>& v){
 int feladat8(const vector<int>& v){
     return v.size();
 }
-string feladat9(const vector<int>& v){
+bool feladat9(const vector<int>& v){
     int i = 0;
     while(v[i-1] >= 0 && v[i] <= 0 && i <= v.size()) {i++; }
-    return i==v.size() ? "NO" : "YES";
+    return i != v.size();
 }
 double feladat10(const vector<int>& v){
     double smallest=v[0];
@@ -102,7 +102,11 @@ int main() {
     cout << "feladat 4: " << feladat4(input) << '\n';
     cout << "feladat 5: " << feladat5(input) << '\n';
     cout << "feladat 6: " << feladat6(input) << '\n';
-    feladat7(input);
+    vector<double> f7 = feladat7(input);
+    for(double x : f7){
+        cout<<x<<' ';
+    }
+    cout<<'\n';
     cout << "feladat 8: " << feladat8(input) << '\n';
     cout << "feladat 9: " << feladat9(input) << '\n';
     cout << "feladat 10: " << feladat10(input) << '\n';
