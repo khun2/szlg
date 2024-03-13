@@ -5,9 +5,14 @@
 using namespace std;
 
 int feladat1(const vector<int>& v) {
-    
+    return v.size();
 }
 int feladat2(const vector<int>& v) {
+    int i = v.size() - 1;
+    while (v[i])
+    {
+        /* code */
+    }
     
 }
 int feladat3(const vector<int>& v) {
