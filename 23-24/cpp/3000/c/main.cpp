@@ -77,7 +77,6 @@ double feladat10(const vector<int>& v){
 }
 
 map <int, vector <int>> feladat11(const vector <int>& v){
-    cout<<"feladat 11:\n";
     int m;
     cin >> m;
     map<int, vector <int>> ma;
@@ -110,6 +109,7 @@ int main() {
     cout << "feladat 8: " << feladat8(input) << '\n';
     cout << "feladat 9: " << feladat9(input) << '\n';
     cout << "feladat 10: " << feladat10(input) << '\n';
+    cout<<"feladat 11:\n";
     map <int, vector <int>> f11 = feladat11(input);
     for (auto[key, value] : f11)
     {

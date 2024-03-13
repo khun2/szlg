@@ -50,7 +50,7 @@ vector <int> feladat7(const vector<int>& v) {
 }
 int feladat8(const vector<int>& v) {
     if(v.size() ==1){ return v[0];}
-    int smol = 2e9-1, smoller = 2e9;
+    int smol = INT_MAX - 1, smoller = INT_MAX;
     for(int x : v) {
         if(x < smol) {
             if(x < smoller) {
