@@ -9,20 +9,25 @@ int feladat1(const vector<int>& v) {
 }
 int feladat2(const vector<int>& v) {
     int i = v.size() - 1;
-    while (v[i])
-    {
-        /* code */
+    while ((v[i] <= -10 || v[i] >= 10) && i >= -1 ) {
+        i--;
     }
-    
+    return i;
 }
-int feladat3(const vector<int>& v) {
-
+bool feladat3(const vector<int>& v) {
+    int i = 0;
+    while (v[i] < 100 && i <=v.size()) {
+        i++;
+    }
+    return i ==v.size()
 }
 int feladat4(const vector<int>& v) {
-
+    int i = 0;
+    while (v[i] % 15 != 0 && i <= v.size()) {i++;}
+    return i == v.size() ? -1 : v[i];
 }
 int feladat5(const vector<int>& v) {
-
+    
 }
 int feladat6(const vector<int>& v) {
 
