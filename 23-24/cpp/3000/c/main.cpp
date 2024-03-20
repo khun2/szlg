@@ -6,33 +6,37 @@
 using namespace std;
 
 bool feladat1(const vector<int>& v) {
+    if (v.size() == 0) return 0;
     int i=0;
-    while (v[i]%100 != 0 && i <= v.size())
+    while (i <= v.size() && v[i]%100 != 0)
     {
         i++;
     }
     return i != v.size();
 }
 int feladat2(const vector<int>& v) {
+    if (v.size() == 0) return 0;
     int i = v.size()-1;
-    while (v[i] % 7 != 0 && i >= -1) {
+    while (i >= 0 && v[i] % 7 != 0) {
         i--;
     }
     return i;
 }
 int feladat3(const vector<int>& v) {
+    if (v.size() == 0) return 0;
     int i = 0;
-    while(v[i] % 19 == 0 && i <= v.size()) {
+    while(i <= v.size() && v[i] % 19 == 0) {
         i++;
     }
     return i == v.size() ? -1 : i;
 }
 double feladat4(const vector<int>& v){
+    if (v.size() == 0) return 0;
     double num=0;
     for(int i:v){
         num+=i;
     }
-    return (v.size()/num)*(v.size()/num);
+    return (num/v.size())*(num/v.size());
 }
 bool feladat5(const vector<int>& v){
     int i = 0;
