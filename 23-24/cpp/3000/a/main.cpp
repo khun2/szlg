@@ -30,11 +30,11 @@ int feladat3(const vector<int> &vec)
 int feladat4(const vector<int> &vec)
 {
     int num = INT_MIN;
-    for (int i : vec)
+    for (int x : vec)
     {
-        if (i > num)
+        if (x > num)
         {
-            num = i;
+            num = x;
         }
     }
     return num;
@@ -87,7 +87,7 @@ bool feladat9(const vector<int> &vec)
     {
         i++;
     }
-    return i != -1;
+    return i != vec.size();
 }
 bool feladat10(const vector<int> &vec)
 {
