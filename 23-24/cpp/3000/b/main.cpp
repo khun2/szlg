@@ -1,8 +1,4 @@
-#include <iostream> // konzolra írás
-#include <fstream> // fájlból olvasáshoz
-#include <vector> // lista c++-ban
-#include <string>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
 
 bool feladat1(const vector<int>& vec) {

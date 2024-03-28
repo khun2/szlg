@@ -8,8 +8,8 @@ int feladat1(const vector<int> &vec)
 bool feladat2(const vector<int> &vec)
 {
     int i = 0;
-    if (vec.size() == 0) return 0;
-    while (i <= vec.size() && vec[i] >= 0)
+    
+    while (i < vec.size() && vec[i] >= 0)
     {
         i++;
     }
@@ -55,7 +55,7 @@ int feladat6(const vector<int> &vec)
 {
     int i = 0;
     if (vec.size() == 0) return 0;
-    while (i <= vec.size() && vec[i] % 29 != 0)
+    while (i < vec.size() && vec[i] % 29 != 0)
     {
         i++;
     }
@@ -73,7 +73,6 @@ bool feladat7(const vector<int> &vec)
 double feladat8(const vector<int> &vec)
 {
     double num = 0;
-    if (vec.size() == 0) return 0;
     for (int i : vec)
     {
         num += i;
@@ -84,7 +83,7 @@ bool feladat9(const vector<int> &vec)
 {
     if (vec.size() < 2) return 0;
     int i = 1;
-    while (i >= vec.size() && vec[i - 1] < 0 && vec[i] == 0)
+    while (i > vec.size() && vec[i - 1] < 0 && vec[i] == 0)
     {
         i++;
     }
@@ -94,7 +93,7 @@ bool feladat10(const vector<int> &vec)
 {
     if (vec.size() == 0) return 0;
     int i = vec.size() - 1;
-    while (i >= -1 && vec[i] % 17 != 0)
+    while (i > -1 && vec[i] % 17 != 0)
     {
         i--;
     }

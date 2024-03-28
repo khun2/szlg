@@ -1,14 +1,10 @@
-#include <iostream> // konzolra írás
-#include <fstream> // fájlból olvasáshoz
-#include <vector> // lista c++-ban
-#include <string>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
 
 bool feladat1(const vector<int>& v) {
     if (v.size() == 0) return 0;
     int i=0;
-    while (i <= v.size() && v[i]%100 != 0)
+    while (i < v.size() && v[i]%100 != 0)
     {
         i++;
     }
@@ -17,7 +13,7 @@ bool feladat1(const vector<int>& v) {
 int feladat2(const vector<int>& v) {
     if (v.size() == 0) return 0;
     int i = v.size()-1;
-    while (i >= 0 && v[i] % 7 != 0) {
+    while (i > -1 && v[i] % 7 != 0) {
         i--;
     }
     return i;
@@ -25,13 +21,12 @@ int feladat2(const vector<int>& v) {
 int feladat3(const vector<int>& v) {
     if (v.size() == 0) return 0;
     int i = 0;
-    while(i <= v.size() && v[i] % 19 == 0) {
+    while(i < v.size() && v[i] % 19 != 0) {
         i++;
     }
     return i == v.size() ? -1 : i;
 }
 double feladat4(const vector<int>& v){
-    if (v.size() == 0) return 0;
     double num=0;
     for(int i:v){
         num+=i;
@@ -40,7 +35,7 @@ double feladat4(const vector<int>& v){
 }
 bool feladat5(const vector<int>& v){
     int i = 0;
-    while(v[i]>=10 && i <= v.size()) {i++; }
+    while(i <= v.size() && v[i] >= 10) {i++; }
     return i != v.size();
 }
 int feladat6(const vector<int>& v){
@@ -53,10 +48,9 @@ int feladat6(const vector<int>& v){
     return num;
 }
 vector <double> feladat7(const vector<int>& v){
-    cout<<"feladat 7: ";
     vector <double> out;
-    for(double i = 0; i < v.size(); i++){
-        if(v[i]%15==0){
+    for(int i = 0; i < v.size(); i++){
+        if(v[i] % 15==0){
             out.push_back(v[i]/2.0);
         }
     }
@@ -66,12 +60,12 @@ int feladat8(const vector<int>& v){
     return v.size();
 }
 bool feladat9(const vector<int>& v){
-    int i = 0;
-    while(v[i-1] >= 0 && v[i] <= 0 && i <= v.size()) {i++; }
+    int i = 1;
+    while(i < v.size() && v[i-1] >= 0 && v[i] <= 0) {i++; }
     return i != v.size();
 }
 double feladat10(const vector<int>& v){
-    double smallest=v[0];
+    double smallest = INT_MAX;
     for(int i:v){
         if(i<smallest){
             smallest=i;
@@ -105,6 +99,7 @@ int main() {
     cout << "feladat 4: " << feladat4(input) << '\n';
     cout << "feladat 5: " << feladat5(input) << '\n';
     cout << "feladat 6: " << feladat6(input) << '\n';
+    cout<<"feladat 7: ";
     vector<double> f7 = feladat7(input);
     for(double x : f7){
         cout<<x<<' ';
