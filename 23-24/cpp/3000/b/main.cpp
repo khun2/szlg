@@ -14,33 +14,30 @@ int feladat2(const vector<int>& vec){
 }
 int feladat3(const vector<int>& vec){
     int smallest=INT_MAX;
-    for(int i:vec){
-        if(i<smallest) {
-            smallest=i;
+    for(int x : vec){
+        if(x < smallest) {
+            smallest = x;
         }
     }
     return smallest;
 }
 int feladat4(const vector<int>& vec){
     int i=0;
-    if (vec.size() == 0) return 0;
-    while(i <= vec.size() && vec[i]%33!=0){
+    while(i < vec.size() && vec[i]%33!=0){
         i++;
     }
     return i == vec.size() ? -1 : i;
 }
 double feladat5(const vector<int>& vec){
     double num=0;
-    if (vec.size() == 0) return 0;
-    for(int i: vec){
+    for(int i: vec) {
         num+=i;
     }
     return (num/vec.size())/2;
 }
 bool feladat6(const vector<int>& vec){
     int i=0;
-    if (vec.size() == 0) return 0;
-    while(i <= vec.size() && vec[i]>=0){
+    while(i < vec.size() && vec[i]>=0){
         i++;
     }
     return i != vec.size();
@@ -57,7 +54,7 @@ int feladat7(const vector<int>& vec){
 bool feladat8(const vector<int>& vec){
     if (vec.size() < 2) return 0;
     int i=1;
-    while(i <= vec.size() && vec[i-1] >= 0 && vec[i] >= 0) {
+    while(i < vec.size() && vec[i-1] >= 0 && vec[i] >= 0) {
         i++;
     }
     return i != vec.size();
