@@ -12,28 +12,28 @@ vector <double> feladat1(const vector<int>& v) {
 }
 double feladat2(const vector<int>& v) {
     int i = v.size() - 1;
-    while (v[i] % 9 != 0 && v[i] % 25 != 0 && i != -1) {
-        i++;
+    while (i > -1 && v[i] % 9 != 0 && v[i] % 25 != 0) {
+        i--;
     }
     return i == -1 ? i : sqrt(v[i]);
 }
 int feladat3(const vector<int>& v) {
     int i = 0;
-    while (v[i] % 3 != 0 && v[i] % 5 != 0 && i <= v.size()) {
+    while (i < v.size() && v[i] % 3 != 0 && v[i] % 5 != 0) {
         i++;
     }
     return i == v.size() ? -1 : i;
 }
 bool feladat4(const vector<int>& v) {
     int i = 0;
-    while ((v[i] < 0 || v[i] > 20) && i <= v.size()) {
+    while (i < v.size() && (v[i] >= 0 && v[i] <= 20)) {
         i++;
     }
     return i == v.size();
 }
 bool feladat5(const vector<int>& v) {
-    int i = 1;
-    while((v[i] <= 0 && v[i-1] != 0 && v[i+1] != 0) && i <= v.size()) {i++; }
+    int i = 2;
+    while(i < v.size() && (v[i-2] != 0 && v[i-1] >= 0 && v[i] != 0)) {i++; }
     return i != v.size();
 }
 int feladat6(const vector<int>& v) {
@@ -63,8 +63,10 @@ int feladat8(const vector<int>& v) {
 }
 bool feladat9(const vector<int>& v) {
     int i = 0;
-    //ez nehéz
-    return false;
+    while (i < v.size() && cbrt(v[i]) - floor(cbrt(v[i])) != 0) {
+        i++;
+    }
+    return i != v.size();
 }
 int feladat10(const vector<int>& v) {
     long long num=v[0];
@@ -73,7 +75,7 @@ int feladat10(const vector<int>& v) {
         num *= x;
         num %= mod;
     }
-    return num/2;
+    return (num/2) % mod;
 }
 map <int, vector <int>> feladat11(const vector <int>& v){
     int m;
