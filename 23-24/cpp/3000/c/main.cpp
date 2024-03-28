@@ -2,16 +2,13 @@
 using namespace std;
 
 bool feladat1(const vector<int>& v) {
-    if (v.size() == 0) return 0;
     int i=0;
-    while (i < v.size() && v[i]%100 != 0)
-    {
+    while (i < v.size() && v[i] % 100 != 0) {
         i++;
     }
     return i != v.size();
 }
 int feladat2(const vector<int>& v) {
-    if (v.size() == 0) return 0;
     int i = v.size()-1;
     while (i > -1 && v[i] % 7 != 0) {
         i--;
@@ -19,7 +16,6 @@ int feladat2(const vector<int>& v) {
     return i;
 }
 int feladat3(const vector<int>& v) {
-    if (v.size() == 0) return 0;
     int i = 0;
     while(i < v.size() && v[i] % 19 != 0) {
         i++;
@@ -28,20 +24,20 @@ int feladat3(const vector<int>& v) {
 }
 double feladat4(const vector<int>& v){
     double num=0;
-    for(int i:v){
-        num+=i;
+    for(int x : v){
+        num += x;
     }
     return (num/v.size())*(num/v.size());
 }
 bool feladat5(const vector<int>& v){
     int i = 0;
-    while(i <= v.size() && v[i] >= 10) {i++; }
+    while(i < v.size() && v[i] >= 10) {i++; }
     return i != v.size();
 }
 int feladat6(const vector<int>& v){
     int num=0;
-    for(int i:v){
-        if(i%9==0){
+    for(int x : v){
+        if(x % 9 == 0) {
             num++;
         }
     }
@@ -66,9 +62,9 @@ bool feladat9(const vector<int>& v){
 }
 double feladat10(const vector<int>& v){
     double smallest = INT_MAX;
-    for(int i:v){
-        if(i<smallest){
-            smallest=i;
+    for(int x:v){
+        if(x < smallest){
+            smallest=x;
         }
     }
     return smallest/2;
