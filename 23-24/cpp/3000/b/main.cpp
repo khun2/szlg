@@ -110,7 +110,7 @@ int main() {
     {
         cout << f10[i] << ' ';
     }
-    cout<<"feladat 11:\n";
+    cout<<"\nfeladat 11:\n";
     map <int, int> f11 = feladat11(vec);
     for (auto[key, value] : f11)
     {
