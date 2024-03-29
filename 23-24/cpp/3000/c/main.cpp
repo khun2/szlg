@@ -57,7 +57,7 @@ int feladat8(const vector<int>& v){
 }
 bool feladat9(const vector<int>& v){
     int i = 1;
-    while(i < v.size() && v[i-1] >= 0 && v[i] <= 0) {i++; }
+    while(i < v.size() && (v[i-1] >= 0 || v[i] <= 0)) {i++; }
     return i != v.size();
 }
 double feladat10(const vector<int>& v){

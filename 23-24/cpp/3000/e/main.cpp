@@ -19,7 +19,7 @@ int feladat3(const vector<int>& v) {
 }
 bool feladat4(const vector<int>& v) {
     int i = 0;
-    while (i < v.size() && (v[i] >= -10 && v[i] <= 10)) {i++;}
+    while (i < v.size() && (v[i] > -10 && v[i] < 10)) {i++;}
     return i == v.size();
 }
 long long feladat5(const vector<int>& v) {

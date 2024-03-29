@@ -54,14 +54,13 @@ int feladat7(const vector<int>& vec){
 bool feladat8(const vector<int>& vec){
     if (vec.size() < 2) return 0;
     int i=1;
-    while(i < vec.size() && vec[i-1] >= 0 && vec[i] >= 0) {
+    while(i < vec.size() && (vec[i-1] >= 0 || vec[i] >= 0)) {
         i++;
     }
     return i != vec.size();
 }
 int feladat9(const vector<int>& vec){
     int i = vec.size() - 1;
-    if (vec.size() == 0) return 0;
     while (i >= 0 && vec[i] % 19 != 0)
     {
         i--;

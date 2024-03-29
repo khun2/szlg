@@ -51,7 +51,7 @@ int feladat6(const vector<int>& v) {
 int feladat7(const vector<int>& v) {
     int out=0;
     for(int i = 1;i < v.size(); i++) {
-        if(v[i] < v[out]){
+        if(v[i] < v[out]) {
             out = i;
         }
     }
@@ -71,7 +71,7 @@ int feladat9(const vector<int>& v) {
 }
 bool feladat10(const vector<int>& v) {
     int i = 2;
-    while(i < v.size() && (v[i-2] <= 0 && v[i-1] >= 0 && v[i] <= 0)) {i++; }
+    while(i < v.size() && (v[i-2] <= 0 || v[i-1] >= 0 || v[i] <= 0)) {i++; }
     return i != v.size();
 }
 vector <pair<int, bool>> feladat11(const vector<int>& v) {
