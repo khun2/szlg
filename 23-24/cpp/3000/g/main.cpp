@@ -1,7 +1,4 @@
-#include <iostream> // konzolra írás
-#include <fstream> // fájlból olvasáshoz
-#include <vector> // lista c++-ban
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 int feladat1(const vector<int>& v) {
@@ -9,43 +6,74 @@ int feladat1(const vector<int>& v) {
 }
 int feladat2(const vector<int>& v) {
     int i = v.size() - 1;
-    while ((v[i] <= -10 || v[i] >= 10) && i >= -1 ) {
-        i--;
-    }
+    while (i > -1 && (v[i] < -10 || v[i] > 10)) i--;
     return i;
 }
 bool feladat3(const vector<int>& v) {
     int i = 0;
-    while (v[i] < 100 && i <=v.size()) {
-        i++;
-    }
-    return i ==v.size()
+    while (i < v.size() && v[i] < 100) i++;
+    return i == v.size();
 }
 int feladat4(const vector<int>& v) {
     int i = 0;
-    while (v[i] % 15 != 0 && i <= v.size()) {i++;}
+    while (v[i] % 15 != 0 && i <= v.size()) i++;
     return i == v.size() ? -1 : v[i];
 }
-int feladat5(const vector<int>& v) {
-    
+double feladat5(const vector<int>& v) {
+    double num = 3;
+    for (int x : v) num += x;
+    return num/2;
 }
 int feladat6(const vector<int>& v) {
-
+    int i = 0;
+    while (i < v.size() && cbrt(v[i]) - floor(cbrt(v[i])) != 0) {
+        i++;
+    }
+    return i != v.size();
 }
-int feladat7(const vector<int>& v) {
-
+vector<int> feladat7(const vector<int>& v) {
+    vector<int> f7;
+    for(int x : v) {
+        if (sqrt(x) == floor(sqrt(x))) {
+            f7.push_back(sqrt(x));
+        }
+    }
+    return f7;
 }
-int feladat8(const vector<int>& v) {
-
+bool feladat8(const vector<int>& v) {
+    int i = 2;
+    while(i < v.size() && (v[i-2] >= 0 || v[i-1] != 0 || v[i] != 0)) i++;
+    return i != v.size();
 }
-int feladat9(const vector<int>& v) {
-
+bool feladat9(const vector<int>& v) {
+    int i = 1;
+    //remélem ezt jól értelmeztem
+    while (i < v.size() && v[i-1] <= v[i]) i++;
+    return i == v.size();
 }
 int feladat10(const vector<int>& v) {
-
+    if(v.size() ==1){ return v[0];}
+    int big = INT_MIN, bigger = INT_MIN + 1;
+    for(int x : v) {
+        if(x > big) {
+            if(x > bigger) {
+                bigger = x;
+            }
+            else {
+                big = x;
+            }
+        }
+    }
+    return big;
 }
-int feladat11(const vector<int>& v) {
-    
+map <int, vector<int>> feladat11(const vector<int>& v) {
+    int m;
+    cin >> m;
+    map<int, vector <int>> ma;
+    for(int x : v) {
+        ma[abs(x % m)].push_back(x);
+    }
+    return ma;    
 }
 
 int main() {
@@ -57,14 +85,33 @@ int main() {
     }
 
     cout << "feladat 1: " << feladat1(input) << '\n';
-    cout << "feladat 2: " << feladat1(input) << '\n';
-    cout << "feladat 3: " << feladat1(input) << '\n';
-    cout << "feladat 4: " << feladat1(input) << '\n';
-    cout << "feladat 5: " << feladat1(input) << '\n';
-    cout << "feladat 6: " << feladat1(input) << '\n';
-    cout << "feladat 7: " << feladat1(input) << '\n';
-    cout << "feladat 8: " << feladat1(input) << '\n';
-    cout << "feladat 9: " << feladat1(input) << '\n';
-    cout << "feladat 10: " << feladat1(input) << '\n';
-    cout << "feladat 11: " << feladat1(input) << '\n';    
+    cout << "feladat 2: " << feladat2(input) << '\n';
+    cout << "feladat 3: " << feladat3(input) << '\n';
+    cout << "feladat 4: " << feladat4(input) << '\n';
+    cout << "feladat 5: " << feladat5(input) << '\n';
+    cout << "feladat 6: " << feladat6(input) << '\n';
+    cout << "feladat 7:\n";
+    vector<int> f7  = feladat7(input);
+    for (int x : f7) {
+        cout << x << " ";
+    }
+    cout << "\nfeladat 8: " << feladat8(input) << '\n';
+    cout << "feladat 9: " << feladat9(input) << '\n';
+    cout << "feladat 10: " << feladat10(input) << '\n';
+    cout<<"feladat 11:\n";
+    map <int, vector <int>> f11 = feladat11(input);
+    for (auto[key, value] : f11)
+    {
+        cout << key << ": ";
+        double num = 0;
+        for(int x : f11[key]){
+            num += x;
+        }
+        double avrg = num / f11[key].size();
+        cout << "átlag: " << avrg << '\n';
+        for (int x : f11[key]) {
+            cout << abs(avrg - x) << ' ';
+        }
+        cout<<'\n';
+    }   
 }
