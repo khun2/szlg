@@ -16,11 +16,11 @@ bool feladat3(const vector<int>& v) {
 }
 int feladat4(const vector<int>& v) {
     int i = 0;
-    while (v[i] % 15 != 0 && i <= v.size()) i++;
+    while (i < v.size() && v[i] % 15 != 0) i++;
     return i == v.size() ? -1 : v[i];
 }
 double feladat5(const vector<int>& v) {
-    double num = 3;
+    double num = 0;
     for (int x : v) num += x;
     return num/2;
 }
@@ -47,12 +47,11 @@ bool feladat8(const vector<int>& v) {
 }
 bool feladat9(const vector<int>& v) {
     int i = 1;
-    //remélem ezt jól értelmeztem
-    while (i < v.size() && v[i-1] <= v[i]) i++;
+    while (i < v.size() && v[i-1] < v[i]) i++;
     return i == v.size();
 }
 int feladat10(const vector<int>& v) {
-    if(v.size() ==1){ return v[0];}
+    if(v.size() == 1){ return v[0];}
     int big = INT_MIN, bigger = INT_MIN + 1;
     for(int x : v) {
         if(x > big) {
