@@ -1,0 +1,31 @@
+Függvény Megszámlálás(t: Tömb[szám]) : szám
+    Megszámlálás := 0
+    Ciklus i := 1-től t.size - ig 1-esével :
+        Ha t[i] >= 5 && t[i] <= 5:
+            Megszámlálás := Megszámlálás + 1
+        Elágazás vége
+    Ciklus vége
+Függvény vége
+
+Függvény Keresés(t: tömb[szám]) : szám
+    Lokális változók:
+        i: szám
+    i := t.size
+    Ciklus amíg i > 0 && t[i] >= 0
+        i := i - 1
+    Ciklus vége
+    Ha i = 0 
+        Hibaüzenet ("nincs negatív szám)
+    Külömben
+        Keresés := t[i]
+    Elágazás vége
+Függvény vége
+
+Függvény SzomszédosEgyenlőSzáma (t: Tömv[szám]) : szám
+	SzomszédosEgyenlőszáma := 0
+	Ciklus i := 2 től t.hossz-ig 1-esével
+		Ha (t[i] = t[i -1] :
+			SzomszédosEgyenlőSzáma := SzomszédosEgyenlőSzáma + 1
+		Elágazás Vége
+	Ciklus Vége
+Függvény Száma
