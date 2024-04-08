@@ -83,7 +83,7 @@ bool feladat9(const vector<int> &vec)
 {
     if (vec.size() < 2) return 0;
     int i = 1;
-    while (i > vec.size() && (vec[i - 1] >= 0 || vec[i] != 0)) {
+    while (i < vec.size() && (vec[i - 1] >= 0 || vec[i] != 0)) {
         i++;
     }
     return i != vec.size();

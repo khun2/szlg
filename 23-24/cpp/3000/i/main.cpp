@@ -10,8 +10,8 @@ int feladat2(const vector<int>& v) {
     return v.size();
 }
 int feladat3(const vector<int>& v) {
-    int i = 1, n = 0;
-    for (int i = 0; i < v.size(); i++) n += (v[i-1] - v[i]);
+    int n = 0;
+    for (int i = 1; i < v.size(); i++) n += (v[i-1] - v[i]);
     return n;
 }
 bool feladat4(const vector<int>& v) {
@@ -64,7 +64,7 @@ int feladat10(const vector<int>& v) {
     for (int x : v) avrg += x;
     avrg /= v.size();
     int closest = v[0];
-    for (int i = 2; i < v.size(); i++) {
+    for (int i = 1; i < v.size(); i++) {
         if (abs(v[i] - avrg) < abs(closest - avrg)) closest = v[i];
     }
     return closest;

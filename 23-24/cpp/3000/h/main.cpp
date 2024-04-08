@@ -25,7 +25,7 @@ int feladat4(const vector<int>& v) {
     for (int x : v) avrg += x;
     avrg /= v.size();
     int closest = v[0];
-    for (int i = 2; i < v.size(); i++) {
+    for (int i = 1; i < v.size(); i++) {
         if (abs(v[i] - avrg) < abs(closest - avrg)) closest = v[i];
     }
     return closest;
@@ -58,12 +58,9 @@ bool feladat9(const vector<int>& v) {
     return i == v.size();
 }
 bool feladat10(const vector<int>& v) {
-    int n = 0 , i = 0;
-    while (i < v.size() && n < 2) {
-        if (sqrt(v[i]) - floor(sqrt(v[i])) == 0) n++;
-        i++;
-    }
-    return n == 2;
+    int i = 0;
+    while (i < v.size() && __builtin_popcount(v[i]) != 1) i++;
+    return i != v.size();
 }
 int minKiv(const vector<int>& v) {
     int n = INT_MAX;
