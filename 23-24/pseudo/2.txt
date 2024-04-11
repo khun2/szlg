@@ -1,0 +1,41 @@
+Válogassuk egy K számtömb negatív és páratlan elemeit
+Adott karakterláncok egy tömbje. Csoportosítsd a karakterláncokat a hosszuk szerint. Mekkorák a csoportok elemszámai?
+Egy számtömbben keressük meg a legkisebb elemet
+egy karakterlistában keressük meg a leghosszabb "a"-val kezdődő karakterlánc helyét! ha nincs az eredmény legyen 0.
+
+Függvény Válogatás(K: tömb[szám]) : vector<szám>
+    Ciklus i := 1-től K.size - ig 1-esével
+        Ha t[i] < 0 && mod(t[i], 2) = 1 :
+            Válogatás.push_back(t[i])
+        Elágazás vége.
+    Ciklus vége.
+Függvény vége.
+
+Függvény Csoportosítás(t: tömb[karakterlánc]) : map[szám, szám]
+    Csoportosítás = új map[szám, szám]
+    Ciklus i := 1-től t.size - ig 1-esével
+        Ha Csoportosítás.kulcsai - ban t[i].hossz :
+            Csoportosítás[t[i].hossz] += 1
+        Különben :
+            Csoportosítás[t[i].hossz] := 1
+        Elágazás vége
+    Ciklus vége
+Függvény vége
+
+Függvény Keresés(t: tömb[egész]) : egész
+    Keresés := t[egész]
+    Ciklus i := 2-től K.size - ig 1-esével
+        Ha t[i] < Keresés:
+            Keresés := t[i]
+        Elágazás vége.
+    Ciklus vége.
+Függvény vége.
+
+Függvény karakterkeresés(t: tömb[karakterlánc]) : egész
+    karakterkeresés := 0
+        Ciklus i := 1-től t.size - ig 1-esével
+            Ha x[1] = 'a' && (karakterkeresés = 0 || t[i].hossz > t[karakterkeresés]):
+                karakterkeresés := i
+            Elágazás vége.
+    Ciklus vége.
+Függvény vége.
