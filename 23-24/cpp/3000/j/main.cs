@@ -34,7 +34,6 @@ namespace osztalyok_23f
         static List<Tanulo> Beolvas(string fajlnev)
         {
             List<Tanulo> lista = new List<Tanulo>();
-
             string[] sorok = File.ReadAllLines(fajlnev);
             foreach (string sor in sorok)
             {
@@ -58,6 +57,7 @@ namespace osztalyok_23f
         }
         static int TöbbMintxTestvérNum(List<Tanulo> l, int x)
         {
+
             int result = 0;
             foreach (Tanulo tanulo in l)
             {
@@ -68,17 +68,15 @@ namespace osztalyok_23f
             }
             return result;
         }
-        static void TöbbMintxTestvérList(List<Tanulo> l, int x)
+        static List<string> TöbbMintxTestvérList(List<Tanulo> l, int x)
         {
-               
-            foreach (Tanulo tanulo in l)
-            {
-                if (tanulo.testverszam > x)
-                {
-
+            List<string> r = new List<string>();
+            foreach (Tanulo tanulo in l) {
+                if (tanulo.testverszam > x) {
+                    r.Add(tanulo.nev);
                 }
             }
-
+            return r;
         }
         
         static void Main(string[] args)
@@ -90,8 +88,23 @@ namespace osztalyok_23f
             Console.WriteLine(Adott_nemu_tanulok_szama(lista, "F"));
             Console.WriteLine("3. Hány lány tanul az osztályban?");
             Console.WriteLine(Adott_nemu_tanulok_szama(lista, "L"));
-            Console.WriteLine("Hány olyan diák van, akiknek több mint 1 testvére van?");
-            System.Console.WriteLine();
+            Console.WriteLine("4. Hány olyan diák van, akiknek több mint 1 testvére van?");
+            Console.WriteLine(TöbbMintxTestvérNum, 1);
+            Console.WriteLine("5. Gyűjtse ki azon diákok nevét, akiknek több mint 1 testvérük van!");
+            List<string> f3 = TöbbMintxTestvérList(lista, 1);
+            foreach (string x in f3)
+            {
+                Console.WriteLine(x);
+            }
+            Console.WriteLine("6. Hány olyan diák van, akiknek több mint 2 testvére van?");
+            Console.WriteLine(TöbbMintxTestvérNum, 2);
+            Console.WriteLine("7. Gyűjtse ki azon diákok nevét, akiknek több mint 1 testvérük van!");
+            List<string> f7 = TöbbMintxTestvérList(lista, 2);
+            foreach (string x in f7)
+            {
+                Console.WriteLine(x);
+            }
+            
         }
     }
 }
