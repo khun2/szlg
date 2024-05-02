@@ -81,6 +81,33 @@ namespace j
             int eng = input.First(x => x.name == n).english;
             return input.Where(x => x.english == eng).Select(x => x.name).ToArray();
         }
+        static string Lang2Comparison (List<Tanulo> input, string l1, string l2) 
+        {
+            int n = 0, m = 0;
+            foreach (Tanulo tanulo in input)
+            {
+                if (tanulo.lang2 == l1) n++;
+                else if (tanulo.lang2 == l2) m++;
+            }
+            return n > m ? n : m;
+        }
+        static string[] SameLang2 (List<Tanulo> input, string n)
+        {
+            int l2 = input.First(x => x.name == n).lang2;
+            return input.Where(x => x.lang2 == l2).Select(x => x.name).ToArray();
+        }
+        static int SecondLangs (List<Tanulo> input)
+        {
+            List <string> langs = new List<string>;
+            foreach (Tanulo tanulo in input)
+            {
+                if(!(tanulo.lang2 in langs))
+                {
+                    langs.Add(tanulo.lang2);
+                }
+            }
+            return langs.Count();
+        }
         static void Main(string[] args)
         {
             
