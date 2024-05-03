@@ -93,6 +93,7 @@ namespace j
         }
         static string[] SameLang2 (List<Tanulo> input, string n)
         {
+            //Console.WriteLine(n); errort dob aha ékezetet tartalmaz a megadott név i have no clue why
             string l2 = input.First(x => x.name == n).lang2;
             return input.Where(x => x.lang2 == l2).Select(x => x.name).ToArray();
         }
@@ -107,6 +108,79 @@ namespace j
                 }
             }
             return langs.Count();
+        }
+        static IEnumerable<IGrouping<string, Tanulo>>? MathGroups(List<Tanulo> input) 
+        {
+            var groups = input.GroupBy(x => x.csop);  
+            return groups;
+        }
+        static IEnumerable<IGrouping<int, Tanulo>>? EngGroups(List<Tanulo> input) 
+        {
+            var groups = input.GroupBy(x => x.english);  
+            return groups;
+        }
+        static IEnumerable<IGrouping<int, Tanulo>>? FamGroups(List<Tanulo> input) 
+        {
+            var groups = input.GroupBy(x => x.family);  
+            return groups;
+        }
+        //there is probably a better way to do this
+        static int SibNumTop(List<Tanulo> input)
+        {
+            Dictionary<int, int> top = new Dictionary<int, int>(); 
+            foreach (Tanulo tanulo in input)
+            {
+                if (top.ContainsKey(tanulo.siblingum))
+                {
+                    top[tanulo.siblingum]++;
+                }
+                else
+                {
+                    top[tanulo.siblingum] = 1;
+                }
+            }
+            return top.Keys.Max();
+        }
+        //i give up on giving good names to my functions as i am running out of time and am tired 
+        static Dictionary<int, int> task38(List<Tanulo> input)
+        {
+            Dictionary<int, int> dict = new Dictionary<int, int>(); 
+            foreach (Tanulo tanulo in input)
+            {
+                if (dict.ContainsKey(tanulo.english))
+                {
+                    dict[tanulo.english]+=tanulo.siblingum;
+                }
+                else
+                {
+                    dict[tanulo.english] = tanulo.siblingum;
+                }
+            }
+            return dict;
+        }
+        static List<Tuple<string, double>> task39(List<Tanulo> input)
+        {
+            Dictionary<string, List<int>> dict = new Dictionary<string, List<int>>();
+            List<Tuple<string, double>> Out = new List<Tuple<string, double>>(); 
+
+            foreach (Tanulo tanulo in input)
+            {
+                if (dict.ContainsKey(tanulo.lang2))
+                {
+                    dict[tanulo.lang2].Add(tanulo.siblingum);
+                }
+                else
+                {
+                    dict[tanulo.lang2] = new List<int> { tanulo.siblingum };
+                }
+            }
+            foreach (var asd in dict)
+            {
+                string lang2 = asd.Key;
+                List<int> siblingCounts = asd.Value;
+                Out.Add(new Tuple<string, double>(lang2, siblingCounts.Average()));
+            }
+            return Out;
         }
         static void Main(string[] args)
         {
@@ -205,11 +279,53 @@ namespace j
             Console.WriteLine($"32. Kérjen be a felhasználótól egy nyelvet és írja ki, az adott nyelvet tanulók névsorát!");
             Console.Write("Adjon meg egy nevet"); 
             string f32;
-            try{
-                f32 = Console.ReadLine();
-            }
-            catch (Exception e) { Console.WriteLine("Nem adott meg nevet");}
+            f32 = Console.ReadLine();
             strings = SameLang2(input, f32);
+            foreach (string x in strings)
+            {
+                Console.WriteLine(x);
+            }
+            Console.WriteLine($"33. Hány különböző második idegen nyelvet lehet tanulni?\n{SecondLangs(input)}");
+            Console.WriteLine($"34. Add meg a különböző matematika/informatika szerinti csoportbontások neveit!");
+            var matGroups = MathGroups(input);
+            foreach (var group in matGroups)
+            {
+                Console.WriteLine($"\nCsoport: {group.Key}");
+                foreach (var number in group)
+                {
+                    Console.WriteLine(number.name);
+                }
+            } 
+            Console.WriteLine($"35. Melyik angol nyelvi csoportba hányan járnak?");
+            var engGroups = EngGroups(input);
+            foreach (var group in engGroups)
+            {
+                Console.WriteLine($"{group.Key}: {group.Count()}");
+            }
+            Console.WriteLine($"36. Csoportosítsuk az együttlakók száma szerint a diákokat! Melyik csoportban hányan vannak?");
+            var famGroups = FamGroups(input);
+            foreach (var group in famGroups)
+            {
+                Console.WriteLine($"{group.Key}: {group.Count()}");
+            }
+            Console.WriteLine($"37. Melyik a leggyakrabban előforduló testvérszám?\n{SibNumTop(input)}");
+            Console.WriteLine($"38. Add meg angolcsoportonként, hogy melyik csoportban hány testvére van összesen az oda járó embereknek!");
+            Dictionary<int, int> t38 = task38(input);
+            foreach (var group in t38)
+            {
+                Console.WriteLine($"{group.Key}: {group.Value}");
+            }
+            Console.WriteLine($"39. Add meg második nyelvi csoportonként, hogy melyik csoportban átlagosan hány testvére van az oda járó embereknek!");
+            List<Tuple<string, double>> t39 = task39(input);
+            foreach (Tuple<string,double> asd in t39)
+            {
+                Console.WriteLine($"{asd.Item1}: {asd.Item2}");
+            }
+            Console.WriteLine($"40. Add meg angolcsoportonként a névsorban első és utolsó diák nevét!");
+            foreach (var group in engGroups)
+            {
+                
+            }
         }
     }
 }
