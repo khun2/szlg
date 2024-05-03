@@ -89,19 +89,19 @@ namespace j
                 if (tanulo.lang2 == l1) n++;
                 else if (tanulo.lang2 == l2) m++;
             }
-            return n > m ? n : m;
+            return n > m ? l1 : l2;
         }
         static string[] SameLang2 (List<Tanulo> input, string n)
         {
-            int l2 = input.First(x => x.name == n).lang2;
+            string l2 = input.First(x => x.name == n).lang2;
             return input.Where(x => x.lang2 == l2).Select(x => x.name).ToArray();
         }
         static int SecondLangs (List<Tanulo> input)
         {
-            List <string> langs = new List<string>;
+            List <string> langs = new List<string>();
             foreach (Tanulo tanulo in input)
             {
-                if(!(tanulo.lang2 in langs))
+                if (!langs.Contains(tanulo.lang2))
                 {
                     langs.Add(tanulo.lang2);
                 }
@@ -201,7 +201,15 @@ namespace j
             {
                 Console.WriteLine(x);
             }
-            
+            Console.WriteLine($"31. A spanyol vagy a német nyelvet tanulják-e többben az osztáyban?\n{Lang2Comparison(input, "német", "spanyol")}");
+            Console.WriteLine($"32. Kérjen be a felhasználótól egy nyelvet és írja ki, az adott nyelvet tanulók névsorát!");
+            Console.Write("Adjon meg egy nevet"); 
+            string f32;
+            try{
+                f32 = Console.ReadLine();
+            }
+            catch (Exception e) { Console.WriteLine("Nem adott meg nevet");}
+            strings = SameLang2(input, f32);
         }
     }
 }
