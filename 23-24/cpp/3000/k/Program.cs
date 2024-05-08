@@ -37,14 +37,45 @@ namespace osztalyok_23f
             return list;
         }
         #region functions
-
+        static Dictionary<string,int> CountryCount(List<Foci> input)
+        {
+            Dictionary<string,int> dict = new Dictionary<string,int>();
+            foreach(Foci foci in input)
+            {
+                if(dict.ContainsKey(foci.country)) dict[foci.country]++;
+                else dict[foci.country] = 1;
+                if(dict.ContainsKey(foci.location)) dict[foci.location]++;
+                else dict[foci.location] = 1;
+            }
+            return (Dictionary<string, int>)dict.OrderByDescending(x => x.Value);
+        }
+        static List<string> Locations(List<Foci> input)
+        {
+            List<string> list = new List<string>();
+            foreach(Foci foci in input)
+            {
+                if(!list.Contains(foci.location)) {list.Add(foci.location);
+                    Console.WriteLine(foci.location);
+                }
+            }
+            return list;
+        }
+        static List<string> Countries(List<Foci> input)
+        {
+            List<string> list = new List<string>();
+            foreach(Foci foci in input)
+            {
+                if(!list.Contains(foci.country)) list.Add(foci.country);
+            }
+            return list;
+        }
         #endregion
         static void Main(string[] args)
         {
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
             List<Foci> input = Beolvas("input.txt");
-            
+
             Console.WriteLine("1. Írja ki Magyarország által elért helyezéseket. A kiírásban jelenjen meg a vb éve és helyszíne is!");
             Foci[] task = input.Where(x => x.country == "Magyarország").ToArray();
             foreach (Foci foci in task)
@@ -272,17 +303,52 @@ namespace osztalyok_23f
 
             Console.WriteLine("60. Mely csapat(ok) nyert(ek) a legtöbbször vb-t? A csapat neve mellett a vb gyözelmmek számát is írja ki!");
             var t60 = input.Where(x => x.placement == 1).GroupBy(x => x.country).OrderByDescending(x => x.Count()).ToArray();
-            Console.WriteLine(t60[0] + ": " + t60[0].Count());
-
+            Console.WriteLine(t60[0].Key + ": " + t60[0].Count());
+            int i = 1;
+            while (i < t60.Length && t60[i].Count() == t60[0].Count())
+            {
+                Console.WriteLine(t60[i].Key + ": " + t60[i].Count());
+                i++;
+            }
             Console.WriteLine("61. Mely ország(ok) rendezett/rendeztek legtöbbször vb-t? A csapat neve mellett a vb-k számát is írja ki!");
+            // TODO: fix this
+            /*
+            t60 = input.GroupBy(x => x.location).OrderByDescending(x => x.Count()).ToArray();
+            Console.WriteLine(t60[0].Key + ": " + t60[0].Count());
+            i = 1;
+            while (i < t60.Length && t60[i].Count() == t60[0].Count())
+            {
+                Console.WriteLine(t60[i].Key + ": " + t60[i].Count());
+                i++;
+            }
+            */
             Console.WriteLine("62. Mely csapat(ok) kapott ki a legtöbbször a döntőben? A csapat neve mellett a vereségek számát is írja ki!");
-            
+            t60 = input.Where(x => x.placement == 2).GroupBy(x => x.country).OrderByDescending(x => x.Count()).ToArray();
+            Console.WriteLine(t60[0].Key + ": " + t60[0].Count());
+            i = 1;
+            while (i < t60.Length && t60[i].Count() == t60[0].Count())
+            {
+                Console.WriteLine(t60[i].Key + ": " + t60[i].Count());
+                i++;
+            }
+
             Console.WriteLine("63. Mely ország hányszor szerepel az input fájlban?");
+            var t63 = CountryCount(input);
+            foreach (var group in t63) 
+                Console.WriteLine(group.Key +  ": " + group.Value);
 
             Console.WriteLine("64. Add meg a különböző helyszíneket, ahol világbajnokság zajlott!");
+            List<string> t64 = Locations(input);
+            foreach (string str in t64)
+                Console.WriteLine(str);
             Console.WriteLine("65. Add meg a különböző országokat, akik az input fájl szerint mérkőzéseket játszottak!");
-            Console.WriteLine("66. Melyik évből származik a legtöbb adat az adatok között, a legelső évszámtól napjainkig?");
+            t64 = Countries(input);
+            foreach (string str in t64)
+                Console.WriteLine(str);
+                
+            Console.WriteLine($"66. Melyik évből származik a legtöbb adat az adatok között, a legelső évszámtól napjainkig?\n{input.GroupBy(x => x.year).OrderByDescending(x => x.Count()).First().First().year}");
             Console.WriteLine("67. Melyik évtizedből származik a legtöbb adat az adatok között, a 30-as évektől napjainkig? (30-as évek, 40-es évek, stb.)");
+
             Console.WriteLine("68. Add meg, hogy a lehetséges helyezések közül melyikhez hány adat kapcsolódik az input fájlban? (1. helyezésből ... db, 2. helyezésből ... db, stb.) A kiírás legyen helyezés szerint növekvő sorrendben!");
             
             Console.WriteLine("69. A különböző országok pontversenyeznek is: Az első helyezés 6 pontot ér, a második 5-öt, ... , az hatodik 1 pontot, minden további helyezés pedig 0 pontot ér. Add meg, hogy mely országnak hány pontja van így!");
