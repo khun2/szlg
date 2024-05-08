@@ -44,7 +44,7 @@ namespace osztalyok_23f
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
             List<Foci> input = Beolvas("input.txt");
-            /*
+            
             Console.WriteLine("1. Írja ki Magyarország által elért helyezéseket. A kiírásban jelenjen meg a vb éve és helyszíne is!");
             Foci[] task = input.Where(x => x.country == "Magyarország").ToArray();
             foreach (Foci foci in task)
@@ -212,8 +212,7 @@ namespace osztalyok_23f
             task = input.Where(x => x.location == s && x.placement == 1).ToArray();
             foreach (Foci foci in task)
                 Console.WriteLine($"{foci.year}, {foci.country}: {foci.placement}");
-            */
-            Foci[] task;
+            
             Console.WriteLine("50. Melyik csapat nyerte a vb-t, amikor Magyarország dobogós helyzést ért el? A győzetes csapatok neve mellett az évszámot is írja ki!");
             int[] years =  input.Where(x => x.country == "Magyarország" && x.placement >= 3).Select(x => x.year).ToArray();
             task = input.Where(x => years.Contains(x.year) && x.placement == 1).ToArray();
@@ -229,9 +228,7 @@ namespace osztalyok_23f
             task = input.Where(x => years.Contains(x.year) && x.placement == 1).ToArray();
             foreach (Foci foci in task)
                 Console.WriteLine($"{foci.year}: {foci.country}");  
-            /*
-            string? s;
-
+            
             Console.WriteLine("53. Kikkel játszott döntőt Magyarország? Az ellenfél csapat neve mellett az évszámot is írja ki!");
             years =  input.Where(x => x.country == "Magyarország" && x.placement >= 2).Select(x => x.year).ToArray();
             task = input.Where(x => years.Contains(x.year) && x.placement >= 2 && x.country != "Magyarország").ToArray();
@@ -272,7 +269,11 @@ namespace osztalyok_23f
             {
                 Console.WriteLine(group.First().location + ": " + group.Count());
             }
+
             Console.WriteLine("60. Mely csapat(ok) nyert(ek) a legtöbbször vb-t? A csapat neve mellett a vb gyözelmmek számát is írja ki!");
+            var t60 = input.Where(x => x.placement == 1).GroupBy(x => x.country).OrderByDescending(x => x.Count()).ToArray();
+            Console.WriteLine(t60[0] + ": " + t60[0].Count());
+
             Console.WriteLine("61. Mely ország(ok) rendezett/rendeztek legtöbbször vb-t? A csapat neve mellett a vb-k számát is írja ki!");
             Console.WriteLine("62. Mely csapat(ok) kapott ki a legtöbbször a döntőben? A csapat neve mellett a vereségek számát is írja ki!");
             
@@ -286,7 +287,7 @@ namespace osztalyok_23f
             
             Console.WriteLine("69. A különböző országok pontversenyeznek is: Az első helyezés 6 pontot ér, a második 5-öt, ... , az hatodik 1 pontot, minden további helyezés pedig 0 pontot ér. Add meg, hogy mely országnak hány pontja van így!");
             Console.WriteLine("70. Mely országnak van a legtöbb pontja a fent leírt pontversenyben?");
-            */
+            
         }
     }
 }
