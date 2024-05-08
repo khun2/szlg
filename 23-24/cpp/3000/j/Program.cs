@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using System.Text.RegularExpressions;
 
 namespace j
 {
@@ -14,17 +16,17 @@ namespace j
             public int code;
             public string name;
             public string csop;
-            public int english;
+            public int eng;
             public string lang2;
             public char gender;
             public int family;
             public int siblingum;
-            public Tanulo(int code, string name, string csop, int english, string lang2, char gender, int family, int siblingum)
+            public Tanulo(int code, string name, string csop, int eng, string lang2, char gender, int family, int siblingum)
             {
                 this.code = code;
                 this.name = name;
                 this.csop = csop;
-                this.english = english;
+                this.eng = eng;
                 this.lang2 = lang2;
                 this.gender = gender;
                 this.family = family;
@@ -74,12 +76,12 @@ namespace j
         }
         static string[] GenderAndEngArr (List<Tanulo> input, char gender, int eng1, int eng2)
         {
-            return input.Where(x => x.gender == gender && (x.english == eng1 || x.english == eng2)).Select(x => x.name).ToArray();
+            return input.Where(x => x.gender == gender && (x.eng == eng1 || x.eng == eng2)).Select(x => x.name).ToArray();
         }
         static string[] SameEnglish (List<Tanulo> input, string n)
         {
-            int eng = input.First(x => x.name == n).english;
-            return input.Where(x => x.english == eng).Select(x => x.name).ToArray();
+            int eng = input.First(x => x.name == n).eng;
+            return input.Where(x => x.eng == eng).Select(x => x.name).ToArray();
         }
         static string Lang2Comparison (List<Tanulo> input, string l1, string l2) 
         {
@@ -93,9 +95,7 @@ namespace j
         }
         static string[] SameLang2 (List<Tanulo> input, string n)
         {
-            //Console.WriteLine(n); errort dob aha ékezetet tartalmaz a megadott név i have no clue why
-            string l2 = input.First(x => x.name == n).lang2;
-            return input.Where(x => x.lang2 == l2).Select(x => x.name).ToArray();
+            return input.Where(x => x.lang2 == n).Select(x => x.name).ToArray();
         }
         static int SecondLangs (List<Tanulo> input)
         {
@@ -116,7 +116,7 @@ namespace j
         }
         static IEnumerable<IGrouping<int, Tanulo>>? EngGroups(List<Tanulo> input) 
         {
-            var groups = input.GroupBy(x => x.english);  
+            var groups = input.GroupBy(x => x.eng);  
             return groups;
         }
         static IEnumerable<IGrouping<int, Tanulo>>? FamGroups(List<Tanulo> input) 
@@ -141,24 +141,24 @@ namespace j
             }
             return top.Keys.Max();
         }
-        //i give up on giving good names to my functions as i am running out of time and am tired 
-        static Dictionary<int, int> task38(List<Tanulo> input)
+        //i give up on giving good names to my functions as i am running out of time and am tired <- things said moments before i gave up on submitting in time
+        static Dictionary<int, int> Task38(List<Tanulo> input)
         {
             Dictionary<int, int> dict = new Dictionary<int, int>(); 
             foreach (Tanulo tanulo in input)
             {
-                if (dict.ContainsKey(tanulo.english))
+                if (dict.ContainsKey(tanulo.eng))
                 {
-                    dict[tanulo.english]+=tanulo.siblingum;
+                    dict[tanulo.eng]+=tanulo.siblingum;
                 }
                 else
                 {
-                    dict[tanulo.english] = tanulo.siblingum;
+                    dict[tanulo.eng] = tanulo.siblingum;
                 }
             }
             return dict;
         }
-        static List<Tuple<string, double>> task39(List<Tanulo> input)
+        static List<Tuple<string, double>> Task39(List<Tanulo> input)
         {
             Dictionary<string, List<int>> dict = new Dictionary<string, List<int>>();
             List<Tuple<string, double>> Out = new List<Tuple<string, double>>(); 
@@ -181,6 +181,18 @@ namespace j
                 Out.Add(new Tuple<string, double>(lang2, siblingCounts.Average()));
             }
             return Out;
+        }
+        static List<Tuple<Tanulo, Tanulo>> Task40(List<Tanulo> input) 
+        {
+            List<Tuple<Tanulo,Tanulo>> FirstnLast = new List<Tuple<Tanulo, Tanulo>>();
+            var grouped = input.GroupBy(x => x.eng);
+            foreach (var group in grouped)
+            {
+                group.OrderBy(x => x.eng);
+                FirstnLast.Add(new Tuple<Tanulo, Tanulo>(group.First(), group.Last()));
+            }
+            return FirstnLast;
+            //after procrasinating for 5 days i did it in 10 minutes lol
         }
         static void Main(string[] args)
         {
@@ -215,8 +227,8 @@ namespace j
             {
                 Console.WriteLine(x);
             }
-            Console.WriteLine($"10. Hány diák tanul az egyes angol csoportban?\n{input.Count(x => x.english== 1)}");
-            Console.WriteLine($"11. Hány diák tanul a kettes angol csoportban?\n{input.Count(x => x.english== 2)}");
+            Console.WriteLine($"10. Hány diák tanul az egyes angol csoportban?\n{input.Count(x => x.eng== 1)}");
+            Console.WriteLine($"11. Hány diák tanul a kettes angol csoportban?\n{input.Count(x => x.eng== 2)}");
             Console.WriteLine($"12. Hány diák tanul az alfa matematika csoportban?\n{input.Count(x => x.csop == "alfa")}");
             Console.WriteLine($"13. Hány diák tanul az beta matematika csoportban?\n{input.Count(x => x.csop == "beta")}");
             Console.WriteLine($"14. Hány lány tanul az alfa matematika csoportban?\n{input.Count(x => x.csop == "alfa" && x.gender == 'L')}");
@@ -235,7 +247,7 @@ namespace j
                 Console.WriteLine(x);
             }
             Console.WriteLine($"24. Gyűjtse ki azon fiú diákok nevét, akik a hármas vagy négyes angol csoportban vannak és 0 vagy 2 testvérük van!");
-            strings = input.Where(x => x.gender == 'F' && (x.english == 3 || x.english == 4) && (x.siblingum == 0 || x.siblingum == 2)).Select(x => x.name).ToArray();
+            strings = input.Where(x => x.gender == 'F' && (x.eng == 3 || x.eng == 4) && (x.siblingum == 0 || x.siblingum == 2)).Select(x => x.name).ToArray();
             foreach (string x in strings)
             {
                 Console.WriteLine(x);
@@ -277,9 +289,12 @@ namespace j
             }
             Console.WriteLine($"31. A spanyol vagy a német nyelvet tanulják-e többben az osztáyban?\n{Lang2Comparison(input, "német", "spanyol")}");
             Console.WriteLine($"32. Kérjen be a felhasználótól egy nyelvet és írja ki, az adott nyelvet tanulók névsorát!");
-            Console.Write("Adjon meg egy nevet"); 
             string f32;
+            f32 = "német";
+            /* this causes weird bugs
+            Console.Write("Adjon meg egy nevet"); 
             f32 = Console.ReadLine();
+            */
             strings = SameLang2(input, f32);
             foreach (string x in strings)
             {
@@ -310,21 +325,22 @@ namespace j
             }
             Console.WriteLine($"37. Melyik a leggyakrabban előforduló testvérszám?\n{SibNumTop(input)}");
             Console.WriteLine($"38. Add meg angolcsoportonként, hogy melyik csoportban hány testvére van összesen az oda járó embereknek!");
-            Dictionary<int, int> t38 = task38(input);
+            Dictionary<int, int> t38 = Task38(input);
             foreach (var group in t38)
             {
                 Console.WriteLine($"{group.Key}: {group.Value}");
             }
             Console.WriteLine($"39. Add meg második nyelvi csoportonként, hogy melyik csoportban átlagosan hány testvére van az oda járó embereknek!");
-            List<Tuple<string, double>> t39 = task39(input);
+            List<Tuple<string, double>> t39 = Task39(input);
             foreach (Tuple<string,double> asd in t39)
             {
                 Console.WriteLine($"{asd.Item1}: {asd.Item2}");
             }
             Console.WriteLine($"40. Add meg angolcsoportonként a névsorban első és utolsó diák nevét!");
-            foreach (var group in engGroups)
+            List<Tuple<Tanulo, Tanulo>> t40 = Task40(input);
+            foreach (Tuple<Tanulo, Tanulo> x in t40)
             {
-                
+                Console.WriteLine($"{x.Item1.eng}: {x.Item1.name}, {x.Item2.name}");
             }
         }
     }
