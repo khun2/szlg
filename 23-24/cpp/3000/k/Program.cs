@@ -322,9 +322,7 @@ namespace osztalyok_23f
                 Console.WriteLine(t60[i].Key + ": " + t60[i].Count());
                 i++;
             }
-            Console.WriteLine("61. Mely ország(ok) rendezett/rendeztek legtöbbször vb-t? A csapat neve mellett a vb-k számát is írja ki!");
-            // TODO: fix this
-            /*
+            Console.WriteLine("61. Mely ország(ok) rendezett/rendeztek legtöbbször vb-t? A csapat neve mellett a vb-k számát is írja ki!");            
             t60 = input.GroupBy(x => x.location).OrderByDescending(x => x.Count()).ToArray();
             Console.WriteLine(t60[0].Key + ": " + t60[0].Count());
             i = 1;
@@ -333,7 +331,7 @@ namespace osztalyok_23f
                 Console.WriteLine(t60[i].Key + ": " + t60[i].Count());
                 i++;
             }
-            */
+            
             Console.WriteLine("62. Mely csapat(ok) kapott ki a legtöbbször a döntőben? A csapat neve mellett a vereségek számát is írja ki!");
             t60 = input.Where(x => x.placement == 2).GroupBy(x => x.country).OrderByDescending(x => x.Count()).ToArray();
             Console.WriteLine(t60[0].Key + ": " + t60[0].Count());
