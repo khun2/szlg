@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,7 +48,7 @@ namespace osztalyok_23f
                 if(dict.ContainsKey(foci.location)) dict[foci.location]++;
                 else dict[foci.location] = 1;
             }
-            return (Dictionary<string, int>)dict.OrderByDescending(x => x.Value);
+            return dict;
         }
         static List<string> Locations(List<Foci> input)
         {
@@ -68,6 +69,17 @@ namespace osztalyok_23f
                 if(!list.Contains(foci.country)) list.Add(foci.country);
             }
             return list;
+        }
+        static Dictionary<string,int> Pontverseny(List<Foci> input)
+        {
+            Dictionary<string,int> dict = new Dictionary<string,int>();
+            foreach(Foci foci in input)
+            {
+                if (foci.placement >= 7) continue;
+                if(dict.ContainsKey(foci.country)) dict[foci.country] += 7 - foci.placement;
+                else dict[foci.country] = 7 - foci.placement;
+            }
+            return dict;
         }
         #endregion
         static void Main(string[] args)
@@ -346,13 +358,23 @@ namespace osztalyok_23f
             foreach (string str in t64)
                 Console.WriteLine(str);
                 
-            Console.WriteLine($"66. Melyik évből származik a legtöbb adat az adatok között, a legelső évszámtól napjainkig?\n{input.GroupBy(x => x.year).OrderByDescending(x => x.Count()).First().First().year}");
-            Console.WriteLine("67. Melyik évtizedből származik a legtöbb adat az adatok között, a 30-as évektől napjainkig? (30-as évek, 40-es évek, stb.)");
+            Console.WriteLine($"66. Melyik évből származik a legtöbb adat az adatok között, a legelső évszámtól napjainkig?\n{input.GroupBy(x => x.year).OrderByDescending(x => x.Count()).First().Key}");
+            Console.WriteLine($"67. Melyik évtizedből származik a legtöbb adat az adatok között, a 30-as évektől napjainkig? (30-as évek, 40-es évek, stb.)\n{input.GroupBy(x => (x.year / 10)).OrderByDescending(x =>x.Count()).First().Key * 10}");
 
             Console.WriteLine("68. Add meg, hogy a lehetséges helyezések közül melyikhez hány adat kapcsolódik az input fájlban? (1. helyezésből ... db, 2. helyezésből ... db, stb.) A kiírás legyen helyezés szerint növekvő sorrendben!");
-            
+            var helyezések = input.GroupBy(x => x.placement).OrderByDescending(x => x.Count());
+            foreach(var x in helyezések)
+            {
+                Console.WriteLine(x.Key + ": " + x.Count());
+            }
+
             Console.WriteLine("69. A különböző országok pontversenyeznek is: Az első helyezés 6 pontot ér, a második 5-öt, ... , az hatodik 1 pontot, minden további helyezés pedig 0 pontot ér. Add meg, hogy mely országnak hány pontja van így!");
-            Console.WriteLine("70. Mely országnak van a legtöbb pontja a fent leírt pontversenyben?");
+            Dictionary<string,int> pontverseny = Pontverseny(input).OrderByDescending(x =>x.Value).ToDictionary();
+            foreach(var x in pontverseny)
+            {
+                Console.WriteLine(x.Key + ": " + x.Value);
+            }
+            Console.WriteLine($"70. Mely országnak van a legtöbb pontja a fent leírt pontversenyben?\n{pontverseny.First().Key}");
             
         }
     }
