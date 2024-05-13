@@ -91,6 +91,7 @@ namespace j
                 if (tanulo.lang2 == l1) n++;
                 else if (tanulo.lang2 == l2) m++;
             }
+            if (n == m) return "Egyenlő számú tanulója van a két nyelvnek";
             return n > m ? l1 : l2;
         }
         static string[] SameLang2 (List<Tanulo> input, string n)
@@ -139,7 +140,7 @@ namespace j
                     top[tanulo.siblingum] = 1;
                 }
             }
-            return top.Keys.Max();
+            return top.OrderBy(x => x.Value).First().Key;
         }
         //i give up on giving good names to my functions as i am running out of time and am tired <- things said moments before i gave up on submitting in time
         static Dictionary<int, int> Task38(List<Tanulo> input)
@@ -196,7 +197,9 @@ namespace j
         }
         static void Main(string[] args)
         {
-            
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
+
             List<Tanulo> input = Input("input.txt");
             Console.WriteLine("1. Hány diák tanul az osztályban?");
             Console.WriteLine(Count(input));
@@ -222,7 +225,7 @@ namespace j
             }
             Console.WriteLine($"8. Hány olyan diák van, akik a 2. idegen nyelvként a németet tanulják? \n {Lang2Count(input, "német")}");
             Console.WriteLine($"9. Gyűjtse ki azon fiú diákok nevét, akik a 2. idegen nyelvként a németet tanulják!");
-            strings = GenderAndLang2Arr(input, 'g', "német");
+            strings = GenderAndLang2Arr(input, 'F', "német");
             foreach (string x in strings)
             {
                 Console.WriteLine(x);
@@ -291,10 +294,7 @@ namespace j
             Console.WriteLine($"32. Kérjen be a felhasználótól egy nyelvet és írja ki, az adott nyelvet tanulók névsorát!");
             string f32;
             f32 = "német";
-            /* this causes weird bugs
-            Console.Write("Adjon meg egy nevet"); 
-            f32 = Console.ReadLine();
-            */
+            //azóta rájöttem hogy az encoding-al volt a gond
             strings = SameLang2(input, f32);
             foreach (string x in strings)
             {
