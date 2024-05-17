@@ -293,8 +293,7 @@ namespace j
             Console.WriteLine($"31. A spanyol vagy a német nyelvet tanulják-e többben az osztáyban?\n{Lang2Comparison(input, "német", "spanyol")}");
             Console.WriteLine($"32. Kérjen be a felhasználótól egy nyelvet és írja ki, az adott nyelvet tanulók névsorát!");
             string f32;
-            f32 = "német";
-            //azóta rájöttem hogy az encoding-al volt a gond
+            f32 = Console.ReadLine();
             strings = SameLang2(input, f32);
             foreach (string x in strings)
             {
