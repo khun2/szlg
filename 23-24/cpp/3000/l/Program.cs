@@ -17,8 +17,6 @@ namespace l
             public string city;
             public string country;
             public int films;
-
-            // KONSTRUKTOR = onnan ismerszik meg, hogy a függvény neve megegyezik a class nevével, illetve nincs visszatérési típus (void se!)
             public Actor(string name, string gender, string birth, string city, string country, string films)
             {
                 this.name = name;
