@@ -110,37 +110,20 @@ namespace j
             }
             return langs.Count();
         }
-        static IEnumerable<IGrouping<string, Tanulo>>? MathGroups(List<Tanulo> input) 
+        static IEnumerable<IGrouping<string, Tanulo>> MathGroups(List<Tanulo> input) 
         {
             var groups = input.GroupBy(x => x.csop);  
             return groups;
         }
-        static IEnumerable<IGrouping<int, Tanulo>>? EngGroups(List<Tanulo> input) 
+        static IEnumerable<IGrouping<int, Tanulo>> EngGroups(List<Tanulo> input) 
         {
             var groups = input.GroupBy(x => x.eng);  
             return groups;
         }
-        static IEnumerable<IGrouping<int, Tanulo>>? FamGroups(List<Tanulo> input) 
+        static IEnumerable<IGrouping<int, Tanulo>> FamGroups(List<Tanulo> input) 
         {
             var groups = input.GroupBy(x => x.family);  
             return groups;
-        }
-        //there is probably a better way to do this
-        static int SibNumTop(List<Tanulo> input)
-        {
-            Dictionary<int, int> top = new Dictionary<int, int>(); 
-            foreach (Tanulo tanulo in input)
-            {
-                if (top.ContainsKey(tanulo.siblingum))
-                {
-                    top[tanulo.siblingum]++;
-                }
-                else
-                {
-                    top[tanulo.siblingum] = 1;
-                }
-            }
-            return top.OrderBy(x => x.Value).First().Key;
         }
         //i give up on giving good names to my functions as i am running out of time and am tired <- things said moments before i gave up on submitting in time
         static Dictionary<int, int> Task38(List<Tanulo> input)
@@ -301,14 +284,10 @@ namespace j
             }
             Console.WriteLine($"33. Hány különböző második idegen nyelvet lehet tanulni?\n{SecondLangs(input)}");
             Console.WriteLine($"34. Add meg a különböző matematika/informatika szerinti csoportbontások neveit!");
-            var matGroups = MathGroups(input);
+            var matGroups = MathGroups(input).Select(x =>x.Key);
             foreach (var group in matGroups)
             {
-                Console.WriteLine($"\nCsoport: {group.Key}");
-                foreach (var number in group)
-                {
-                    Console.WriteLine(number.name);
-                }
+                Console.WriteLine(group);
             } 
             Console.WriteLine($"35. Melyik angol nyelvi csoportba hányan járnak?");
             var engGroups = EngGroups(input);
@@ -322,7 +301,7 @@ namespace j
             {
                 Console.WriteLine($"{group.Key}: {group.Count()}");
             }
-            Console.WriteLine($"37. Melyik a leggyakrabban előforduló testvérszám?\n{SibNumTop(input)}");
+            Console.WriteLine($"37. Melyik a leggyakrabban előforduló testvérszám?\n{input.GroupBy(x => x.siblingum).OrderByDescending(x => x.Count()).First().Key}");
             Console.WriteLine($"38. Add meg angolcsoportonként, hogy melyik csoportban hány testvére van összesen az oda járó embereknek!");
             Dictionary<int, int> t38 = Task38(input);
             foreach (var group in t38)

@@ -119,7 +119,7 @@ namespace osztalyok_23f
                 Console.WriteLine($"{foci.year}, {foci.location}: {foci.placement}");
             } 
             Console.WriteLine("6. A program olvasson be egy csapat nevet és írja ki a csapat álta elért helyezéseket. A kiírásban jelenjen meg a vb éve és helyszíne is!");
-            string? s = Console.ReadLine();
+            string s = Console.ReadLine();
             task = input.Where(x => x.country == s).ToArray();
             foreach (Foci foci in task)
             {
@@ -161,7 +161,7 @@ namespace osztalyok_23f
             Console.WriteLine(input.Where(x => x.country == s).Count());
 
             Console.WriteLine($"19. Melyik csapat nyert 1930-ban?");
-            Foci? nullFoci = input.Where(x => x.year == 1930).SingleOrDefault(x => x.placement == 1);
+            Foci nullFoci = input.Where(x => x.year == 1930).SingleOrDefault(x => x.placement == 1);
             if (nullFoci != null) Console.WriteLine(nullFoci.country);
             else Console.WriteLine("Nem volt az évben vb vagy Nem volt nyertese");
             Console.WriteLine($"20. Melyik csapat nyert 1940-ben?");
