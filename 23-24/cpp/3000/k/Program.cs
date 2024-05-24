@@ -55,9 +55,7 @@ namespace osztalyok_23f
             List<string> list = new List<string>();
             foreach(Foci foci in input)
             {
-                if(!list.Contains(foci.location)) {list.Add(foci.location);
-                    Console.WriteLine(foci.location);
-                }
+                if(!list.Contains(foci.location)) list.Add(foci.location);
             }
             return list;
         }
