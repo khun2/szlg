@@ -71,19 +71,19 @@ namespace o
             Console.WriteLine($"10. Határozza meg a közép-amerikai földrész területének a nagyságát négyzetkilométerben!\n{input.Where(x => x.cont == "Közép-Amerika").Sum(x => x.size)}");
             Console.WriteLine($"11. Határozza meg az észak-amerikai földrész területének a nagyságát négyzetkilométerben!\n{input.Where(x => x.cont == "Észak-Amerika").Sum(x => x.size)}");
 
-            Console.WriteLine($"12. Hány ország található az afrikai földrészen\n{input.Where(x => x.cont == "Afrika").Count()}?");
-            Console.WriteLine($"13. Hány ország található a dél-amerikai földrészen\n{input.Where(x => x.cont == "Dél-Amerika").Count()}?");
-            Console.WriteLine($"14. Hány ország található a közép-amerikai földrészen\n{input.Where(x => x.cont == "Közép-Amerika").Count()}?");
-            Console.WriteLine($"15. Hány ország található az észak-amerikai földrészen\n{input.Where(x => x.cont == "Észak-Amerika").Count()}?");
+            Console.WriteLine($"12. Hány ország található az afrikai földrészen\n{input.Count(x => x.cont == "Afrika")}?");
+            Console.WriteLine($"13. Hány ország található a dél-amerikai földrészen\n{input.Count(x => x.cont == "Dél-Amerika")}?");
+            Console.WriteLine($"14. Hány ország található a közép-amerikai földrészen\n{input.Count(x => x.cont == "Közép-Amerika")}?");
+            Console.WriteLine($"15. Hány ország található az észak-amerikai földrészen\n{input.Count(x => x.cont == "Észak-Amerika")}?");
 
-            Console.WriteLine($"16. Hány 5000 négyzetkilométernél nagyobb ország található az afrikai földrészen?\n{input.Where(x => x.size > 5000 && x.cont == "Afrika").Count()}");
-            Console.WriteLine($"17. Hány 5000 négyzetkilométernél kisebb ország található az afrikai földrészen?\n{input.Where(x => x.size < 5000 && x.cont == "Afrika").Count()}");
-            Console.WriteLine($"18. Hány 15000 négyzetkilométernél nagyobb ország található az dél-amerikai földrészen?\n{input.Where(x => x.size > 7000 && x.cont == "Dél-Amerika").Count()}");
-            Console.WriteLine($"19. Hány 7000 négyzetkilométernél kisebb ország található az dél-amerikai földrészen?\n{input.Where(x => x.size < 7000 && x.cont == "Dél-Amerika").Count()}");
-            Console.WriteLine($"20. Hány 7000 négyzetkilométernél nagyobb ország található az közép-amerikai földrészen?\n{input.Where(x => x.size > 7000 && x.cont == "Közép-Amerika").Count()}");
-            Console.WriteLine($"21. Hány 8000 négyzetkilométernél kisebb ország található az közép-amerikai földrészen?\n{input.Where(x => x.size < 7000 && x.cont == "Közép-Amerika").Count()}");
-            Console.WriteLine($"22. Hány 8000 négyzetkilométernél kisebb ország található az amerikai földrészen?\n{input.Where(x => x.size < 8000 && x.cont != "Afrika").Count()}");
-            Console.WriteLine($"23. Hány 8000 négyzetkilométernél nagyobb ország található az amerikai földrészen?\n{input.Where(x => x.size > 8000 && x.cont != "Afrika").Count()}");
+            Console.WriteLine($"16. Hány 5000 négyzetkilométernél nagyobb ország található az afrikai földrészen?\n{input.Count(x => x.size > 5000 && x.cont == "Afrika")}");
+            Console.WriteLine($"17. Hány 5000 négyzetkilométernél kisebb ország található az afrikai földrészen?\n{input.Count(x => x.size < 5000 && x.cont == "Afrika")}");
+            Console.WriteLine($"18. Hány 15000 négyzetkilométernél nagyobb ország található az dél-amerikai földrészen?\n{input.Count(x => x.size > 7000 && x.cont == "Dél-Amerika")}");
+            Console.WriteLine($"19. Hány 7000 négyzetkilométernél kisebb ország található az dél-amerikai földrészen?\n{input.Count(x => x.size < 7000 && x.cont == "Dél-Amerika")}");
+            Console.WriteLine($"20. Hány 7000 négyzetkilométernél nagyobb ország található az közép-amerikai földrészen?\n{input.Count(x => x.size > 7000 && x.cont == "Közép-Amerika")}");
+            Console.WriteLine($"21. Hány 8000 négyzetkilométernél kisebb ország található az közép-amerikai földrészen?\n{input.Count(x => x.size < 7000 && x.cont == "Közép-Amerika")}");
+            Console.WriteLine($"22. Hány 8000 négyzetkilométernél kisebb ország található az amerikai földrészen?\n{input.Count(x => x.size < 8000 && x.cont != "Afrika")}");
+            Console.WriteLine($"23. Hány 8000 négyzetkilométernél nagyobb ország található az amerikai földrészen?\n{input.Count(x => x.size > 8000 && x.cont != "Afrika")}");
 
             Console.WriteLine($"24. Hány 20 milliónál kisebb népességű ország található az amerikai földrészen\n{input.Where(x => x.cont != "Afrika" && x.pop < 20000)}?");
             Console.WriteLine($"25. Hány 20 milliónál nagyobb népességű ország található az amerikai földrészen\n{input.Where(x => x.cont != "Afrika" && x.pop > 20000)}?");
