@@ -48,7 +48,7 @@ namespace l
 
             static List<Actor> MaxBy(List<Actor> input, Func<Actor, Actor,int> cmp) {
                 List<Actor> list = new List<Actor>();
-                foreach (Actor actor in list) {
+                foreach (Actor actor in input) {
                     if (list.Count == 0) {
                         list.Add(actor);
                     }
@@ -87,31 +87,31 @@ namespace l
             
             foreach (Actor actor in CityChooser(input, "Budapest"))
             {
-                Console.WriteLine(actor.name + actor.films);
+                Console.WriteLine(actor.name + ' ' + actor.films);
             }
             Console.WriteLine($"2. Írja ki a New Yorkban született színészek nevét és filmjeinek a számát!");
             
             foreach (Actor actor in CityChooser(input, "New York"))
             {
-                Console.WriteLine(actor.name + actor.films);
+                Console.WriteLine(actor.name + ' ' + actor.films);
             }
             Console.WriteLine($"3. Írja ki a Berlinben született színészek nevét és filmjeinek a számát!");
             
             foreach (Actor actor in CityChooser(input, "Berlin"))
             {
-                Console.WriteLine(actor.name + actor.films);
+                Console.WriteLine(actor.name + ' ' + actor.films);
             }
             Console.WriteLine($"4. Írja ki a Párizsban született színészek nevét és filmjeinek a számát!");
             
             foreach (Actor actor in CityChooser(input, "Párizs"))
             {
-                Console.WriteLine(actor.name + actor.films);
+                Console.WriteLine(actor.name + ' ' + actor.films);
             }
             Console.WriteLine($"5. Írja ki a Tokióban született színészek nevét és filmjeinek a számát!");
             
             foreach (Actor actor in CityChooser(input, "Tokió"))
             {
-                Console.WriteLine(actor.name + actor.films);
+                Console.WriteLine(actor.name + ' ' + actor.films);
             }
 
             Console.WriteLine($"6. Hány színész született Budapesten?\n{input.Count(x => x.city == "Budapest")}");
@@ -156,7 +156,7 @@ namespace l
             Console.WriteLine($"37. Mikor született a legfiatalabb színész?\n{input.Min(x => x.birth)}");
 
             Console.WriteLine("38. Írja ki a legidősebb színész(ek) nevét és születési évét!");
-            foreach (Actor actor in MaxBy(input, (a,b) => a.birth < b.birth ? 1 : a.birth == b.birth ? 0 : -1)) {
+            foreach (Actor actor in MaxBy(input, (a,b) => a.birth > b.birth ? 1 : a.birth == b.birth ? 0 : -1)) {
                 Console.WriteLine(actor.name + ": " + actor.birth.Year);
             }
             Console.WriteLine("39. Írja ki a legfiatalabb színész(ek) nevét és születési évét!");
