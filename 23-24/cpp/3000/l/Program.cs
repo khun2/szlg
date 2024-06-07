@@ -81,35 +81,35 @@ namespace l
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
 
-            List<Actor> input = Beolvasás("input.txt"), actors;
+            List<Actor> input = Beolvasás("input.txt");
             
             Console.WriteLine($"1. Írja ki a Budapesten született színészek nevét és filmjeinek a számát!");
-            actors = CityChooser(input, "Budapest");             
-            foreach (Actor actor in actors)
+            
+            foreach (Actor actor in CityChooser(input, "Budapest"))
             {
                 Console.WriteLine(actor.name + actor.films);
             }
             Console.WriteLine($"2. Írja ki a New Yorkban született színészek nevét és filmjeinek a számát!");
-            actors = CityChooser(input, "New York");            
-            foreach (Actor actor in actors)
+            
+            foreach (Actor actor in CityChooser(input, "New York"))
             {
                 Console.WriteLine(actor.name + actor.films);
             }
             Console.WriteLine($"3. Írja ki a Berlinben született színészek nevét és filmjeinek a számát!");
-            actors = CityChooser(input, "Berlin");
-            foreach (Actor actor in actors)
+            
+            foreach (Actor actor in CityChooser(input, "Berlin"))
             {
                 Console.WriteLine(actor.name + actor.films);
             }
             Console.WriteLine($"4. Írja ki a Párizsban született színészek nevét és filmjeinek a számát!");
-            actors = CityChooser(input, "Párizs");
-            foreach (Actor actor in actors)
+            
+            foreach (Actor actor in CityChooser(input, "Párizs"))
             {
                 Console.WriteLine(actor.name + actor.films);
             }
             Console.WriteLine($"5. Írja ki a Tokióban született színészek nevét és filmjeinek a számát!");
-            actors = CityChooser(input, "Toki");
-            foreach (Actor actor in actors)
+            
+            foreach (Actor actor in CityChooser(input, "Toki"))
             {
                 Console.WriteLine(actor.name + actor.films);
             }
@@ -156,18 +156,15 @@ namespace l
             Console.WriteLine($"37. Mikor született a legfiatalabb színész?\n{input.Min(x => x.birth)}");
 
             Console.WriteLine("38. Írja ki a legidősebb színész(ek) nevét és születési évét!");
-            actors = MaxBy(input, (a,b) => a.birth > b.birth ? 1 : a.birth == b.birth ? 0 : -1);
-            foreach (Actor actor in actors) {
+            foreach (Actor actor in MaxBy(input, (a,b) => a.birth > b.birth ? 1 : a.birth == b.birth ? 0 : -1)) {
                 Console.WriteLine(actor.name + ": " + actor.birth.Year);
             }
             Console.WriteLine("39. Írja ki a legfiatalabb színész(ek) nevét és születési évét!");
-            actors = MaxBy(input, (a,b) => a.birth > b.birth ? 1 : a.birth == b.birth ? 0 : -1);
-            foreach (Actor actor in actors) {
+            foreach (Actor actor in MaxBy(input, (a,b) => a.birth > b.birth ? 1 : a.birth == b.birth ? 0 : -1)) {
                 Console.WriteLine(actor.name + ": " + actor.birth.Year);
             }
 
-            Console.WriteLine("40. Hány filmben játszott a legtöbb filmben szereplő színész?");
-            actors = MaxBy(input, (a,b) => a.films < b.films ? 1 : a == b ? 0 : -1);
+            Console.WriteLine("40. Hány filmben játszott a legtöbb filmben szereplő színész?\n" + input.Max(x => x.films));
 
             Console.WriteLine($"41. Hány filmben játszott a legtöbb filmben szereplő, Magyarországon született színész?\n{input.Where(a => a.country == "Magyarország").Max(x => x.films)}");
             Console.WriteLine($"42. Hány filmben játszott a legtöbb filmben szereplő, USA-ban született színész?\n{input.Where(a => a.country == "USA").Max(x => x.films)}");
@@ -188,8 +185,7 @@ namespace l
             Console.WriteLine(groups.First().Key);
 
             Console.WriteLine("50. Vannak-e olyan színészek, akik ugyanaznap ünneplik a születésnapjukat? Írja ki a színészek nevét és születési dátumát!");
-            actors = SameBirthday(input);
-            foreach (Actor actor in actors)
+            foreach (Actor actor in SameBirthday(input))
             {
                 Console.WriteLine(actor.name + ": " + actor.birth.Month + "." + actor.birth.Day);
             }
