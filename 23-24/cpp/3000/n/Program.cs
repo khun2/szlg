@@ -46,23 +46,21 @@ namespace n
             return list;
         }
         static int Locations(List<Offer> input) {
-            List<string> list = new List<string>();
+            HashSet<string> list = new HashSet<string>();
             foreach (Offer offer in input) {
-                if (!list.Contains(offer.location)) list.Add(offer.location);
+                list.Add(offer.location);
             }
             return list.Count;
         }
-        static List<Offer> MaxBy(List<Offer> offers, Func<Offer, Offer, int> func) {
+        static List<Offer> MaxBy(List<Offer> offers, Func<Offer, Offer, int> cmp) {
             List<Offer> list = new List<Offer>();
             foreach(Offer offer in offers) {
                 if(list.Count == 0) list.Add(offer);
                 else {
-                    int c = func(list[0], offer);
+                    int c = cmp(list[0], offer);
                     if(c == 1) list = [offer];
                     else if(c == 0) list.Add(offer);
-                    else if (c < -1 || c > 1) {
-                        throw new Exception("szar a function");
-                    }
+
                 }
             }
 
