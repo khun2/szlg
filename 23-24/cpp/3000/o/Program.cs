@@ -33,10 +33,10 @@ namespace o
             }
         }
 
-        static List<string> Govs(Country[] arr) {
-            List<string> strings= new List<string>();
+        static HashSet<string> Govs(Country[] arr) {
+            HashSet<string> strings= new HashSet<string>();
             foreach (Country c in arr) {
-                if (!strings.Contains(c.gov)) strings.Add(c.gov);
+                strings.Add(c.gov);
             }
             return strings;
         }
@@ -128,32 +128,25 @@ namespace o
             Console.WriteLine($"52. Mekkora a népsűrűsége a legsűrűbben lakott amerikai országnak (fő/négyzetkilométer)?\n{input.Where(x => x.cont != "Afrika").Max(x => x.pop * 1000 / x.size)}");
 
             Console.WriteLine("53. Milyen államformák léteznek az input fájlban? Mindegyik csak legfeljebb egyszer szerepeljen!");
-            List<string> govs = Govs(input);
-            foreach (string s in govs) Console.WriteLine(s);
+            foreach (string s in Govs(input)) Console.WriteLine(s);
             Console.WriteLine("54. Mely államformát hány ország követi?");
-            var groups = input.GroupBy(x => x.gov);
-            foreach (var group in groups) Console.WriteLine(group.Key + ": " + group.Count());
+            foreach (var group in input.GroupBy(x => x.gov)) Console.WriteLine(group.Key + ": " + group.Count());
             Console.WriteLine("55. Mely földrészen hány ország van?");
-            groups = input.GroupBy(x => x.cont);
-            foreach (var group in groups) Console.WriteLine(group.Key + ": " + group.Count());
+            foreach (var group in input.GroupBy(x => x.cont)) Console.WriteLine(group.Key + ": " + group.Count());
 
             Console.WriteLine("56. Mely földrészen melyik államformát hány ország követi? (pl. Afrika - köztársaság: ... db \n Dél-Amerika - szövetségi köztársaság: ... db \n ... )");
-            foreach (var group in groups) {
-                var asd = group.GroupBy(x => x.gov);
-                foreach (var asd2 in asd) Console.WriteLine(group.Key + " - " + asd2.Key + ": " + asd2.Count());
+            foreach (var group in input.GroupBy(x => x.cont)) {
+                foreach (var subgroup in group.GroupBy(x => x.gov)) Console.WriteLine(group.Key + " - " + subgroup.Key + ": " + subgroup.Count());
             }
             Console.WriteLine("57. Mely államformában hány lakos él összesen?");
-            groups = input.GroupBy(x => x.gov);
-            foreach (var group in groups) Console.WriteLine (group.Key + ": " + group.Sum(x => x.pop) * 1000);
+            foreach (var group in input.GroupBy(x => x.gov)) Console.WriteLine (group.Key + ": " + group.Sum(x => x.pop) * 1000);
             Console.WriteLine("58. Mennyi a különböző földrészeken található országok területösszegei? (pl.: Afrika: ...\n Dél-Amerika: ...\n ...)");
-            groups = input.GroupBy(x => x.cont);
-            foreach (var group in groups) Console.WriteLine (group.Key + ": " + group.Sum(x => x.size));
+            foreach (var group in input.GroupBy(x => x.cont)) Console.WriteLine (group.Key + ": " + group.Sum(x => x.size));
             Console.WriteLine("59. Mely kezdőbetűvel hány ország kezdődik?");
             var charGroups = input.GroupBy(x => x.name[0]);
             foreach (var group in charGroups) Console.WriteLine(group.Key + ": " + group.Count());
             Console.WriteLine("60. Add meg különböző államformákhoz tartozó legsűrűbben lakott országokat!");
-            groups = input.GroupBy(x => x.gov);
-            foreach (var group in groups) {
+            foreach (var group in input.GroupBy(x => x.gov)) {
                 List<Country> l = MaxBy(group.ToArray(), (a,b) => a.pop * 1000 / a.size < b.pop * 1000 / b.size ? 1 : a.pop * 1000 / a.size == b.pop * 1000 / b.size ? 0 : -1);
                 foreach (Country country in l) Console.WriteLine(group.Key + ": " + country.name);
             }
