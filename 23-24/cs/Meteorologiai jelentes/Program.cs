@@ -16,14 +16,8 @@ namespace MeteorologiaiJelentes {
             public int temp;
             public Jelentes(string[] args) {
                 code = args[0];
-                StringBuilder sb = new StringBuilder();
-                sb.Append(args[1][0]);
-                sb.Append(args[1][1]);
-                sb.Append(':');
-                sb.Append(args[1][2]);
-                sb.Append(args[1][3]);
-
-                time = sb.ToString();
+                string h = args[1].Substring(0,2), m = args[1].Substring(2,2);
+                time = h + ':' + m;
                 angleSpeed = args[2];
                 temp = int.Parse(args[3]);
             }
@@ -51,17 +45,12 @@ namespace MeteorologiaiJelentes {
             List<string> strings= new List<string>();
             var groups = input.GroupBy(x => x.code);
             foreach(var group in groups) {
-                StringBuilder sb = new StringBuilder(group.Key);
-                if(group.Any(x => x.time[0] == '0' && x.time[1] == '1') && group.Any(x => x.time[0] == '0' && x.time[1] == '7') && group.Any(x => x.time[0] == '1' && x.time[1] == '3') && group.Any(x => x.time[0] == '1' && x.time[1] == '9')) {
-                    
-                    sb.Append($" Középhőmérséklet: {Math.Round(group.Where(x => (x.time[0] == '0' && x.time[1] == '1') ||
-                    (x.time[0] == '0' && x.time[1] == '7') || (x.time[0] == '1' && x.time[1] == '3') ||
-                    (x.time[0] == '1' && x.time[1] == '9')).Average(x => x.temp))}");
-                    //god is dead and my horrid code killed him
+                string s = " NA";
+                if(group.Any(x => x.time.StartsWith("01")) && group.Any(x => x.time.StartsWith("07")) && group.Any(x => x.time.StartsWith("13")) && group.Any(x => x.time.StartsWith("19"))) {  
+                    s = $" Középhőmérséklet: {Math.Round(group.Where(x => x.time.StartsWith("01") || x.time.StartsWith("07") || x.time.StartsWith("13") || x.time.StartsWith("19")).Average(x => x.temp))}";
                 }
-                else sb.Append(" NA");
-                sb.Append($"; Hőmérséklet-ingadozás: {group.Max(x => x.temp) - group.Min(x => x.temp)}");
-                strings.Add(sb.ToString());
+                s += $"; Hőmérséklet-ingadozás: {group.Max(x => x.temp) - group.Min(x => x.temp)}";
+                strings.Add(s);
             }
             return strings;
         }
@@ -72,11 +61,11 @@ namespace MeteorologiaiJelentes {
                     writer.WriteLine(group.Key); 
                     foreach (var item in group) {
                         int asd = (item.angleSpeed[3] - '0') * 10 + (item.angleSpeed[4] - '0');
-                        StringBuilder sb = new StringBuilder();
+                        string s = "";
                         for (int i = 0; i < asd; i++) {
-                            sb.Append('#');
+                            s += '#';
                         }
-                        writer.WriteLine(item.time + ": " + sb.ToString());
+                        writer.WriteLine(item.time + ": " + s);
                     }
                 }
             }
@@ -84,7 +73,7 @@ namespace MeteorologiaiJelentes {
         }
 
         static void Main(string[] args) {
-            Jelentes[] input = File.ReadAllLines("tavirathu13.txt").Select(x => new Jelentes(x.Split(' '))).ToArray();
+            Jelentes[] input = File.ReadAllLines("tavirathu13.txt").Select(x => new Jelentes(x.Split())).ToArray();
             string str = Console.ReadLine();
             Console.WriteLine("2. feladat: " + input.Where(x => x.code == str).Max(x => x.time));
             Console.WriteLine("3. feladat:\nA legalacsonyabb hőmérséklet: " + input.MinBy(x => x.temp).Feladat3() + "\nA legmagasabb hőmérséklet: " + input.MaxBy(x => x.temp).Feladat3());
