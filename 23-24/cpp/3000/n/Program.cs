@@ -90,11 +90,12 @@ namespace n
             Console.WriteLine($"10. Hány hortobágyi tájegységre vonatozó, júliusi ajánlat található az input fájlban?\n{input.Count(x => x.location == "Hortobágy" && x.month == "Július")}");
             Console.WriteLine($"11. Hány őrségi tájegységre vonatozó, októberi ajánlat található az input fájlban?\n{input.Count(x => x.location == "Őrség" && x.month == "Október")}");
 
-            Console.WriteLine($"12. Hány mátrai tájegységre vonatozó, családos, öt napnál hosszabb ajánlat található az input fájlban?\n{input.Count(x => x.location == "Mátra" && x.family == true && x.length > 5)}");
-            Console.WriteLine($"13. Hány mecseki tájegységre vonatozó, egyéni, 3 napnál rövidebb ajánlat található az input fájlban?\n{input.Count(x => x.location == "Mecsek" && x.family == false&& x.length < 3)}");
-            Console.WriteLine($"14. Hány bakonyi tájegységre vonatozó, májusi, egy hétnél hosszabb ajánlat található az input fájlban?\n{input.Count(x => x.location == "Bakony" && x.month == "Május" && x.length > 7)}");
-            Console.WriteLine($"15. Hány hortobágyi tájegységre vonatozó, júliusi, egy hetes ajánlat található az input fájlban?\n{input.Count(x => x.location == "Hortobágy" && x.month == "Július" && x.length == 7)}");
-            Console.WriteLine($"16. Hány őrségi tájegységre vonatozó, októberi, öt napos ajánlat található az input fájlban?\n{input.Count(x => x.location == "Őrség" && x.month == "Október" && x.length == 5)}");
+            Console.WriteLine($"12. Hány mátrai tájegységre vonatozó, családos, öt napnál hosszabb ajánlat található az input fájlban?\n{input.Count(x => x.location == "Mátra" && x.family == true && x.length >= 5)}");
+            Console.WriteLine($"13. Hány mecseki tájegységre vonatozó, egyéni, 3 napnál rövidebb ajánlat található az input fájlban?\n{input.Count(x => x.location == "Mecsek" && x.family == false && x.length <= 3)}");
+
+            Console.WriteLine($"14. Hány bakonyi tájegységre vonatozó, májusi, egy hétnél hosszabb ajánlat található az input fájlban?\n{input.Count(x => x.location == "Bakony" && x.month == "Május" && x.length >= 7)}");
+            Console.WriteLine($"15. Hány hortobágyi tájegységre vonatozó, júliusi, egy hetes ajánlat található az input fájlban?\n{input.Count(x => x.location == "Hortobágy" && x.month == "Július" && x.length == 6)}");
+            Console.WriteLine($"16. Hány őrségi tájegységre vonatozó, októberi, öt napos ajánlat található az input fájlban?\n{input.Count(x => x.location == "Őrség" && x.month == "Október" && x.length == 4)}");
 
             Console.WriteLine($"17. Hány mátrai tájegységre vonatozó, családos, még szabad hellyel rendelkező ajánlat található az input fájlban?\n{input.Count(x => x.location == "Mátra" && x.family == true && x.count != x.going)}");
             Console.WriteLine($"18. Hány mecseki tájegységre vonatozó, egyéni, még szabad hellyel rendelkező ajánlat található az input fájlban?\n{input.Count(x => x.location == "Mecsek" && x.family == false && x.count != x.going)}");
@@ -142,9 +143,9 @@ namespace n
             Console.WriteLine($"41. Van-e az irodának őszi, bükki ajánlata?\n{input.Any(x => fall.Contains(x.month) && x.location == "Bükk")}");
             Console.WriteLine($"42. Van-e az irodának nyári, pilisi ajánlata?\n{input.Any(x => summer.Contains(x.month) && x.location == "Pilis")}");
             Console.WriteLine($"43. Van-e az irodának téli, őrségi ajánlata?\n{input.Any(x => winter.Contains(x.month) && x.location == "Őrség")}");
-            Console.WriteLine($"44. Igaz-e, hogy az minden ajánlat legalább 3 napos?\n{input.All(x => x.length > 3)}");
-            Console.WriteLine($"45. Igaz-e, hogy az minden ajánlat legalább 5 napos?\n{input.All(x => x.length > 5)}");
-            Console.WriteLine($"46. Igaz-e, hogy az minden ajánlat legalább 2 napos?\n{input.All(x => x.length > 2)}");
+            Console.WriteLine($"44. Igaz-e, hogy az minden ajánlat legalább 3 napos?\n{input.All(x => x.length >= 3 -1)}");
+            Console.WriteLine($"45. Igaz-e, hogy az minden ajánlat legalább 5 napos?\n{input.All(x => x.length >= 5 -1)}");
+            Console.WriteLine($"46. Igaz-e, hogy az minden ajánlat legalább 2 napos?\n{input.All(x => x.length >= 2 -1)}");
             Console.WriteLine($"47. Igaz-e, hogy az minden ajánlat legalább 10000 Ft-ba kerül?\n{input.All(x => x.price > 10000)}");
             Console.WriteLine($"48. Igaz-e, hogy az minden ajánlat legalább 5000 Ft-ba kerül?\n{input.All(x => x.price > 5000)}");
             Console.WriteLine($"49. Igaz-e, hogy az minden ajánlat legalább 1000 Ft-ba kerül?\n{input.All(x => x.price > 1000)}");
@@ -156,8 +157,8 @@ namespace n
             Console.WriteLine($"54. Hány forintba kerül a legdrágább ajánlat?\n{input.Max(x => x.price)}");
             Console.WriteLine($"55. Hány forintba kerül a legolcsóbb ajánlat?\n{input.Min(x => x.price)}");
             
-            Console.WriteLine($"56. Hány napos a leghosszabb ajánlat?\n{input.Max(x => x.length)}");
-            Console.WriteLine($"57. Hány napos a legrövidebb ajánlat?\n{input.Min(x => x.length)}");
+            Console.WriteLine($"56. Hány napos a leghosszabb ajánlat?\n{input.Max(x => x.length) + 1}");
+            Console.WriteLine($"57. Hány napos a legrövidebb ajánlat?\n{input.Min(x => x.length) + 1}");
 
             Console.WriteLine($"58. Hány fős a legnagyobb maximális létszámú ajánlat?\n{input.Max(x => x.count)}");
             Console.WriteLine($"59. Hány fős a legkisebb maximális létszámú ajánlat?\n{input.Min(x => x.count)}");
@@ -193,39 +194,40 @@ namespace n
             MaxBy(input, (a,b) => a.going > b.going ? 1 : a.going == b.going ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
 
             Console.WriteLine("74. Válogassuk ki a nyári, legalább 5 napos ajánlatok közül a legolcsóbbakat!");
-            MaxBy(input.Where(x => summer.Contains(x.month) && x.length >= 5).ToList(), (a,b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
+            MaxBy(input.Where(x => summer.Contains(x.month) && x.length >= 4).ToList(), (a,b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
             Console.WriteLine("75. Válogassuk ki az őszi, legfeljebb 5 napos ajánlatok közül a legdrágábbakat!");
-            MaxBy(input.Where(x => fall.Contains(x.month) && x.length <= 5).ToList(), (a,b) => a.price < b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
+            MaxBy(input.Where(x => fall.Contains(x.month) && x.length <= 4).ToList(), (a,b) => a.price < b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
             Console.WriteLine("76. Válogassuk ki a tavaszi, legalább 2 napos ajánlatok közül a legolcsóbbakat!");
-            MaxBy(input.Where(x => spring.Contains(x.month) && x.length >= 2).ToList(), (a,b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
+            MaxBy(input.Where(x => spring.Contains(x.month) && x.length >= 1).ToList(), (a,b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
             Console.WriteLine("77. Válogassuk ki a nyári, legfeljebb egy hetes ajánlatok közül a legdrágábbakat!");
-            MaxBy(input.Where(x => summer.Contains(x.month) && x.length <= 7).ToList(), (a,b) => a.price < b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
+            MaxBy(input.Where(x => summer.Contains(x.month) && x.length <= 6).ToList(), (a,b) => a.price < b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
             Console.WriteLine("78. Válogassuk ki az őszi, legalább egy hetes ajánlatok közül a legolcsóbbakat!");
-            MaxBy(input.Where(x => fall.Contains(x.month) && x.length >= 7).ToList(), (a,b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
+            MaxBy(input.Where(x => fall.Contains(x.month) && x.length >= 6).ToList(), (a,b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
             Console.WriteLine("79. Válogassuk ki a téli, legfeljebb 5 napos ajánlatok közül a legdrágábbakat!");
-            MaxBy(input.Where(x => winter.Contains(x.month) && x.length <= 5).ToList(), (a,b) => a.price < b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
+            MaxBy(input.Where(x => winter.Contains(x.month) && x.length <= 4).ToList(), (a,b) => a.price < b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
 
             Console.WriteLine("80. Válogassuk ki az őszi, legalább egy hetes, szabad hellyel rendelkező ajánlatok közül a legolcsóbbakat!");
-            MaxBy(input.Where(x => fall.Contains(x.month) && x.length >= 7 && x.count - x.going != 0).ToList(), (a, b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
+            MaxBy(input.Where(x => fall.Contains(x.month) && x.length >= 6 && x.count - x.going != 0).ToList(), (a, b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
             Console.WriteLine("81. Válogassuk ki az mátrai, legalább 3 napos, szabad hellyel rendelkező ajánlatok közül a legolcsóbbakat!");
             MaxBy(input.Where(x => winter.Contains(x.month) && x.length >= 3 && x.count - x.going != 0).ToList(), (a, b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
             Console.WriteLine("82. Válogassuk ki az őszi, legfeljebb egy hetes, szabad hellyel rendelkező ajánlatok közül a legolcsóbbakat!");
-            MaxBy(input.Where(x => fall.Contains(x.month) && x.length <= 7 && x.count - x.going != 0).ToList(), (a, b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
+            MaxBy(input.Where(x => fall.Contains(x.month) && x.length <= 6 && x.count - x.going != 0).ToList(), (a, b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
             Console.WriteLine("83. Válogassuk ki az mátrai, vagy bükki, legalább egy hetes, szabad hellyel rendelkező ajánlatok közül a legolcsóbbakat!");
-            MaxBy(input.Where(x => (x.location == "Bükk" || x.location == "Mátra") && x.length >= 7 && x.count - x.going != 0).ToList(), (a, b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
+            MaxBy(input.Where(x => (x.location == "Bükk" || x.location == "Mátra") && x.length >= 6 && x.count - x.going != 0).ToList(), (a, b) => a.price > b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
             Console.WriteLine("84. Válogassuk ki az nyári, legfeljebb egy hetes, szabad hellyel rendelkező ajánlatok közül a legdrágábbakat!");
-            MaxBy(input.Where(x => summer.Contains(x.month) && x.length <= 7 && x.count - x.going != 0).ToList(), (a, b) => a.price < b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
+            MaxBy(input.Where(x => summer.Contains(x.month) && x.length <= 6 && x.count - x.going != 0).ToList(), (a, b) => a.price < b.price ? 1 : a.price == b.price ? 0 : -1).Select(x => x.ToString()).ToList().ForEach(Console.WriteLine);
             
 
             
             Console.WriteLine($"85. Hány különböző tájegységre szervez az iroda utazásokat?\n{Locations(input)}");            
             Console.WriteLine("86. Készíts kimutatást, hogy az 1, 2, ..., 7 éjszakás utakra hány foglalás történt!");
             foreach (var group in input.GroupBy(x => x.length)) {
-                Console.WriteLine(group.Key + ": " + group.Count());
+                //i dont know why i would write this without a dictionary
+                Console.WriteLine(group.Key + ": " + group.Sum(y => y.going));
             }
             Console.WriteLine("87. Mely hónapban hány jelentkező van?");
             foreach (var group in input.GroupBy(x => x.month)) {
-                Console.WriteLine(group.Key + ": " + group.Count());
+                Console.WriteLine(group.Key + ": " + group.Sum(y => y.going));
             }
             Console.WriteLine("88. Mely tájegység mennyi pénzt hoz az irodának?");
             foreach (var group in input.GroupBy(x => x.location)) {
