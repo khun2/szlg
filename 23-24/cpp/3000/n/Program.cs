@@ -90,8 +90,8 @@ namespace n
             Console.WriteLine($"10. Hány hortobágyi tájegységre vonatozó, júliusi ajánlat található az input fájlban?\n{input.Count(x => x.location == "Hortobágy" && x.month == "Július")}");
             Console.WriteLine($"11. Hány őrségi tájegységre vonatozó, októberi ajánlat található az input fájlban?\n{input.Count(x => x.location == "Őrség" && x.month == "Október")}");
 
-            Console.WriteLine($"12. Hány mátrai tájegységre vonatozó, családos, öt napnál hosszabb ajánlat található az input fájlban?\n{input.Count(x => x.location == "Mátra" && x.family == true && x.length >= 5)}");
-            Console.WriteLine($"13. Hány mecseki tájegységre vonatozó, egyéni, 3 napnál rövidebb ajánlat található az input fájlban?\n{input.Count(x => x.location == "Mecsek" && x.family == false && x.length <= 3)}");
+            Console.WriteLine($"12. Hány mátrai tájegységre vonatozó, családos, öt napnál hosszabb ajánlat található az input fájlban?\n{input.Count(x => x.location == "Mátra" && x.family == true && x.length > 4)}");
+            Console.WriteLine($"13. Hány mecseki tájegységre vonatozó, egyéni, 3 napnál rövidebb ajánlat található az input fájlban?\n{input.Count(x => x.location == "Mecsek" && x.family == false && x.length < 2)}");
 
             Console.WriteLine($"14. Hány bakonyi tájegységre vonatozó, májusi, egy hétnél hosszabb ajánlat található az input fájlban?\n{input.Count(x => x.location == "Bakony" && x.month == "Május" && x.length >= 7)}");
             Console.WriteLine($"15. Hány hortobágyi tájegységre vonatozó, júliusi, egy hetes ajánlat található az input fájlban?\n{input.Count(x => x.location == "Hortobágy" && x.month == "Július" && x.length == 6)}");
@@ -143,9 +143,9 @@ namespace n
             Console.WriteLine($"41. Van-e az irodának őszi, bükki ajánlata?\n{input.Any(x => fall.Contains(x.month) && x.location == "Bükk")}");
             Console.WriteLine($"42. Van-e az irodának nyári, pilisi ajánlata?\n{input.Any(x => summer.Contains(x.month) && x.location == "Pilis")}");
             Console.WriteLine($"43. Van-e az irodának téli, őrségi ajánlata?\n{input.Any(x => winter.Contains(x.month) && x.location == "Őrség")}");
-            Console.WriteLine($"44. Igaz-e, hogy az minden ajánlat legalább 3 napos?\n{input.All(x => x.length >= 3 -1)}");
-            Console.WriteLine($"45. Igaz-e, hogy az minden ajánlat legalább 5 napos?\n{input.All(x => x.length >= 5 -1)}");
-            Console.WriteLine($"46. Igaz-e, hogy az minden ajánlat legalább 2 napos?\n{input.All(x => x.length >= 2 -1)}");
+            Console.WriteLine($"44. Igaz-e, hogy az minden ajánlat legalább 3 napos?\n{input.All(x => x.length >= 2)}");
+            Console.WriteLine($"45. Igaz-e, hogy az minden ajánlat legalább 5 napos?\n{input.All(x => x.length >= 4)}");
+            Console.WriteLine($"46. Igaz-e, hogy az minden ajánlat legalább 2 napos?\n{input.All(x => x.length >= 1)}");
             Console.WriteLine($"47. Igaz-e, hogy az minden ajánlat legalább 10000 Ft-ba kerül?\n{input.All(x => x.price > 10000)}");
             Console.WriteLine($"48. Igaz-e, hogy az minden ajánlat legalább 5000 Ft-ba kerül?\n{input.All(x => x.price > 5000)}");
             Console.WriteLine($"49. Igaz-e, hogy az minden ajánlat legalább 1000 Ft-ba kerül?\n{input.All(x => x.price > 1000)}");
