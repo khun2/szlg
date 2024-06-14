@@ -85,8 +85,8 @@ namespace o
             Console.WriteLine($"22. Hány 8000 négyzetkilométernél kisebb ország található az amerikai földrészen?\n{input.Count(x => x.size < 8000 && x.cont != "Afrika")}");
             Console.WriteLine($"23. Hány 8000 négyzetkilométernél nagyobb ország található az amerikai földrészen?\n{input.Count(x => x.size > 8000 && x.cont != "Afrika")}");
 
-            Console.WriteLine($"24. Hány 20 milliónál kisebb népességű ország található az amerikai földrészen\n{input.Where(x => x.cont != "Afrika" && x.pop < 20000)}?");
-            Console.WriteLine($"25. Hány 20 milliónál nagyobb népességű ország található az amerikai földrészen\n{input.Where(x => x.cont != "Afrika" && x.pop > 20000)}?");
+            Console.WriteLine($"24. Hány 20 milliónál kisebb népességű ország található az amerikai földrészen\n{input.Count(x => x.cont != "Afrika" && x.pop < 20000)}?");
+            Console.WriteLine($"25. Hány 20 milliónál nagyobb népességű ország található az amerikai földrészen\n{input.Count(x => x.cont != "Afrika" && x.pop > 20000)}?");
             
             Console.WriteLine("26. Válogassa ki a 20 milliónál népesebb afrikai országokat!");
             ArrayWriter(input.Where(x => x.cont == "Afrika" && x.pop > 20000).ToArray());
