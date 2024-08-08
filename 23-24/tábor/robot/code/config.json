@@ -1,0 +1,72 @@
+{
+    "network": {
+        "country": "hu",
+        "hostname": "testrobot",
+
+        "attempts": 200,
+
+        "debug_ip": "192.168.0.20",
+        "debug_port": 9999,
+
+        "server_ip": "123.456.789.000",
+        "server_port": 123
+    },
+
+    "rgb_sensor": {
+        "i2c_chan": 1,
+        "sda": 26,
+        "scl": 27,
+        "led": 17,
+        "int": null,
+
+        "integration_time": 40,
+        "gain": 3
+    },
+
+    "rgb_led": {
+        "r": 16,
+        "g": 15,
+        "b": 14,
+
+        "freq": 2000
+    },
+
+    "ultra_sensor": {
+        "trig": 20,
+        "echo": 19
+    },
+
+    "servo": {
+        "pin": 22,
+        "freq": 50,
+
+        "min_duty": 550000,
+        "mid_duty": 1400000,
+        "max_duty": 2390000
+    },
+
+    "h_bridge": {
+        "pwm_l": 9,
+        "1A": 12,
+        "2A": 13,
+
+        "pwm_r": 18,
+        "3A": 10,
+        "4A": 11,
+
+        "freq": 2000
+    },
+
+    "buzzer": {
+        "pin": 4,
+        "freq": 300
+    },
+
+    "proximity_sensor": {
+        "pin": 21
+    },
+
+    "reset_button": {
+        "pin": 0
+    }
+}
