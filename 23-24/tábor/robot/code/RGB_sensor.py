@@ -44,7 +44,11 @@ class RgbSensor:
         return struct.unpack('<B', self._i2c.readfrom_mem(self._addr, CMD_BIT | reg, 1)) [0]
     
     def _write_bits(self, reg: int, value: int, mask:int):
-        return
+        old = self._read8(reg)
+        old_masked = old & ~mask
+        new = old_masked | value & mask
+
+        self._write8(reg, new)
     
     def get_data(self) -> tuple[int, int, int, int]:
         color_bytes = self._i2c.readfrom_mem(self._addr, CMD_BIT | REG_CDATAL, 4*2)
@@ -54,9 +58,10 @@ class RgbSensor:
         self._write8(REG_ATIME, 0xff - it)
 
     def set_gain(self, gain: int):
-        self.write_bits(REG_CONTROL,gain, 0b11)
+        self._write_bits(REG_CONTROL,gain, 0b11)
 
     def set_led(self, state: bool):
         if self._led_pin:
             self._led_pin.value(state)
+
             
