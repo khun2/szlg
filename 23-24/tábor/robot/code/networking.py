@@ -2,14 +2,14 @@ from network import hostname, country, WLAN, STA_IF, STAT_CONNECTING
 from socket import socket, AF_INET, SOCK_STREAM
 from time import sleep_ms
 from errno import EAGAIN
-from config import cfg
+from config import config
 import struct
 
 def setup_wifi():
-    if 'country' in cfg['network']:
-        country(cfg['network']['country'])
+    if 'country' in config['network']:
+        country(config['network']['country'])
 
-    hostname(cfg['network']['hostname'])
+    hostname(config['network']['hostname'])
 
     wlan = WLAN(STA_IF)
 
@@ -19,12 +19,12 @@ def setup_wifi():
     if wlan.isconnected():
         return
 
-    ssid = cfg['network']['creds']['ssid']
-    passw = cfg['network']['creds']['password']
+    ssid = config['network']['creds']['ssid']
+    passw = config['network']['creds']['password']
 
     wlan.connect(ssid, passw)
 
-    for attempt in range(1, cfg['network']['attempts'] + 1):
+    for attempt in range(1, config['network']['attempts'] + 1):
         if wlan.status() < 0 or wlan.status() >= 3:
             break
 
@@ -79,13 +79,13 @@ def recv_str(sock: socket, block=True) -> str | None:
 socks: list[socket] = [None, None]
 def setup_dbg():
     dbg_sock = socket(AF_INET, SOCK_STREAM)
-    dbg_sock.connect((cfg['network']['debug_ip'], cfg['network']['debug_port']))
+    dbg_sock.connect((config['network']['debug_ip'], config['network']['debug_port']))
 
     socks[0] = dbg_sock
 
 def setup_server() -> int:
     server_sock = socket(AF_INET, SOCK_STREAM)
-    server_sock.connect((cfg['network']['server_ip'], cfg['network']['server_port']))
+    server_sock.connect((config['network']['server_ip'], config['network']['server_port']))
 
     socks[1] = server_sock
 

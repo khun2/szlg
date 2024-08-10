@@ -24,12 +24,12 @@ class HBridge:
         r = clamp(r, -1, 1)
         l = clamp(l, -1, 1)
 
-        self._l_1.value(l < 0)
-        self._l_2.value(l > 0)
+        self._l_1.value(l > 0)
+        self._l_2.value(l < 0)
         self._l_pwm.duty_u16(int(abs(l) * 0xffff))
 
-        self._r_1.value(r > 0)
-        self._r_2.value(r < 0)
+        self._r_1.value(r < 0)
+        self._r_2.value(r > 0)
         self._r_pwm.duty_u16(int(abs(r) * 0xffff))
     def brake(self):
         self._l_1.value(True)
