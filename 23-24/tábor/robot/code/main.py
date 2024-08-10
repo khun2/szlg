@@ -38,13 +38,13 @@ prev_err = 0
 
 dt = 0.020
 
-hb.drive(0, 0.5)
+'''hb.drive(0, 0.5)
 
 sleep_ms(5000)
 
-hb.drive(0, 0)
+hb.drive(0, 0)'''
 
-'''
+
 while True:
     dist = ultra.measure_sync()
 
@@ -58,10 +58,9 @@ while True:
 
     o = -(P * err + I * integr + D * der)
 
-    hb.drive(0, 0)
+    hb.drive(o,o)
 
     sleep_ms(int(dt * 1000))
-'''
 
 
 # setup_wifi()
