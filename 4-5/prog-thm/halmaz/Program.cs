@@ -53,9 +53,7 @@ namespace Halmazok
 			{
 				Halmaz result = new Halmaz();
 				foreach (int e in this.l)
-				{
 					result.l.Add(e);
-				}
 				return result;
 			}
 
@@ -63,12 +61,8 @@ namespace Halmazok
 			{
 				Halmaz result = a.Masolat();
 				foreach (int item in b.l)
-				{
 					if (!result.Tartalmazza(item))
-					{
 						result.l.Add(item);
-					}
-				}
 				return result;
 			}
 
@@ -76,25 +70,16 @@ namespace Halmazok
 			{
 				Halmaz result = new Halmaz();
 				foreach (int item in b.l)
-				{
-					if (a.Tartalmazza(item))
-					{
+					if (a.Tartalmazza(item)) 
 						result.l.Add(item);
-					}
-				}
 				return result;
 			}
 
             public static Halmaz operator -(Halmaz a, Halmaz b)
 			{
 				Halmaz result = new Halmaz();
-				foreach (int item in a.l)
-				{
-					if (!b.Tartalmazza(item))
-					{
-						result.l.Add(item);
-					}
-				}
+				foreach (int item in a.l) 
+					if (!b.Tartalmazza(item)) result.l.Add(item);
 				return result;
 			}
 
@@ -105,76 +90,38 @@ namespace Halmazok
                 while(i < a.l.Count && b.Tartalmazza(a.l[i])) i++;
                 return i == a.l.Count;
 			}
-
-            public static bool operator !=(Halmaz a, Halmaz b)
-			{
-				return !(a==b);
-			}
-
-            public static bool operator >=(Halmaz a, Halmaz b)
-			{
-				return !(b.l.Except(a.l).Any());
-			}
-            public static bool operator <=(Halmaz a, Halmaz b)
-			{
-				return b>=a;
-			}
-            public static bool operator >(Halmaz a, Halmaz b)
-			{
-				return a!=b && a>=b;
-			}
-            public static bool operator <(Halmaz a, Halmaz b)
-			{
-				return b>a;
-			}
+            public static bool operator !=(Halmaz a, Halmaz b) => !(a==b);
+            public static bool operator >=(Halmaz a, Halmaz b) => !(b.l.Except(a.l).Any());
+            public static bool operator <=(Halmaz a, Halmaz b) => b>=a;
+            public static bool operator >(Halmaz a, Halmaz b) => a!=b && a>=b;
+            public static bool operator <(Halmaz a, Halmaz b) => b>a;
+			
 		}
-
-
 
 		static bool Bennevan(List<int> l, int e)
 		{
 			int i = 0;
 			while (i < l.Count && l[i] != e)
-			{
 				i++;
-			}
 			return i < l.Count;
 		}
 		static string Stringbe<T>(List<T> t, string separator = " ", string start = "{ ", string end = " }")
 		{
 			if (t.Count == 0)
-			{
 				return start + end;
-			}
 			string result = start;
 			for (int i = 0; i < t.Count - 1; i++)
-			{
 				result += $"{t[i]}" + separator;
-			}
 			result += $"{t[t.Count - 1]}";
 			return result + end;
 		}
-
-		static bool Részhalmaz(List<int> a, List<int> b)
-		{
-			// keressük az első olyan elemét a-nak, ami nincs benne b-ben.
-
-			int i = 0;
-			while (i<a.Count && Bennevan(b, a[i]))
-				i++;
-
-			return i >= a.Count;
-		}
-
 
 		static Random r = new Random();
 		static List<int> Veletlenlista(int hossz, int min, int max)
 		{
 			List<int> result = new List<int>();
 			for (int i = 0; i < hossz; i++)
-			{
 				result.Add(r.Next(min, max));
-			}
 			return result;
 		}
 

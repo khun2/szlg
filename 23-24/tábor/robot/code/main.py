@@ -8,6 +8,8 @@ from dbg_magic import DbgVal
 from config import config
 from time import sleep_ms
 from button import bt
+from math import copysign
+from utils import clamp
 
 ultra =  UltraSensor(
     Pin(config['ultra_sensor']['trig'], Pin.OUT),
@@ -33,6 +35,10 @@ P = 5
 I = 0
 D = 0
 
+imin = -0.05
+imax = 0.05
+offset = 0.3
+
 integr = 0
 prev_err = 0
 
@@ -44,27 +50,24 @@ sleep_ms(5000)
 
 hb.drive(0, 0)'''
 
+#setup_wifi()
+#setup_dbg()
 
-while True:
+for i in range(10000):
     dist = ultra.measure_sync()
-
     if dist is None:
         continue
-    print(dist)
-
+    dprint(dist)
     err = tav - dist
     integr = integr + err * dt
+    integr = clamp(integr, imin, imax)
     der = (err - prev_err) / dt
-
     o = -(P * err + I * integr + D * der)
-
-    hb.drive(o,o)
-
+    o += copysign(offset, o)
+    hb.drive(0,0)
     sleep_ms(int(dt * 1000))
+hb.drive(0,0)
 
-
-# setup_wifi()
-# setup_dbg()
 
 # ctrls ={
 #     'test': DbgVal('asd')
