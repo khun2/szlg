@@ -70,16 +70,18 @@ vector<int> create_list(int n, int lower, int upper){
     return result;
 }
 
-vector<int> fischer_mix(int n, int lower, int upper) {
-    vector<int> r = create_list(n, lower, upper);
-    for(int i = 0; i < n; i++){
-	csere(r, i, rand() % (n -1));
+void fischer_mix(vector<int>& v) {
+    srand(time(NULL));
+    for(int i = 0; i < v.size(); i++){
+	csere(v, i, rand() % (v.size() -1));
     }
-    return r;
 }
 
 int main() {
-    vector<int> v = fischer_mix(15,2,17);//v{1,4,2,5,2,6,43,6,3,2,9,4};
+    vector<int> v = create_list(15,2,17);//v{1,4,2,5,2,6,43,6,3,2,9,4};
     //bubble_sort(v);
+    fischer_mix(v);
+    writer(v);
+    fischer_mix(v);
     writer(v);
 }
