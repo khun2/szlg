@@ -66,38 +66,122 @@ namespace Halmazok
 				return result;
 			}
 
-            public static Halmaz operator *(Halmaz a, Halmaz b)
+			public static Halmaz operator *(Halmaz a, Halmaz b)
 			{
 				Halmaz result = new Halmaz();
 				foreach (int item in b.l)
-					if (a.Tartalmazza(item)) 
+					if (a.Tartalmazza(item))
 						result.l.Add(item);
 				return result;
 			}
 
-            public static Halmaz operator -(Halmaz a, Halmaz b)
+			public static Halmaz operator -(Halmaz a, Halmaz b)
 			{
 				Halmaz result = new Halmaz();
-				foreach (int item in a.l) 
+				foreach (int item in a.l)
 					if (!b.Tartalmazza(item)) result.l.Add(item);
 				return result;
 			}
 
-            public static bool operator ==(Halmaz a, Halmaz b)
+			public static bool operator ==(Halmaz a, Halmaz b)
 			{
-                if (a.l.Count != b.l.Count) return false;
-                int i = 0;
-                while(i < a.l.Count && b.Tartalmazza(a.l[i])) i++;
-                return i == a.l.Count;
+				if (a.l.Count != b.l.Count) return false;
+				int i = 0;
+				while (i < a.l.Count && b.Tartalmazza(a.l[i])) i++;
+				return i == a.l.Count;
 			}
-            public static bool operator !=(Halmaz a, Halmaz b) => !(a==b);
-            public static bool operator >=(Halmaz a, Halmaz b) => !(b.l.Except(a.l).Any());
-            public static bool operator <=(Halmaz a, Halmaz b) => b>=a;
-            public static bool operator >(Halmaz a, Halmaz b) => a!=b && a>=b;
-            public static bool operator <(Halmaz a, Halmaz b) => b>a;
-			
-		}
+			public static bool operator !=(Halmaz a, Halmaz b) => !(a == b);
+			public static bool operator >=(Halmaz a, Halmaz b) => !(b.l.Except(a.l).Any());
+			public static bool operator <=(Halmaz a, Halmaz b) => b >= a;
+			public static bool operator >(Halmaz a, Halmaz b) => a != b && a >= b;
+			public static bool operator <(Halmaz a, Halmaz b) => b > a;
 
+		}
+		class HalmazRendezessel<T>
+		{
+			List<T> lista;
+			Func<T, T, int> comparator;
+
+			public HalmazRendezessel(Func<T, T, int> comparator)
+			{
+				this.lista = new List<T>();
+				this.comparator = comparator;
+
+			}
+
+			public HalmazRendezessel(List<T> lista, Func<T, T, int> comparator)
+			{
+				this.lista = new List<T>(lista);
+				Beszuró_rendezés(this.lista, comparator);
+				this.comparator = comparator;
+			}
+
+			static void Csere<T>(List<T> lista, int i, int j)
+			{
+				T temp = lista[i];
+			  	lista[i] = lista[j];
+				lista[j] = temp;
+			}
+			public static void Beszuró_rendezés(List<T> lista, Func<T, T, int> comparator)
+			{
+				for (int i = 1; i < lista.Count; i++)
+				{
+					Süllyesztés(lista, i, comparator);
+				}
+			}
+
+			public static void Süllyesztés(List<T> lista, int i, Func<T, T, int> comparator)
+			{
+				while (0 < i && comparator(lista[i - 1], lista[i]) == 1)
+				{
+					Csere(lista, i - 1, i);
+					i--;
+				}
+			}
+			public bool Tartalmazza(T e)
+			{
+				throw new NotImplementedException();
+			}
+
+			public static HalmazRendezessel<T> operator -(HalmazRendezessel<T> a, HalmazRendezessel<T> b)
+			{
+				throw new NotImplementedException();
+			}
+			public static HalmazRendezessel<T> operator +(HalmazRendezessel<T> a, HalmazRendezessel<T> b)
+			{
+				throw new NotImplementedException();
+			}
+
+			public static HalmazRendezessel<T> operator *(HalmazRendezessel<T> a, HalmazRendezessel<T> b)
+			{
+				throw new NotImplementedException();
+			}
+
+			public static bool operator <(HalmazRendezessel<T> a, HalmazRendezessel<T> b)
+			{
+				throw new NotImplementedException();
+			}
+			public static bool operator <=(HalmazRendezessel<T> a, HalmazRendezessel<T> b)
+			{
+				throw new NotImplementedException();
+			}
+			public static bool operator >(HalmazRendezessel<T> a, HalmazRendezessel<T> b)
+			{
+				throw new NotImplementedException();
+			}
+			public static bool operator >=(HalmazRendezessel<T> a, HalmazRendezessel<T> b)
+			{
+				throw new NotImplementedException();
+			}
+			public static bool operator ==(HalmazRendezessel<T> a, HalmazRendezessel<T> b)
+			{
+				throw new NotImplementedException();
+			}
+			public static bool operator !=(HalmazRendezessel<T> a, HalmazRendezessel<T> b)
+			{
+				throw new NotImplementedException();
+			}
+		}
 		static bool Bennevan(List<int> l, int e)
 		{
 			int i = 0;
@@ -124,25 +208,18 @@ namespace Halmazok
 				result.Add(r.Next(min, max));
 			return result;
 		}
+		static int szokasos(int a, int b)
+		{
+			if (a < b)
+				return -1;
+			if (a > b)
+				return 1;
+			return 0;
+		}
 
 		static void Main(string[] args)
 		{
-			Halmaz h = new Halmaz(new List<int> { 1, 2, 5, 6, 9 });
-            Halmaz h2 = h.Masolat();
-			Halmaz g = new Halmaz(new List<int> { 8, 6, 4, 2});
-			Console.WriteLine(h);
-			Console.WriteLine(h2);
-
-			//Console.WriteLine(g.Tartalmazza(2));
-			//Console.WriteLine(g.Tartalmazza(3));
-
-            Console.WriteLine(h<=h2);
-            Console.WriteLine(h<h2);
-
-            h2 += new Halmaz(new List<int> {1, 2, 3});
-            Console.WriteLine(h<=h2);
-            Console.WriteLine(h<h2);
-
-        }
+			HalmazRendezessel<int> h = new HalmazRendezessel<int>(new List<int> { 3, 7, 1, 2, 6, 1, 2 }, szokasos);
+		}
 	}
 }
