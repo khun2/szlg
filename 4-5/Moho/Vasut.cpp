@@ -11,12 +11,15 @@ int main(){
 		cin >> v[i];
 	}
 	last = v[0];
-	r.push_back(last);
 	for (int i = 0; i < n - 1; i++) {
-		if(last + k >= v[i])
-			r.push_back(v[i]);
+		if(last + k >= v[i]){
+			r.push_back(i+1);
+			last = v[i];
+		}
 	}
-	if (last + k <)
+	if (last + k < v[n-1])
+		r.pop_back();
+	r.push_back(n);
 	cout << r.size() << '\n';
 	for (int x : r){
 		cout << x << ' ';	
