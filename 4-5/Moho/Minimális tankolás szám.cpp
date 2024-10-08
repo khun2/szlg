@@ -16,23 +16,25 @@ int main() {
         i = 1;
         best = 0;
         while (repeat) {
+            // cerr << best;
             if (i < n && b * 100 / l >= v[i].first) {
+                // cerr << best;
                 if (visited[i]) {
                     i++;
                     continue;
                 }
                 if (visited[best] || v[best].second < v[i].second) {
                     best = i;
-                    i++;
                 }
+                i++;
             } else {
                 repeat = 0;
                 b += v[best].second;
                 visited[best] = 1;
                 count++;
-                cerr << best;
             }
         }
+        // cerr << best;
     }
     cout << count;
 }
