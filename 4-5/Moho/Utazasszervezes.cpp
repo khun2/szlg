@@ -12,9 +12,6 @@ int main() {
     int result = 0, available = n;
     cerr << "sikerült beolvasni\n\n\n";
     for (int i = 0; i < c; i++) {
-        if (v[i] > k - m + 1) return -1;
-        // elvileg nem kell a feladatleírás szerint
-        // de a második példa amit megad a mester ellent mond neki
         while (finishdates.size() > 0 &&
                finishdates[nextFinish] == i) {
             available++;
